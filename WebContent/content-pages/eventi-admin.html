@@ -1,0 +1,387 @@
+<article class="content dashboard-page">
+    <section class="section" ng-controller="eventiController">
+    		<div class="row sameheight-container" ng-if="visualizzaEsito">
+    			<div class="col-md-12">
+                <div class="card sameheight-item stats" data-exclude="xs">
+                    <div class="card-block">
+                        <div class="title-block">
+                            <h4 class="title"> Esito Operazione</h4>
+                        </div>
+                         <div class="row" style="background-color: {{coloreSfondoEsito}}">
+                         	<span>{{messaggioEsito}}</span>
+                         </div>
+                    </div>
+                </div>
+            </div>
+    		</div>
+        <div class="row sameheight-container">
+            <div class="col-md-5">
+                <div class="card sameheight-item stats" data-exclude="xs">
+                    <div class="card-block">
+                        <div class="title-block">
+                            <h4 class="title"> Lista Eventi</h4>
+                        </div>
+                        <div class="title-block">
+                            <button ng-click="azzeraEventoSelezionato()">NUOVO EVENTO</button>
+                        </div>					
+                        <div class="row">
+<!--                             qui ci va la lista degli eventi -->
+							<div class="table-responsive">
+	                            <table class="table table-striped table-bordered table-hover">
+<!-- 	                            rendere dinamica la lista -->
+	                                <thead>
+	                                    <tr>
+	                                        <th>id</th>
+	                                        <th>Nome</th>
+	                                        <th>Citta</th>
+	                                        <th>Data</th>
+	                                        <th></th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <tr ng-repeat="evento in listaEventi | orderBy:'nomeEvento'" ng-click="clickEvento(evento)">
+	                                        <td>{{evento.idEvento}}</td>
+	                                        <td>{{evento.titoloEvento}}</td>
+	                                        <td>{{evento.cittaEvento}}</td>
+	                                        <td>{{convertDateFromMilliseconds(evento.dataEvento)}}</td><!-- controllare formato data -->
+	                                        <td><button ng-click="confirmDecision(evento)">X</button></td>
+	                                    </tr>
+	                                </tbody>
+	                            </table>
+	                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card sameheight-item" data-exclude="xs" id="dashboard-history">
+                    <div class="card-header card-header-sm bordered">
+                        <div class="header-block">
+                            <h3 class="title">Aggiungi/modifica un evento</h3>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="tab-content">
+<!--                             qui ci va il form per creare/modificare un utente -->
+<!-- 								<form name="salvaUtenteForm" ng-submit="submitTest()" novalidate> -->
+								<form name="salvaEventoForm" ng-submit="salvaEventoForm.$valid && submit()" novalidate>
+									<table>
+										<tr>
+											<td>
+												<span>Titolo Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.titoloEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Tema Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.temaEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Testo Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.testoEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Città Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.cittaEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Provincia Evento</span>
+											</td>
+											<td>
+												<ui-select ng-model="provinciaSelezionata.selected" theme="selectize" style="width: 300px;" title="Scelta provincia">
+												    <ui-select-match placeholder="Scegli o cerca una provincia nella lista...">{{$select.selected.nomeProvincia}}</ui-select-match>
+												    <ui-select-choices repeat="provincia in listaProvince | filter: $select.search">
+												      <span ng-bind-html="provincia.nomeProvincia | highlight: $select.search"></span>
+												      <small ng-bind-html="provincia.siglaProvincia | highlight: $select.search"></small>
+												    </ui-select-choices>
+												 </ui-select>
+												 <input type="text" ng-model="provinciaSelezionata.selected.nomeProvincia" disabled="disabled"/>
+												 <input type="text" ng-model="provinciaSelezionata.selected.idProvincia" disabled="disabled"/>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<input type="button" ng-click="apriEditorProvince()" value="APRI EDITOR PROVINCE"/>
+											</td>
+										</tr>
+										<tr ng-if="visualizzaEditorProvince">
+											<td colspan="2">
+												<table border="1">
+													<tr>
+														<td>
+															<span>Nome Provincia</span>
+														</td>
+														<td>
+															<input type="text" ng-model="provinciaSelezionata.selected.nomeProvincia"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<span>Sigla provincia</span>
+														</td>
+														<td>
+															<input type="text" ng-model="provinciaSelezionata.selected.siglaProvincia"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!-- SALVO IL VNO APPENA INSERITO -->
+															<input type="button" value="AggiungiProvincia" ng-click="aggiungiProvincia()">
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Indirizzo Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.indirizzoEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Telefono Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.telefonoEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>EMail Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.emailEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Data Evento</span>
+											</td>
+											<td>
+												<input type="date" ng-model="dataEvento" required="required" value="giorno"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Azienda Ospitante</span>
+											</td>
+											<td>
+												<!-- caricare le aziende selezionabili con menu' a tendina  -->
+												<ui-select ng-model="aziendaOspitanteSelezionata.selected" theme="selectize" style="width: 300px;" title="Scelta azienda ospitante">
+												    <ui-select-match placeholder="Scegli o cerca un'azienda nella lista...">{{$select.selected.nomeAzienda}}</ui-select-match>
+												    <ui-select-choices repeat="azienda in aziende | filter: $select.search">
+												      <span ng-bind-html="azienda.nomeAzienda | highlight: $select.search"></span>
+<!-- 												      <small ng-bind-html="azienda.idAzienda | highlight: $select.search"></small> -->
+												    </ui-select-choices>
+												 </ui-select>
+												 <input type="text" ng-model="aziendaOspitanteSelezionata.selected.nomeAzienda" disabled="disabled"/>
+											</td>
+										</tr>
+										
+										<tr>
+											<td>
+												<span>Prezzo Evento</span>
+											</td>
+											<td>
+												<input type="number" ng-model="eventoSelezionato.prezzoEvento"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Numero Massimo Partecipanti Evento</span>
+											</td>
+											<td>
+												<input type="number" ng-model="eventoSelezionato.numMaxPartecipantiEvento"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Upload Immagine Evento</span>
+											</td>
+											<td>
+												<input type="file" class="button" ngf-select ng-model="fileEvento" name="fileEvento" ngf-pattern="'image/*'"
+												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
+<!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
+												<input type="button" value="carica" ng-click="submitImageEvento(fileEvento)">
+												<input type="text" ng-model="eventoSelezionato.urlFotoEvento" required="required" disabled="disabled"/>
+												<img ng-src="{{eventoSelezionato.urlFotoEvento}}" width="150px" ng-show="eventoSelezionato.urlFotoEvento">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Latitudine Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.latitudineEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Longitudine Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.longitudineEvento" required="required"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Badge Evento</span>
+											</td>
+											<td>
+												<!-- caricare le aziende selezionabili con menu' a tendina  -->
+												<ui-select ng-model="badgeSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta Badge">
+												    <ui-select-match placeholder="Scegli o cerca un'azienda nella lista...">{{$select.selected.nomeAzienda}}</ui-select-match>
+												    <ui-select-choices repeat="badge in listaBadges | filter: $select.search">
+												      <span ng-bind-html="badge.nomeBadge | highlight: $select.search"></span>
+												    </ui-select-choices>
+												 </ui-select>
+												 <input type="text" ng-model="badgeSelezionato.selected.nomeBadge" disabled="disabled" required="required"/>
+												 <input type="text" ng-model="badgeSelezionato.selected.idBadge" disabled="disabled" required="required"/>
+												 <img alt="" ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" ng-show="badgeSelezionato.selected.urlLogoBadge">
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<input type="button" ng-click="apriEditorBadge()" value="AGGIUNGI BADGE"/>
+											</td>
+										</tr>
+										<tr ng-if="visualizzaEditorBadge">
+											<td colspan="2">
+												<table>
+													<tr>
+														<td>
+															<span>Nome Badge</span>
+														</td>
+														<td>
+															<input type="text" ng-model="badgeSelezionato.nomeBadge"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<span>Info Badge</span>
+														</td>
+														<td>
+															<input type="text" ng-model="badgeSelezionato.infoBadge"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<span>Upload Logo Badge</span>
+														</td>
+														<td>
+															<input type="file" class="button" ngf-select ng-model="fileLogoBadge" name="fileLogoBadge" ngf-pattern="'image/*'"
+															    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
+			<!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
+															<input type="button" value="carica" ng-click="submitImageLogoBadge(fileLogoBadge)">
+															<img ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" ng-show="badgeSelezionato.selected.urlLogoBadge"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!-- SALVO IL VNO APPENA INSERITO -->
+															<input type="button" value="SALVA BADGE" ng-click="salvaBadge()">
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<!-- GESTIONE VINI ASSOCIATI ALL'EVENTO -->
+										<tr>
+											<!-- ELENCO DEI VINI ASSOCIATI -->
+											<td colspan="2">
+												<div class="table-responsive">
+						                            <table class="table table-striped table-bordered table-hover">
+					<!-- 	                            rendere dinamica la lista -->
+						                                <thead>
+						                                    <tr>
+						                                        <th>Nome Vino</th>
+						                                        <th>Azienda</th>
+						                                        <th>Anno Vino</th>
+						                                        <th></th>
+						                                    </tr>
+						                                </thead>
+						                                <tbody>
+						                                    <tr ng-repeat="vino in listaViniSelezionati">
+						                                        <td>{{vino.nomeVino}}</td>
+						                                        <td>{{vino.nomeAziendaVino}}</td>
+						                                        <td>{{vino.annoVino}}</td>
+						                                        <td><button ng-click="rimuoviVinoDaLista(vino)">X</button></td>
+						                                    </tr>
+						                                </tbody>
+						                            </table>
+						                        </div>
+											</td>
+										</tr>
+										<tr>
+											<!-- DROP DOWN MENU PER SCEGLIERE IL VINO DA AGGIUNGERE -->
+											<td>
+												<span>Vini da associare all'Evento</span>
+											</td>
+											<td>
+												<!-- caricare le aziende selezionabili con menu' a tendina  -->
+												<ui-select ng-model="vinoSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta Badge">
+												    <ui-select-match placeholder="Scegli o cerca un'azienda nella lista...">{{$select.selected.nomeVino}}</ui-select-match>
+												    <ui-select-choices repeat="vino in listaVini | filter: $select.search">
+												      <span ng-bind-html="vino.nomeVino | highlight: $select.search"></span>
+												      <span ng-bind-html="vino.aziendaVino.nomeAzienda | highlight: $select.search"></span>
+												      <small ng-bind-html="vino.annoVino | highlight: $select.search"></small>
+												    </ui-select-choices>
+												 </ui-select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Nome Vino</span>
+											</td>
+											<td>
+												<input type="text" ng-model="vinoSelezionato.selected.nomeVino" disabled="disabled"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Azienda Vino</span>
+											</td>
+											<td>
+												<input type="text" ng-model="vinoSelezionato.selected.nomeAziendaVino" disabled="disabled"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Anno Vino</span>
+											</td>
+											<td>
+												<input type="text" ng-model="vinoSelezionato.selected.annoVino" disabled="disabled"/><input type="button" value="AGGIUNGI VINO" ng-click="aggiungiVinoALista()"/>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<input type="button" value="SALVA EVENTO" ng-click="salvaEvento()"/>
+											</td>
+										</tr>
+									</table>
+								</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

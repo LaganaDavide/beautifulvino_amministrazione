@@ -1,0 +1,159 @@
+<article class="content dashboard-page">
+    <section class="section" ng-controller="utentiController">
+    		<div class="row sameheight-container" ng-if="visualizzaEsito">
+    			<div class="col-md-12">
+                <div class="card sameheight-item stats" data-exclude="xs">
+                    <div class="card-block">
+                        <div class="title-block">
+                            <h4 class="title"> Esito Operazione</h4>
+                        </div>
+                         <div class="row" style="background-color: {{coloreSfondoEsito}}">
+                         	<span>{{messaggioEsito}}</span>
+                         </div>
+                    </div>
+                </div>
+            </div>
+    		</div>
+        <div class="row sameheight-container">
+            <div class="col-md-4">
+                <div class="card sameheight-item stats" data-exclude="xs">
+                    <div class="card-block">
+                        <div class="title-block">
+                            <h4 class="title"> Lista Utenti</h4>
+                        </div>
+                        <div class="title-block">
+                            <button ng-click="azzeraForm()">NUOVO UTENTE</button>
+                        </div>					
+                        <div class="row">
+<!--                             qui ci va la lista degli utenti -->
+							<div class="table-responsive">
+	                            <table class="table table-striped table-bordered table-hover">
+<!-- 	                            rendere dinamica la lista -->
+	                                <thead>
+	                                    <tr>
+	                                        <th>id</th>
+	                                        <th>Nome</th>
+	                                        <th>Cognome</th>
+	                                        <th>Livello</th>
+	                                        <th></th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <tr ng-repeat="utente in listaUtenti | orderBy:'cognomeUtente'" ng-click="clickUtente(utente)">
+	                                        <td>{{utente.idUtente}}</td>
+	                                        <td>{{utente.nomeUtente}}</td>
+	                                        <td>{{utente.cognomeUtente}}</td>
+	                                        <td>{{utente.livelloUtente}}</td>
+	                                        <td><button ng-click="confirmDecision(utente)">X</button></td>
+	                                    </tr>
+	                                </tbody>
+	                            </table>
+	                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card sameheight-item" data-exclude="xs" id="dashboard-history">
+                    <div class="card-header card-header-sm bordered">
+                        <div class="header-block">
+                            <h3 class="title">Aggiungi/modifica un utente</h3>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="tab-content">
+<!--                             qui ci va il form per creare/modificare un utente -->
+<!-- 								<form name="salvaUtenteForm" ng-submit="submitTest()" novalidate> -->
+								<form name="salvaUtenteForm" ng-submit="salvaUtenteForm.$valid && submit()" novalidate>
+									<table>
+										<tr>
+											<td>
+												<span>id</span>
+											</td>
+											<td>
+												<input type="text" ng-model="idUtente" disabled/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>nome</span>
+											</td>
+											<td>
+												<input name="nomeUtenteInput" type="text" ng-model="nomeUtente" required/><span ng-if="salvaUtenteForm.nomeUtenteInput.$valid">OK</span><span ng-if="!salvaUtenteForm.nomeUtenteInput.$valid">REQUIRED</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>cognome</span>
+											</td>
+											<td>
+												<input name="cognomeUtenteInput" type="text" ng-model="cognomeUtente" required/><span ng-if="salvaUtenteForm.cognomeUtenteInput.$valid">OK</span><span ng-if="!salvaUtenteForm.cognomeUtenteInput.$valid">REQUIRED</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>crediti</span>
+											</td>
+											<td>
+												<input type="text" ng-model="creditiUtente"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>esperienza</span>
+											</td>
+											<td>
+												<input type="text" ng-model="esperienzaUtente"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>livello</span>
+											</td>
+											<td>
+												<input name="livelloUtenteInput" type="text" ng-model="livelloUtente" required/><span ng-if="salvaUtenteForm.livelloUtenteInput.$valid">OK</span><span ng-if="!salvaUtenteForm.livelloUtenteInput.$valid">REQUIRED</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>biografia</span>
+											</td>
+											<td>
+												<textarea ng-model="biografiaUtente" rows="3"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>url foto</span>
+											</td>
+											<td>
+												<input type="text" ng-model="urlFotoUtente"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Upload Image</span>
+											</td>
+											<td>
+												<input type="file" class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
+<!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
+												<input type="button" value="carica" ng-click="submitTest(file)">
+											</td>
+										</tr>
+										
+										
+										<tr>
+											<td colspan="2">
+												<input type="submit" id="submit" value="Salva"/>
+											</td>
+										</tr>
+									</table>
+								</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
