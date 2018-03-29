@@ -101,6 +101,12 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		}
 	}
 	
+	$scope.duplicaUtente = function(){
+		$scope.utenteSelezionato.idUtente = "";
+		$scope.idUtente = "";
+		$scope.submit();
+	}
+	
 	$scope.submit = function(){
 		$scope.azzeraEsito();
 		

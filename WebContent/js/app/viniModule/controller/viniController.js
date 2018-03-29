@@ -134,6 +134,12 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		$scope.vinoSelezionato.urlLogoVino = $scope.urlImmagine;
 	}
 	
+	$scope.duplicaVino = function(){
+		$scope.vinoSelezionato.idVino = "";
+		$scope.idVino = "";
+		$scope.salvaVino();
+	}
+	
 	$scope.confirmDecision = function(vino){
 		$scope.azzeraEsito();
         $ngConfirm({

@@ -317,6 +317,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	
 	$scope.duplicaEvento = function(){
 		$scope.eventoSelezionato.idEvento = "";
+		$scope.idEvento = "";
 		$scope.salvaEvento();
 	}
 	

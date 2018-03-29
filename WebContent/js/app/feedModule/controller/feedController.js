@@ -304,6 +304,12 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 //		$scope.fileEvento = '';
 //	}
 	
+	$scope.duplicaFeed = function(){
+		$scope.feedSelezionato.idFeed = "";
+		$scope.idFeed = "";
+		$scope.submit();
+	}
+	
 	$scope.cancellaFeed = function(feed){
 		cancellaFeed.response(feed).then(function(result){
 			var codiceEsito = result.data.esito.codice;

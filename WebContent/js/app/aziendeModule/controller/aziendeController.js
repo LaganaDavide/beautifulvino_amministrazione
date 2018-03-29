@@ -277,6 +277,12 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		$scope.submit();
 	}
 	
+	$scope.duplicaAzienda = function(){
+		$scope.aziendaSelezionata.idAzienda = "";
+		$scope.idAzienda = "";
+		$scope.submit();
+	}
+	
 	$scope.upload = function (file, baseFileName) {
 		var reader = new window.FileReader();
 		var urlImmagine = '';
