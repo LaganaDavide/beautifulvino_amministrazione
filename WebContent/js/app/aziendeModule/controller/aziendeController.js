@@ -152,13 +152,13 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		$scope.luogoAzienda = azienda.luogoAzienda;
 		$scope.zonaAzienda = azienda.zonaAzienda;
 		$scope.urlImmagineAzienda = azienda.urlImmagineAzienda;
-		
+		$scope.active = azienda.active;
 		$scope.viniAzienda = azienda.viniAziendaInt;
 	}
 	
 	$scope.showDisable = function (){
-		if (showDis = true) showDis = false;
-		else showDis = true;
+		if ($scope.showDis == true) $scope.showDis = false;
+		else $scope.showDis = true;
 	}
 	
 //	$scope.clickVino = function(vino){
@@ -273,6 +273,8 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	
 	$scope.disableAzienda = function (azienda){
 		azienda.active = !azienda.active;
+		$scope.clickAzienda(azienda);
+		$scope.submit();
 	}
 	
 	$scope.upload = function (file, baseFileName) {

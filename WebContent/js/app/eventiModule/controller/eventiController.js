@@ -315,6 +315,11 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		});
 	}
 	
+	$scope.duplicaEvento = function(){
+		$scope.eventoSelezionato.idEvento = "";
+		$scope.salvaEvento();
+	}
+	
 	$scope.submitImageEvento = function(file){
 		if(file){
 			$scope.upload(file, VARIOUS.eventoImageBaseFileName);

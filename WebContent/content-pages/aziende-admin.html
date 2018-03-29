@@ -45,7 +45,7 @@
 	                                        <td ng-if="azienda.active || showDis">{{azienda.luogoAzienda}}</td>
 	                                        <td ng-if="azienda.active || showDis">{{azienda.zonaUtente}}</td>
 	                                        <td ng-if="azienda.active"><button ng-click="disableAzienda(azienda)">Disable</button>
-	                                        <td ng-if="azienda.active && showDis"><button ng-click="disableAzienda(azienda)">Enable</button>
+	                                        <td ng-if="!azienda.active && showDis"><button ng-click="disableAzienda(azienda)">Enable</button>
 	                                        <td ng-if="azienda.active || showDis"><button ng-click="confirmDecision(azienda)">X</button></td>
 	                                    </tr>
 	                                </tbody>
@@ -54,7 +54,8 @@
                         </div>
                     </div>
                 </div>
-                 <button ng-click="showDisable">visualizza aziende disabilitate</button>
+                 <button ng-if="!showDis" ng-click="showDisable()">visualizza aziende disabilitate</button>
+                 <button ng-if="showDis" ng-click="showDisable()">nascondi aziende disabilitate</button>
             </div>
   
             <div class="col-md-7">
