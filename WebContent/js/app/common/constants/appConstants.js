@@ -14,7 +14,6 @@ angular.module('utentiModule').constant('URLS',{
 		putImage: 'https://ltf72bsjgl.execute-api.eu-central-1.amazonaws.com/BeautifulVinoPutImage',
 		putEvento: 'https://ksjcidu1zh.execute-api.eu-central-1.amazonaws.com/BeautifulVinoPutEvento',
 		cancellaEvento: 'https://q0kuva8ii0.execute-api.eu-central-1.amazonaws.com/BeautifulVinoDeleteEvento'
-		//login: 'http://localhost:2389'
 	}
 ).constant('RESPONSE_CODES',{
 	okResponse: 100
@@ -22,11 +21,11 @@ angular.module('utentiModule').constant('URLS',{
 	coloreSfondoEsitoOk: '#CCFF00',
 	coloreSfondoEsitoKo: '#FF6633',
 	coloreSfondoEsitoNeutro: '#FFFFFF',
-	utenteImageBaseFileName: 'utenteImagefile.jpg',
-	aziendaImageBaseFileName: 'aziendaImagefile.jpg',
-	vinoImageBaseFileName: 'vinoImagefile.jpg',
-	vinoLogoBaseFileName: 'logoVinofile.jpg',
-	eventoImageBaseFileName: 'eventoImagefile.jpg',
-	badgeImageBaseFileName: 'logoBadgeImagefile.jpg',
-	feedImageBaseFileName: 'feedImagefile.jpg'	
+	utenteImageBaseFileName: 'utenteImagefile',
+	aziendaImageBaseFileName: 'aziendaImagefile',
+	vinoImageBaseFileName: 'vinoImagefile',
+	vinoLogoBaseFileName: 'logoVinofile',
+	eventoImageBaseFileName: 'eventoImagefile',
+	badgeImageBaseFileName: 'logoBadgeImagefile',
+	feedImageBaseFileName: 'feedImagefile'	
 });
