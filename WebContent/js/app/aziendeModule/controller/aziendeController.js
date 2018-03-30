@@ -16,7 +16,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	$scope.infoAzienda = '';
 	$scope.latitudineAzienda = 0.0;
 	$scope.longitudineAzienda = 0.0;
-	$scope.luogoAzienda = '';
+	$scope.cittaAzienda = '';
 	$scope.zonaAzienda = '';
 	$scope.active = true;
 		
@@ -128,7 +128,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		$scope.infoAzienda = '';
 		$scope.latitudineAzienda = 0.0;
 		$scope.longitudineAzienda = 0.0;
-		$scope.luogoAzienda = '';
+		$scope.cittaAzienda = '';
 		$scope.zonaAzienda = '';
 		$scope.urlImmagineAzienda = '';
 		
@@ -149,7 +149,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		$scope.infoAzienda = azienda.infoAzienda;
 		$scope.latitudineAzienda = azienda.latitudineAzienda;
 		$scope.longitudineAzienda = azienda.longitudineAzienda;
-		$scope.luogoAzienda = azienda.luogoAzienda;
+		$scope.cittaAzienda = azienda.cittaAzienda;
 		$scope.zonaAzienda = azienda.zonaAzienda;
 		$scope.urlImmagineAzienda = azienda.urlImmagineAzienda;
 		$scope.active = azienda.active;
@@ -224,7 +224,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		$scope.aziendaSelezionata.infoAzienda = $scope.infoAzienda;
 		$scope.aziendaSelezionata.latitudineAzienda = $scope.latitudineAzienda;
 		$scope.aziendaSelezionata.longitudineAzienda = $scope.longitudineAzienda;
-		$scope.aziendaSelezionata.luogoAzienda = $scope.luogoAzienda;
+		$scope.aziendaSelezionata.cittaAzienda = $scope.cittaAzienda;
 		$scope.aziendaSelezionata.zonaAzienda = $scope.zonaAzienda;
 		$scope.aziendaSelezionata.urlImmagineAzienda = $scope.urlImmagineAzienda;
 		$scope.aziendaSelezionata.viniAziendaInt = $scope.viniAzienda;
@@ -293,7 +293,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 			
 			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
 				var codiceEsito = result.data.esito.codice;
-				$scope.urlImmagine = result.data.imageUrl;
+				$scope.urlImmagineAzienda = result.data.imageUrl;
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
 					

@@ -31,19 +31,15 @@
 <!-- 	                            rendere dinamica la lista -->
 	                                <thead>
 	                                    <tr>
-	                                        <th>id</th>
 	                                        <th>Nome</th>
 	                                        <th>Luogo Azienda</th>
-	                                        <th>Zona Azienda</th>
 	                                        <th></th>
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="azienda in listaAziende | orderBy:'nomeAzienda'" ng-click="clickAzienda(azienda)">
-	                                        <td ng-if="azienda.active || showDis">{{azienda.idAzienda}}</td>
 	                                        <td ng-if="azienda.active || showDis">{{azienda.nomeAzienda}}</td>
-	                                        <td ng-if="azienda.active || showDis">{{azienda.luogoAzienda}}</td>
-	                                        <td ng-if="azienda.active || showDis">{{azienda.zonaUtente}}</td>
+	                                        <td ng-if="azienda.active || showDis">{{azienda.cittaAzienda}}</td>
 	                                        <td ng-if="azienda.active"><button ng-click="disableAzienda(azienda)">Disable</button>
 	                                        <td ng-if="!azienda.active && showDis"><button ng-click="disableAzienda(azienda)">Enable</button>
 	                                        <td ng-if="azienda.active || showDis"><button ng-click="confirmDecision(azienda)">X</button></td>
@@ -89,10 +85,10 @@
 										</tr>
 										<tr>
 											<td>
-												<span>luogo</span>
+												<span>Luogo</span>
 											</td>
 											<td>
-												<input name="luogoAziendaInput" type="text" ng-model="luogoAzienda" required/><span ng-if="salvaAziendaForm.luogoAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.luogoAziendaInput.$valid">REQUIRED</span>
+												<input name="cittaAziendaInput" type="text" ng-model="cittaAzienda" required/><span ng-if="salvaAziendaForm.cittaAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.cittaAziendaInput.$valid">REQUIRED</span>
 											</td>
 										</tr>
 										<tr>

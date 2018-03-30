@@ -31,19 +31,17 @@
 <!-- 	                            rendere dinamica la lista -->
 	                                <thead>
 	                                    <tr>
-	                                        <th>id</th>
+
 	                                        <th>Nome</th>
 	                                        <th>Citta</th>
-	                                        <th>Data</th>
+
 	                                        <th></th>
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="evento in listaEventi | orderBy:'nomeEvento'" ng-click="clickEvento(evento)">
-	                                        <td>{{evento.idEvento}}</td>
 	                                        <td>{{evento.titoloEvento}}</td>
 	                                        <td>{{evento.cittaEvento}}</td>
-	                                        <td>{{convertDateFromMilliseconds(evento.dataEvento)}}</td><!-- controllare formato data -->
 	                                        <td><button ng-click="confirmDecision(evento)">X</button></td>
 	                                    </tr>
 	                                </tbody>

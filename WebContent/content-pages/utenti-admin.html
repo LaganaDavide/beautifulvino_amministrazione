@@ -31,19 +31,17 @@
 <!-- 	                            rendere dinamica la lista -->
 	                                <thead>
 	                                    <tr>
-	                                        <th>id</th>
 	                                        <th>Nome</th>
 	                                        <th>Cognome</th>
-	                                        <th>Livello</th>
 	                                        <th></th>
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="utente in listaUtenti | orderBy:'cognomeUtente'" ng-click="clickUtente(utente)">
-	                                        <td>{{utente.idUtente}}</td>
+
 	                                        <td>{{utente.nomeUtente}}</td>
 	                                        <td>{{utente.cognomeUtente}}</td>
-	                                        <td>{{utente.livelloUtente}}</td>
+
 	                                        <td><button ng-click="confirmDecision(utente)">X</button></td>
 	                                    </tr>
 	                                </tbody>
