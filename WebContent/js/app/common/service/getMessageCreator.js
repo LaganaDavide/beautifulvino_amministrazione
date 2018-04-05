@@ -108,6 +108,7 @@ angular.module("utentiModule").service("getMessagesCreator", function() {
 		
 		message.elencoCompleto = "S";
 		message.functionName = "getFeedGen";
+		message.elencoCompleto = "S";
 		
 		return message;
 	}
@@ -140,6 +141,7 @@ angular.module("utentiModule").service("getMessagesCreator", function() {
 		var message = {};
 		message.idUtente = "eu-central-1:e7ae1814-8e42-49fc-a183-d5e2abaf0d7c";
 		message.functionName = "getEventiGen";
+		message.elencoCompleto = "S";
 		
 		return message;
 	}
