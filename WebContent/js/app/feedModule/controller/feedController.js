@@ -124,8 +124,14 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 			$scope.feedSelezionato.vinoFeedInt = $scope.vinoSelezionato.selected;
 		if ($scope.tipoFeed == 4)
 			$scope.feedSelezionato.eventoFeedInt = $scope.eventoSelezionato.selected;
-		if ($scope.tipoFeed == 2)
-			$scope.feedSelezionato.aziendaFeedInt = $scope.aziendaSelezionata.selected;
+		if ($scope.tipoFeed == 2){
+			$scope.feedSelezionato.aziendaFeedInt = {};
+			$scope.feedSelezionato.aziendaFeedInt.idAzienda = $scope.aziendaSelezionata.selected.idAzienda;
+			$scope.feedSelezionato.aziendaFeedInt.nomeAzienda = $scope.aziendaSelezionata.selected.nomeAzienda;
+			$scope.feedSelezionato.aziendaFeedInt.cittaAzienda = $scope.aziendaSelezionata.selected.cittaAzienda;
+			$scope.feedSelezionato.aziendaFeedInt.active = $scope.aziendaSelezionata.selected.active;
+			
+		}
 
 		console.log($scope.feedSelezionato);
 		salvaFeed.response($scope.feedSelezionato).then(function(result){

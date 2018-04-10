@@ -134,6 +134,8 @@ angular.module("utentiModule").service("getMessagesCreator", function() {
 		var message = {};
 		message.idVino = vino.idVino;
 		message.functionName = "deleteVinoGen"
+			
+		return message;
 	}
 	
 	this.getEventiMessage = function(){

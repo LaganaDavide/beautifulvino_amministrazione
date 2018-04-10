@@ -31,7 +31,6 @@
 <!-- 	                            rendere dinamica la lista -->
 	                                <thead>
 	                                    <tr>
-	                                        <th>id</th>
 	                                        <th>Nome</th>
 	                                        <th>Azienda</th>
 	                                        <th>Anno</th>
@@ -40,7 +39,6 @@
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="vino in listaVini | orderBy:'nomeVino'" ng-click="clickVino(vino)">
-	                                        <td>{{vino.idVino}}</td>
 	                                        <td>{{vino.nomeVino}}</td>
 	                                        <td>{{vino.aziendaVinoInt.nomeAzienda}}</td>
 	                                        <td>{{vino.annoVino}}</td>

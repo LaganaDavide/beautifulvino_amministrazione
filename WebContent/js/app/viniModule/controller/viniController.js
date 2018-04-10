@@ -47,6 +47,11 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		
 	}
 	
+	$scope.azzeraForm = function (){
+		$scope.vinoSelezionato = {};
+		$scope.aziendaSelezionata.selected = {};
+	}
+	
 	$scope.azzeraAziendaSelezionata = function(){
 		$scope.aziendaSelezionata = {};
 	}
