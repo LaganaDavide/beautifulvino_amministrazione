@@ -144,16 +144,17 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		
 		$scope.aziendaSelezionata = azienda;
 		
-		$scope.idAzienda = azienda.idAzienda;
-		$scope.nomeAzienda = azienda.nomeAzienda;
-		$scope.infoAzienda = azienda.infoAzienda;
-		$scope.latitudineAzienda = azienda.latitudineAzienda;
-		$scope.longitudineAzienda = azienda.longitudineAzienda;
-		$scope.cittaAzienda = azienda.cittaAzienda;
-		$scope.zonaAzienda = azienda.zonaAzienda;
-		$scope.urlImmagineAzienda = azienda.urlImmagineAzienda;
-		$scope.active = azienda.active;
-		$scope.viniAzienda = azienda.viniAziendaInt;
+//		$scope.idAzienda = azienda.idAzienda;
+//		$scope.nomeAzienda = azienda.nomeAzienda;
+//		$scope.infoAzienda = azienda.infoAzienda;
+//		$scope.descrizioneAzienda = azienda.descrizioneAzienda;
+//		$scope.latitudineAzienda = azienda.latitudineAzienda;
+//		$scope.longitudineAzienda = azienda.longitudineAzienda;
+//		$scope.cittaAzienda = azienda.cittaAzienda;
+//		$scope.zonaAzienda = azienda.zonaAzienda;
+//		$scope.urlImmagineAzienda = azienda.urlImmagineAzienda;
+//		$scope.active = azienda.active;
+//		$scope.viniAzienda = azienda.viniAziendaInt;
 	}
 	
 	$scope.showDisable = function (){
@@ -197,7 +198,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 			$scope.upload(file, VARIOUS.aziendaImageBaseFileName);
 		}
 		$scope.file = '';
-		$scope.urlImmagineAzienda = $scope.urlImmagine;
+		$scope.aziendaSelezionata.urlImmagineAzienda = $scope.urlImmagine;
 	}
 	
 	$scope.submitImageVino = function(file){
@@ -219,14 +220,15 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	$scope.submit = function(){
 		$scope.azzeraEsito();
 		
-		$scope.aziendaSelezionata.idAzienda = $scope.idAzienda;
-		$scope.aziendaSelezionata.nomeAzienda = $scope.nomeAzienda;
-		$scope.aziendaSelezionata.infoAzienda = $scope.infoAzienda;
-		$scope.aziendaSelezionata.latitudineAzienda = $scope.latitudineAzienda;
-		$scope.aziendaSelezionata.longitudineAzienda = $scope.longitudineAzienda;
-		$scope.aziendaSelezionata.cittaAzienda = $scope.cittaAzienda;
-		$scope.aziendaSelezionata.zonaAzienda = $scope.zonaAzienda;
-		$scope.aziendaSelezionata.urlImmagineAzienda = $scope.urlImmagineAzienda;
+//		$scope.aziendaSelezionata.idAzienda = $scope.idAzienda;
+//		$scope.aziendaSelezionata.nomeAzienda = $scope.nomeAzienda;
+//		$scope.aziendaSelezionata.infoAzienda = $scope.infoAzienda;
+//		$scope.aziendaSelezionata.descrizioneAzienda = $scope.descrizioneAzienda;
+//		$scope.aziendaSelezionata.latitudineAzienda = $scope.latitudineAzienda;
+//		$scope.aziendaSelezionata.longitudineAzienda = $scope.longitudineAzienda;
+//		$scope.aziendaSelezionata.cittaAzienda = $scope.cittaAzienda;
+//		$scope.aziendaSelezionata.zonaAzienda = $scope.zonaAzienda;
+//		$scope.aziendaSelezionata.urlImmagineAzienda = $scope.urlImmagineAzienda;
 		$scope.aziendaSelezionata.viniAziendaInt = $scope.viniAzienda;
 		$scope.aziendaSelezionata.active = $scope.active;
 		
@@ -293,7 +295,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 			
 			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
 				var codiceEsito = result.data.esito.codice;
-				$scope.urlImmagineAzienda = result.data.imageUrl;
+				$scope.urlImmagine = result.data.imageUrl;
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
 					

@@ -117,7 +117,7 @@
 												<span>Descrizione Breve</span>
 											</td>
 											<td>
-												<input type="text" ng-model="vinoSelezionato.inBreveVino"/>
+												<textarea ng-model="vinoSelezionato.inBreveVino"/></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -129,11 +129,11 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td>Fde
 												<span>Info Vino</span>
 											</td>
 											<td>
-												<input type="text" ng-model="vinoSelezionato.infoVino"/>
+												<textarea ng-model="vinoSelezionato.infoVino"/></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -149,10 +149,10 @@
 												<span>Upload Immagine Vino</span>
 											</td>
 											<td>
-												<input type="file" class="button" ngf-select ng-model="fileVino" name="fileVino" ngf-pattern="'image/*'"
+												<input type="file" class="button" ngf-select ng-model="urlImmagineVino" name="fileVino" ngf-pattern="'image/*'"
 												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
-												<input type="button" value="carica" ng-click="submitImageVino(fileVino)">
+												<input type="button" value="carica" ng-click="submitImageVino(urlImmagineVino)">
 											</td>
 										</tr>
 										<tr>

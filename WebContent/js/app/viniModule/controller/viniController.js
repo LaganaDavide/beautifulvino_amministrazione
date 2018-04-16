@@ -142,6 +142,8 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	$scope.duplicaVino = function(){
 		$scope.vinoSelezionato.idVino = "";
 		$scope.idVino = "";
+		$scope.vinoSelezionato.nomeVino = $scope.vinoSelezionato.nomeVino + " copia";
+		$scope.nomeVino = $scope.nomeVino + " copia";
 		$scope.salvaVino();
 	}
 	

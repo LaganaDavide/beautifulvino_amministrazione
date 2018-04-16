@@ -92,7 +92,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	}
 	
 	$scope.caricaAzienda = function(){
-		var arrayLength = $scope.listaAzinde.length;
+		var arrayLength = $scope.listaAziende.length;
 		for (var i = 0; i < arrayLength; i++) {
 			var azienda = $scope.listaAziende[i];
 			if(azienda.idAzienda == $scope.feedSelezionato.aziendaFeedInt.idAzienda){

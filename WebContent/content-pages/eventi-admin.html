@@ -77,7 +77,7 @@
 												<span>Tema Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.temaEvento" required="required"/>
+												<textarea type="text" ng-model="eventoSelezionato.temaEvento" required="required"/></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -85,7 +85,7 @@
 												<span>Testo Evento</span>
 											</td>
 											<td>
-												<textarea cols=40 rows=10 ng-model="eventoSelezionato.testoEvento" required="required"/></textarea>
+												<textarea  ng-model="eventoSelezionato.testoEvento" required="required"/></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -175,6 +175,14 @@
 											</td>
 											<td>
 												<input type="date" ng-model="dataEvento" required="required" value="giorno"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Orario Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.orarioEvento" />
 											</td>
 										</tr>
 										<tr>

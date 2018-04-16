@@ -32,7 +32,7 @@
 	                                <thead>
 	                                    <tr>
 	                                        <th>Nome</th>
-	                                        <th>Luogo Azienda</th>
+	                                        <th>Città Azienda</th>
 	                                        <th></th>
 	                                    </tr>
 	                                </thead>
@@ -72,7 +72,7 @@
 												<span>id</span>
 											</td>
 											<td>
-												<input type="text" ng-model="idAzienda" disabled/>
+												<input type="text" ng-model="aziendaSelezionata.idAzienda" disabled/>
 											</td>
 										</tr>
 										<tr>
@@ -80,7 +80,7 @@
 												<span>nome</span>
 											</td>
 											<td>
-												<input name="nomeAziendaInput" type="text" ng-model="nomeAzienda" required/><span ng-if="salvaAziendaForm.nomeAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.nomeAziendaInput.$valid">REQUIRED</span>
+												<input name="nomeAziendaInput" type="text" ng-model="aziendaSelezionata.nomeAzienda" required/><span ng-if="salvaAziendaForm.nomeAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.nomeAziendaInput.$valid">REQUIRED</span>
 											</td>
 										</tr>
 										<tr>
@@ -88,7 +88,87 @@
 												<span>Luogo</span>
 											</td>
 											<td>
-												<input name="cittaAziendaInput" type="text" ng-model="cittaAzienda" required/><span ng-if="salvaAziendaForm.cittaAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.cittaAziendaInput.$valid">REQUIRED</span>
+												<input name="cittaAziendaInput" type="text" ng-model="aziendaSelezionata.cittaAzienda" required/><span ng-if="salvaAziendaForm.cittaAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.cittaAziendaInput.$valid">REQUIRED</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Zona</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.zonaAzienda" />
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Info Azienda</span>
+											</td>
+											<td>
+												<textarea ng-model="aziendaSelezionata.infoAzienda" /></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Descrizione</span>
+											</td>
+											<td>
+												<textarea ng-model="aziendaSelezionata.descrizioneAzienda" /></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Regione</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.regioneAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>latitudine</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.latitudineAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>longitudine</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.longitudineAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Sito web</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.sitoAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Email</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.emailAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Email secondaria</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.emailSecondariaAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>telefono</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.telefonoAzienda"/>
 											</td>
 										</tr>
 										<tr>
@@ -96,7 +176,7 @@
 												<span>url foto</span>
 											</td>
 											<td>
-												<input type="text" ng-model="urlImmagineAzienda"/>
+												<input type="text" ng-model="aziendaSelezionata.urlImmagineAzienda"/>
 											</td>
 										</tr>
 										<tr>
