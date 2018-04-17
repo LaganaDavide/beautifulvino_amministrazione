@@ -154,7 +154,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 //		$scope.zonaAzienda = azienda.zonaAzienda;
 //		$scope.urlImmagineAzienda = azienda.urlImmagineAzienda;
 //		$scope.active = azienda.active;
-//		$scope.viniAzienda = azienda.viniAziendaInt;
+		$scope.viniAzienda = azienda.viniAziendaInt;
 	}
 	
 	$scope.showDisable = function (){
@@ -281,7 +281,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	
 	$scope.duplicaAzienda = function(){
 		$scope.aziendaSelezionata.idAzienda = "";
-		$scope.idAzienda = "";
+		$scope.aziendaSelezionata.nomeAzienda = $scope.aziendaSelezionata.nomeAzienda + " copia";
 		$scope.submit();
 	}
 	

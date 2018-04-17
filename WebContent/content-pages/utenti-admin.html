@@ -77,7 +77,7 @@
 												<span>nome</span>
 											</td>
 											<td>
-												<input name="nomeUtenteInput" type="text" ng-model="nomeUtente" required/><span ng-if="salvaUtenteForm.nomeUtenteInput.$valid">OK</span><span ng-if="!salvaUtenteForm.nomeUtenteInput.$valid">REQUIRED</span>
+												<input name="nomeUtenteInput" type="text" ng-model="nomeUtente" />
 											</td>
 										</tr>
 										<tr>
@@ -85,7 +85,7 @@
 												<span>cognome</span>
 											</td>
 											<td>
-												<input name="cognomeUtenteInput" type="text" ng-model="cognomeUtente" required/><span ng-if="salvaUtenteForm.cognomeUtenteInput.$valid">OK</span><span ng-if="!salvaUtenteForm.cognomeUtenteInput.$valid">REQUIRED</span>
+												<input name="cognomeUtenteInput" type="text" ng-model="cognomeUtente" />
 											</td>
 										</tr>
 										<tr>
@@ -109,7 +109,7 @@
 												<span>livello</span>
 											</td>
 											<td>
-												<input name="livelloUtenteInput" type="text" ng-model="livelloUtente" required/><span ng-if="salvaUtenteForm.livelloUtenteInput.$valid">OK</span><span ng-if="!salvaUtenteForm.livelloUtenteInput.$valid">REQUIRED</span>
+												<input name="livelloUtenteInput" type="text" ng-model="livelloUtente"/>
 											</td>
 										</tr>
 										<tr>
@@ -117,7 +117,7 @@
 												<span>biografia</span>
 											</td>
 											<td>
-												<textarea ng-model="biografiaUtente" rows="3"></textarea>
+												<textarea cols="50" ng-model="biografiaUtente" rows="3"></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -137,6 +137,7 @@
 												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 												<input type="button" value="carica" ng-click="submitTest(file)">
+												<img ng-src="{{urlFotoUtente}}" width="150px" ng-show="urlFotoUtente">
 											</td>
 										</tr>
 										<tr>

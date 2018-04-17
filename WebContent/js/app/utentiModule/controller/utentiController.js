@@ -104,6 +104,8 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	$scope.duplicaUtente = function(){
 		$scope.utenteSelezionato.idUtente = "";
 		$scope.idUtente = "";
+		$scope.utenteSelezionato.nomeUtente = $scope.utenteSelezionato.nomeUtente + " copia";
+		$scope.nomeUtente = $scope.nomeUtente + " copia";
 		$scope.submit();
 	}
 	

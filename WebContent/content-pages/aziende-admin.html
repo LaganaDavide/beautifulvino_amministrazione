@@ -80,7 +80,7 @@
 												<span>nome</span>
 											</td>
 											<td>
-												<input name="nomeAziendaInput" type="text" ng-model="aziendaSelezionata.nomeAzienda" required/><span ng-if="salvaAziendaForm.nomeAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.nomeAziendaInput.$valid">REQUIRED</span>
+												<input name="nomeAziendaInput" type="text" ng-model="aziendaSelezionata.nomeAzienda">
 											</td>
 										</tr>
 										<tr>
@@ -88,7 +88,7 @@
 												<span>Luogo</span>
 											</td>
 											<td>
-												<input name="cittaAziendaInput" type="text" ng-model="aziendaSelezionata.cittaAzienda" required/><span ng-if="salvaAziendaForm.cittaAziendaInput.$valid">OK</span><span ng-if="!salvaAziendaForm.cittaAziendaInput.$valid">REQUIRED</span>
+												<input name="cittaAziendaInput" type="text" ng-model="aziendaSelezionata.cittaAzienda" />
 											</td>
 										</tr>
 										<tr>
@@ -104,7 +104,7 @@
 												<span>Info Azienda</span>
 											</td>
 											<td>
-												<textarea ng-model="aziendaSelezionata.infoAzienda" /></textarea>
+												<textarea cols="50" ng-model="aziendaSelezionata.infoAzienda" /></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -112,7 +112,7 @@
 												<span>Descrizione</span>
 											</td>
 											<td>
-												<textarea ng-model="aziendaSelezionata.descrizioneAzienda" /></textarea>
+												<textarea cols="50" ng-model="aziendaSelezionata.descrizioneAzienda" /></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -173,7 +173,7 @@
 										</tr>
 										<tr>
 											<td>
-												<span>url foto</span>
+												<span>url Immagine Azienda</span>
 											</td>
 											<td>
 												<input type="text" ng-model="aziendaSelezionata.urlImmagineAzienda"/>
@@ -187,6 +187,26 @@
 												<input type="file" class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
 												    ngf-accept="'image/*'" />
 												<input type="button" value="carica" ng-click="submitImage(file)">
+												<img ng-src="{{aziendaSelezionata.urlImmagineAzienda}}" width="150px" ng-show="aziendaSelezionata.urlImmagineAzienda">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>url Logo Azienda</span>
+											</td>
+											<td>
+												<input type="text" ng-model="aziendaSelezionata.urlLogoAzienda"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Upload Image</span>
+											</td>
+											<td>
+												<input type="file" class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+												    ngf-accept="'image/*'" />
+												<input type="button" value="carica" ng-click="submitImage(file)">
+												<img ng-src="{{aziendaSelezionata.urlLogoAzienda}}" width="150px" ng-show="aziendaSelezionata.urlLogoAzienda">
 											</td>
 										</tr>
 										<tr>

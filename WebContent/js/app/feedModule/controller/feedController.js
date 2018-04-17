@@ -313,6 +313,8 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	$scope.duplicaFeed = function(){
 		$scope.feedSelezionato.idFeed = "";
 		$scope.idFeed = "";
+		$scope.feedSelezionato.titoloFeed = $scope.feedSelezionato.titoloFeed + " copia";
+		$scope.titoloFeed = $scope.titoloFeed + " copia";
 		$scope.submit();
 	}
 	

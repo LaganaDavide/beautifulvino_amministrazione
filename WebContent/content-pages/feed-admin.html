@@ -83,7 +83,7 @@
 						<span>idEntitaFeed</span>
 					</td>
 					<td>
-						<input type="text" ng-model="idEntitaFeed" disabled/>
+						<input type="text" ng-model="idEntitaFeed" />
 					</td>
 				</tr>
 				<tr>
@@ -115,7 +115,7 @@
 						<span>Titolo</span>
 					</td>
 					<td>
-						<input name="titoloFeedInput" type="text" ng-model="titoloFeed" required/><span ng-if="salvaFeedForm.titoloFeedInput.$valid">OK</span><span ng-if="!salvaFeedForm.titoloFeedInput.$valid">REQUIRED</span>
+						<input name="titoloFeedInput" type="text" ng-model="titoloFeed" />
 					</td>
 				</tr>
 				<tr>
@@ -123,7 +123,7 @@
 						<span>Testo</span>
 					</td>
 					<td>
-						<input name="testoFeedInput" type="text" ng-model="testoFeed" required/><span ng-if="salvaFeedForm.testoFeedInput.$valid">OK</span><span ng-if="!salvaFeedForm.testoFeedInput.$valid">REQUIRED</span>
+						<textarea cols=50 name="testoFeedInput" type="text" ng-model="testoFeed" /></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -131,7 +131,7 @@
 						<span>Testo Label</span>
 					</td>
 					<td>
-						<input type="text" ng-model="testoLabelFeed" />
+						<textarea cols="50" ng-model="testoLabelFeed" /></textarea>
 					</td>
 				</tr>
 				<tr ng-if="tipoFeed == 1 || tipoFeed == 2 || tipoFeed == 4">
@@ -198,6 +198,7 @@
 						    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 						<input type="button" value="carica" ng-click="submitImage(file)">
+						<img ng-src="{{urlImmagineFeed}}" width="150px" ng-show="urlImmagineFeed">
 					</td>
 				</tr>
 				<tr>

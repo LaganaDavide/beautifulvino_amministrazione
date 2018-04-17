@@ -66,10 +66,18 @@
 									<table>
 										<tr>
 											<td>
+												<span>ID Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.idEvento" />
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<span>Titolo Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.titoloEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.titoloEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -77,7 +85,7 @@
 												<span>Tema Evento</span>
 											</td>
 											<td>
-												<textarea type="text" ng-model="eventoSelezionato.temaEvento" required="required"/></textarea>
+												<textarea cols="50"  ng-model="eventoSelezionato.temaEvento" /></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -85,7 +93,7 @@
 												<span>Testo Evento</span>
 											</td>
 											<td>
-												<textarea  ng-model="eventoSelezionato.testoEvento" required="required"/></textarea>
+												<textarea cols="50" ng-model="eventoSelezionato.testoEvento" /></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -93,7 +101,7 @@
 												<span>Città Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.cittaEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.cittaEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -150,7 +158,7 @@
 												<span>Indirizzo Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.indirizzoEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.indirizzoEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -158,7 +166,7 @@
 												<span>Telefono Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.telefonoEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.telefonoEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -166,7 +174,7 @@
 												<span>EMail Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.emailEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.emailEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -174,7 +182,7 @@
 												<span>Data Evento</span>
 											</td>
 											<td>
-												<input type="date" ng-model="dataEvento" required="required" value="giorno"/>
+												<input type="date" ng-model="dataEvento"  value="giorno"/>
 											</td>
 										</tr>
 										<tr>
@@ -227,7 +235,7 @@
 												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 												<input type="button" value="carica" ng-click="submitImageEvento(fileEvento)">
-												<input type="text" ng-model="eventoSelezionato.urlFotoEvento" required="required" disabled="disabled"/>
+												<input type="text" ng-model="eventoSelezionato.urlFotoEvento"  disabled="disabled"/>
 												<img ng-src="{{eventoSelezionato.urlFotoEvento}}" width="150px" ng-show="eventoSelezionato.urlFotoEvento">
 											</td>
 										</tr>
@@ -236,7 +244,7 @@
 												<span>Latitudine Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.latitudineEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.latitudineEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -244,7 +252,7 @@
 												<span>Longitudine Evento</span>
 											</td>
 											<td>
-												<input type="text" ng-model="eventoSelezionato.longitudineEvento" required="required"/>
+												<input type="text" ng-model="eventoSelezionato.longitudineEvento" />
 											</td>
 										</tr>
 										<tr>
@@ -259,8 +267,8 @@
 												      <span ng-bind-html="badge.nomeBadge | highlight: $select.search"></span>
 												    </ui-select-choices>
 												 </ui-select>
-												 <input type="text" ng-model="badgeSelezionato.selected.nomeBadge" disabled="disabled" required="required"/>
-												 <input type="text" ng-model="badgeSelezionato.selected.idBadge" disabled="disabled" required="required"/>
+												 <input type="text" ng-model="badgeSelezionato.selected.nomeBadge" disabled="disabled" />
+												 <input type="text" ng-model="badgeSelezionato.selected.idBadge" disabled="disabled" />
 												 <img alt="" ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" ng-show="badgeSelezionato.selected.urlLogoBadge">
 											</td>
 										</tr>

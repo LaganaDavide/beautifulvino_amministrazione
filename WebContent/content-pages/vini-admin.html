@@ -117,15 +117,7 @@
 												<span>Descrizione Breve</span>
 											</td>
 											<td>
-												<textarea ng-model="vinoSelezionato.inBreveVino"/></textarea>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<span>Descrizione</span>
-											</td>
-											<td>
-												<input type="text" ng-model="vinoSelezionato.descrizioneVino"/>
+												<textarea cols="50" ng-model="vinoSelezionato.inBreveVino"/></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -133,7 +125,7 @@
 												<span>Info Vino</span>
 											</td>
 											<td>
-												<textarea ng-model="vinoSelezionato.infoVino"/></textarea>
+												<textarea cols="50" ng-model="vinoSelezionato.infoVino"/></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -153,6 +145,7 @@
 												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 												<input type="button" value="carica" ng-click="submitImageVino(urlImmagineVino)">
+												<img ng-src="{{vinoSelezionato.urlImmagineVino}}" width="150px" ng-show="vinoSelezionato.urlImmagineVino">	
 											</td>
 										</tr>
 										<tr>
@@ -172,6 +165,7 @@
 												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 												<input type="button" value="carica" ng-click="submitImageLogoVino(fileLogoVino)">
+												<img ng-src="{{vinoSelezionato.urlLogoVino}}" width="150px" ng-show="vinoSelezionato.urlLogoVino">			
 											</td>
 										</tr>
 										<tr>
