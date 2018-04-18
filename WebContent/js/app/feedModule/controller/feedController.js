@@ -120,8 +120,14 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 2 || $scope.tipoFeed == 4)
 			$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
-		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 3)
+		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 3){
 			$scope.feedSelezionato.vinoFeedInt = $scope.vinoSelezionato.selected;
+			var aziendaInt = {
+					idAzienda: $scope.vinoSelezionato.selected.aziendaVinoInt.idAzienda, 
+					nomeAzienda: $scope.vinoSelezionato.selected.aziendaVinoInt.nomeAzienda
+			}
+			 $scope.feedSelezionato.vinoFeedInt.aziendaVino = aziendaInt;
+		}
 		if ($scope.tipoFeed == 4)
 			$scope.feedSelezionato.eventoFeedInt = $scope.eventoSelezionato.selected;
 		if ($scope.tipoFeed == 2){
