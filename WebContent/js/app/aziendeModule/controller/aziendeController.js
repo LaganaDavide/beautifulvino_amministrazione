@@ -123,18 +123,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	}
 	
 	$scope.azzeraForm = function(){
-		$scope.idAzienda = '';
-		$scope.nomeAzienda = '';
-		$scope.infoAzienda = '';
-		$scope.latitudineAzienda = 0.0;
-		$scope.longitudineAzienda = 0.0;
-		$scope.cittaAzienda = '';
-		$scope.zonaAzienda = '';
-		$scope.urlImmagineAzienda = '';
-		
-		$scope.azienda = {};
-		
-		$scope.viniAzienda = [];
+		$scope.aziendaSelezionata = {};
 	}
 	
 	$scope.caricaLista();
@@ -199,6 +188,14 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		}
 		$scope.file = '';
 		$scope.aziendaSelezionata.urlImmagineAzienda = $scope.urlImmagine;
+	}
+	
+	$scope.submitImageLogo = function(file){
+		if(file){
+			$scope.upload(file, VARIOUS.aziendaImageBaseFileName);
+		}
+		$scope.file = '';
+		$scope.aziendaSelezionata.urlLogoAzienda = $scope.urlImmagine;
 	}
 	
 	$scope.submitImageVino = function(file){
@@ -298,7 +295,6 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 				$scope.urlImmagine = result.data.imageUrl;
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
-					
 				} else {
 					var messaggioDiErrore = result.data.esito.message;
 					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'azienda; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
