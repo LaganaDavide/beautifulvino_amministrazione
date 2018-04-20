@@ -9,7 +9,6 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	$scope.coloreSfondoEsito = VARIOUS.coloreSfondoEsitoNeutro;
 	
 	$scope.visualizzaEditorVino = false;
-	$scope.urlImmagine = '';
 	
 	$scope.idAzienda = '';
 	$scope.nomeAzienda = '';
@@ -124,6 +123,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	
 	$scope.azzeraForm = function(){
 		$scope.aziendaSelezionata = {};
+		$scope.viniAzienda = [];
 	}
 	
 	$scope.caricaLista();
@@ -184,34 +184,31 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	
 	$scope.submitImage = function(file){
 		if(file){
-			$scope.upload(file, VARIOUS.aziendaImageBaseFileName);
+			$scope.upload(file, VARIOUS.aziendaImageBaseFileName,"image");
 		}
 		$scope.file = '';
-		$scope.aziendaSelezionata.urlImmagineAzienda = $scope.urlImmagine;
 	}
 	
 	$scope.submitImageLogo = function(file){
 		if(file){
-			$scope.upload(file, VARIOUS.aziendaImageBaseFileName);
+			$scope.upload(file, VARIOUS.aziendaImageBaseFileName, "logo");
 		}
 		$scope.file = '';
-		$scope.aziendaSelezionata.urlLogoAzienda = $scope.urlImmagine;
 	}
 	
 	$scope.submitImageVino = function(file){
 		if(file){
-			$scope.upload(file, VARIOUS.vinoImageBaseFileName);
+			$scope.upload(file, VARIOUS.vinoImageBaseFileName, "imageVino");
 		}
 		$scope.file = '';
-		$scope.vinoSelezionato.urlImmagineVino = $scope.urlImmagine;
 	}
 	
 	$scope.submitImageLogoVino = function(file){
 		if(file){
-			$scope.upload(file, VARIOUS.vinoLogoBaseFileName);
+			$scope.upload(file, VARIOUS.vinoLogoBaseFileName, "imageLogoVino");
 		}
 		$scope.file = '';
-		$scope.vinoSelezionato.urlLogoVino = $scope.urlImmagine;
+
 	}
 	
 	$scope.submit = function(){
@@ -282,7 +279,8 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 		$scope.submit();
 	}
 	
-	$scope.upload = function (file, baseFileName) {
+	$scope.upload = function (file, baseFileName, flag1) {
+		$scope.flag = flag1;
 		var reader = new window.FileReader();
 		var urlImmagine = '';
 		reader.readAsDataURL(file); 
@@ -292,7 +290,15 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 			
 			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
 				var codiceEsito = result.data.esito.codice;
-				$scope.urlImmagine = result.data.imageUrl;
+				if ($scope.flag == "image"){
+					$scope.aziendaSelezionata.urlImmagineAzienda = result.data.imageUrl;
+				}else if ($scope.flag == "logo"){
+					$scope.aziendaSelezionata.urlLogoAzienda = result.data.imageUrl;
+				}else if ($scope.flag == "imageVino"){
+					$scope.vinoSelezionato.urlImmagineVino = result.data.imageUrl;
+				}else if ($scope.flag == "imageLogoVino"){
+					$scope.vinoSelezionato.urlLogoVino = result.data.imageUrl;
+				}
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
 				} else {
