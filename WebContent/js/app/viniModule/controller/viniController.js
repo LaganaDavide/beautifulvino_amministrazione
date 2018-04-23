@@ -125,18 +125,17 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	
 	$scope.submitImageVino = function(file){
 		if(file){
-			$scope.upload(file, VARIOUS.vinoImageBaseFileName);
+			$scope.upload(file, VARIOUS.vinoImageBaseFileName, "image");
 		}
 		$scope.file = '';
-		$scope.vinoSelezionato.urlImmagineVino = $scope.urlImmagine;
+
 	}
 	
 	$scope.submitImageLogoVino = function(file){
 		if(file){
-			$scope.upload(file, VARIOUS.vinoLogoBaseFileName);
+			$scope.upload(file, VARIOUS.vinoLogoBaseFileName, "logo");
 		}
 		$scope.file = '';
-		$scope.vinoSelezionato.urlLogoVino = $scope.urlImmagine;
 	}
 	
 	$scope.duplicaVino = function(){
@@ -171,7 +170,7 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
         });
     }
 	
-	$scope.upload = function (file, baseFileName) {
+	$scope.upload = function (file, baseFileName, flag) {
 		var reader = new window.FileReader();
 		reader.readAsDataURL(file); 
 		reader.onloadend = function() {
@@ -180,7 +179,11 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 			
 			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
 				var codiceEsito = result.data.esito.codice;
-				$scope.urlImmagine = result.data.imageUrl;
+				if (flag == "vino"){
+					$scope.vinoSelezionato.urlImmagineVino = result.data.imageUrl;
+				}else if (flag == "logo"){
+					$scope.vinoSelezionato.urlLogoVino = result.data.imageUrl;
+				}
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
 					$scope.urlImmagineAzienda = urlImmagine;
