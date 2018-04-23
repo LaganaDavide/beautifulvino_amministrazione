@@ -355,7 +355,7 @@
 												    <ui-select-match placeholder="Scegli o cerca un'azienda nella lista...">{{$select.selected.nomeVino}}</ui-select-match>
 												    <ui-select-choices repeat="vino in listaVini | filter: $select.search">
 												      <span ng-bind-html="vino.nomeVino | highlight: $select.search"></span>
-												      <span ng-bind-html="vino.aziendaVino.nomeAzienda | highlight: $select.search"></span>
+												      <span ng-bind-html="vino.nomeAziendaVino.nomeAzienda | highlight: $select.search"></span>
 												      <small ng-bind-html="vino.annoVino | highlight: $select.search"></small>
 												    </ui-select-choices>
 												 </ui-select>
