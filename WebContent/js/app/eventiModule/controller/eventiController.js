@@ -374,11 +374,11 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 					$scope.eventoSelezionato.urlFotoEvento = result.data.imageUrl;
 				} else {
 					var messaggioDiErrore = result.data.esito.message;
-					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'azienda; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
+					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'evento; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
 				}
 				
 			}).catch(function(){
-				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nel salvataggio dell'immagine dell'azienda");
+				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nel salvataggio dell'immagine dell'evento");
 			});					
 		 }
     };
@@ -398,7 +398,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 					$scope.badgeSelezionato.urlLogoBadge = result.data.imageUrl;
 				} else {
 					var messaggioDiErrore = result.data.esito.message;
-					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'azienda; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
+					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'evento; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
 				}
 				
 			}).catch(function(){

@@ -19,11 +19,12 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	$scope.vinoSelezionato = {};
 	$scope.aziendaSelezionata = {};
 	$scope.eventoSelezionato = {};
+	$scope.tipoSelezionato = {};
 	
 	$scope.fileEvento = '';	
 	$scope.eventoSelezionato = {};
 	$scope.dataEvento = '';
-
+	$scope.listaTipi = [{name:"VI"},{name:"AZ"},{name:"UT"}];
 	
 	$scope.caricaFeed = function (){
 		getListaFeed.response().then(function(result){
@@ -53,8 +54,9 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.idEntitaHeaderFeed = feed.idEntitaHeaderFeed;
 		$scope.sottoHeaderFeed = feed.sottoHeaderFeed;
 		$scope.testoLabelFeed = feed.testoLabelFeed;
-		$scope.tipoEntitaHeaderFeed = feed.tipoEntitaHeaderFeed;
 		$scope.urlImmagineFeed = feed.urlImmagineFeed;
+		
+		$scope.caricaTipo();
 		if (feed.vinoFeedInt != null){
 			$scope.caricaVino();
 		}
@@ -67,6 +69,17 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		if (feed.dataEntitaHeader != null)
 			$scope.dataEntitaHeader = feed.dataEntitaHeaderFeed;
 		
+	}
+	
+	$scope.caricaTipo = function(){
+		var arrayLength = $scope.listaTipi.length;
+		for (var i = 0; i < arrayLength; i++) {
+			var tipo = $scope.listaTipi[i];
+			if(tipo.name == $scope.feedSelezionato.tipoEntitaHeaderFeed){
+				$scope.tipoSelezionato.selected = tipo;
+				return;
+			}
+		}
 	}
 	
 	$scope.caricaVino = function(){
@@ -115,9 +128,8 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.feedSelezionato.idEntitaHeaderFeed = $scope.idEntitaHeaderFeed;
 		$scope.feedSelezionato.sottoHeaderFeed = $scope.sottoHeaderFeed;
 		$scope.feedSelezionato.testoLabelFeed = $scope.testoLabelFeed;
-		$scope.feedSelezionato.tipoEntitaHeaderFeed = $scope.tipoEntitaHeaderFeed;
 		$scope.feedSelezionato.urlImmagineFeed = $scope.urlImmagineFeed;
-		
+
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 2 || $scope.tipoFeed == 4)
 			$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 3){
@@ -138,7 +150,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 			$scope.feedSelezionato.aziendaFeedInt.active = $scope.aziendaSelezionata.selected.active;
 			
 		}
-
+		$scope.feedSelezionato.tipoEntitaHeaderFeed = $scope.tipoSelezionato.selected.name;
 		console.log($scope.feedSelezionato);
 		salvaFeed.response($scope.feedSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
@@ -198,6 +210,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.vinoSelezionato.selected = '';
 	    $scope.eventoSelezionato.selected = '';
 		$scope.aziendaSelezionata.selected = '';
+		$scope.tipoSelezionato.selected = '';
 	}
 	
 //	$scope.azzeraEventoSelezionato = function(){
@@ -219,7 +232,6 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		getListaVini.response().then(function(result){
 			$scope.listaVini = result.data.vini;
 			$scope.codiceEsito = result.data.esito.codice;
-			
 		    console.log($scope.listaVini);
 		}).catch(function(){
 		   $scope.codiceEsito = 'ERRORE';

@@ -27,7 +27,6 @@
                                    <th>Titolo Feed</th>
                                    <th>Tipo</th>
                                    <th>id Entita </th>
-                                   <th> tipoEntitaHeaderFeed</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -36,7 +35,6 @@
                                    <td>{{feed.titoloFeed}}</td>
                                    <td>{{feed.tipoFeed}}</td>                                
                                    <td>{{feed.idEntitaFeed}}</td>
-                                    <td>{{feed.tipoEntitaHeaderFeed}}</td>
                                    <td><button ng-click="confirmDecision(feed)">X</button></td>
                                </tr>
                            </tbody>
@@ -106,9 +104,16 @@
 					<td>
 						<span>tipo Entita Header</span>
 					</td>
-					<td>
-						<input type="text" ng-model="tipoEntitaHeaderFeed" />
+					
+					 <td>
+						<ui-select ng-model="tipoSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta vino">
+						    <ui-select-match placeholder="Scegli o cerca un vino nella lista...">{{$select.selected.name}}</ui-select-match>
+						    <ui-select-choices repeat="tipo in listaTipi | filter: $select.search">
+						      <span ng-bind-html="tipo.name | highlight: $select.search"></span>
+						    </ui-select-choices>
+						 </ui-select>
 					</td>
+				
 				</tr>
 				<tr>
 					<td>
