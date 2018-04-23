@@ -179,21 +179,20 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 			
 			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
 				var codiceEsito = result.data.esito.codice;
-				if (flag == "vino"){
+				if (flag == "image"){
 					$scope.vinoSelezionato.urlImmagineVino = result.data.imageUrl;
 				}else if (flag == "logo"){
 					$scope.vinoSelezionato.urlLogoVino = result.data.imageUrl;
 				}
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
-					$scope.urlImmagineAzienda = urlImmagine;
 				} else {
 					var messaggioDiErrore = result.data.esito.message;
-					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'azienda; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
+					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine del vino; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
 				}
 				
 			}).catch(function(){
-				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nel salvataggio dell'immagine dell'azienda");
+				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nel salvataggio dell'immagine del vino");
 			});					
 		 }
     };
