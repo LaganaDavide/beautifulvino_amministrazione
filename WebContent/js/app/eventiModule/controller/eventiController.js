@@ -50,10 +50,10 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		
 		//gestione aziende evento
 		var aziendaOspitanteEventoInt = {};
-		if (aziendaOspitanteSelezionata)
-		aziendaOspitanteEventoInt.idAzienda = $scope.aziendaOspitanteSelezionata.selected.idAzienda;
-		$scope.eventoSelezionato.aziendaOspitanteEvento = aziendaOspitanteEventoInt;
-		
+		if ($scope.aziendaOspitanteSelezionata != null){
+			aziendaOspitanteEventoInt.idAzienda = $scope.aziendaOspitanteSelezionata.selected.idAzienda;
+			$scope.eventoSelezionato.aziendaOspitanteEvento = aziendaOspitanteEventoInt;
+		}
 		//gestione vini evento
 		$scope.eventoSelezionato.viniEventoInt = $scope.listaViniSelezionati;
 		
