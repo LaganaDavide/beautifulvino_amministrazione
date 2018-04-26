@@ -57,6 +57,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		//gestione vini evento
 		$scope.eventoSelezionato.viniEventoInt = $scope.listaViniSelezionati;
 		
+		$scope.eventoSelezionato.orarioEvento = "a"; 
+		
 		salvaEvento.response($scope.eventoSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
 			if(codiceEsito == 100){
