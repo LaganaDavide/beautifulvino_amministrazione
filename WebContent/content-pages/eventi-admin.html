@@ -262,7 +262,7 @@
 												 </ui-select>
 												 <input type="text" ng-model="badgeSelezionato.selected.nomeBadge" disabled="disabled" />
 												 <input type="text" ng-model="badgeSelezionato.selected.idBadge" disabled="disabled" />
-												 <img alt="" ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" ng-show="badgeSelezionato.selected.urlLogoBadge">
+												 <img alt="" ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" width="150px" ng-show="badgeSelezionato.selected.urlLogoBadge">
 											</td>
 										</tr>
 										<tr>
@@ -298,13 +298,13 @@
 															    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 			<!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 															<input type="button" value="carica" ng-click="submitImageLogoBadge(fileLogoBadge)">
-															<img ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" ng-show="badgeSelezionato.selected.urlLogoBadge"/>
+															<img ng-src="{{badgeSelezionato.urlLogoBadge}}" width="150px" ng-show="badgeSelezionato.urlLogoBadge"/>
 														</td>
 													</tr>
 													<tr>
 														<td>
 															<!-- SALVO IL VNO APPENA INSERITO -->
-															<input type="button" value="SALVA BADGE" ng-click="salvaBadge()">
+															<input type="button" value="SALVA BADGE"  ng-click="salvaBadge()">
 														</td>
 													</tr>
 												</table>
