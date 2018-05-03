@@ -17,6 +17,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	$scope.livelloUtente = '';
 	$scope.urlFotoUtente = '';
 	$scope.file = '';
+	$scope.usernameUtente = '';
 	
 	$scope.utenteSelezionato = {};
 	
@@ -58,7 +59,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.esperienzaUtente = 0;
 		$scope.livelloUtente = '';
 		$scope.urlFotoUtente = '';
-		
+		$scope.usernameUtente = '';
 		$scope.utente = {};
 	}
 	
@@ -77,6 +78,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.livelloUtente = utente.livelloUtente;
 		$scope.biografiaUtente = utente.biografiaUtente;
 		$scope.urlFotoUtente = utente.urlFotoUtente;
+		$scope.usernameUtente = utente.usernameUtente;
 	}
 	
 	$scope.cancellaUtente = function(utente){
@@ -121,6 +123,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utenteSelezionato.livelloUtente = $scope.livelloUtente;
 		$scope.utenteSelezionato.biografiaUtente = $scope.biografiaUtente;
 		$scope.utenteSelezionato.urlFotoUtente = $scope.urlFotoUtente;
+		$scope.utenteSelezionato.usernameUtente = $scope.usernameUtente;
 		
 		salvaUtente.response($scope.utenteSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;

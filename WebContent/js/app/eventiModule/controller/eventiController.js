@@ -40,8 +40,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.salvaEvento = function(){
 		//verifica e parsing della data
 		//eventuale controllo di validità
+		$scope.eventoSelezionato.oldDate = $scope.eventoSelezionato.dataEvento;
 		$scope.eventoSelezionato.dataEvento = Date.parse($scope.dataEvento); 
-		
 		//gestione provinciaEvento
 		$scope.eventoSelezionato.provinciaEventoInt = $scope.provinciaSelezionata.selected;
 		

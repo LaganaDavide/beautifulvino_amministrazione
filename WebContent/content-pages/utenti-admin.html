@@ -39,8 +39,7 @@
 	                                <tbody>
 	                                    <tr ng-repeat="utente in listaUtenti | orderBy:'cognomeUtente'" ng-click="clickUtente(utente)">
 
-	                                        <td>{{utente.nomeUtente}}</td>
-	                                        <td>{{utente.cognomeUtente}}</td>
+	                                        <td>{{utente.usernameUtente}}</td>
 
 	                                        <td><button ng-click="confirmDecision(utente)">X</button></td>
 	                                    </tr>
@@ -70,6 +69,14 @@
 											</td>
 											<td>
 												<input type="text" ng-model="idUtente" disabled/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>UserName</span>
+											</td>
+											<td>
+												<input name="usernameUtente" type="text" ng-model="usernameUtente" />
 											</td>
 										</tr>
 										<tr>
