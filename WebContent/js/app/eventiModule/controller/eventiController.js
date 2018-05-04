@@ -16,6 +16,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	
 	$scope.dataEvento = '';
 	
+	$scope.oldIdAzienda = '';
 	//gestione aziende
 	$scope.aziende = [];
 	$scope.aziendaOspitanteSelezionata = {};
@@ -40,8 +41,11 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.salvaEvento = function(){
 		//verifica e parsing della data
 		//eventuale controllo di validità
+		//gestione data vecchia
 		$scope.eventoSelezionato.oldDate = $scope.eventoSelezionato.dataEvento;
 		$scope.eventoSelezionato.dataEvento = Date.parse($scope.dataEvento); 
+		//gestione azienda vecchia
+		$scope.eventoSelezionato.oldIdAzienda = $scope.oldIdAzienda;
 		//gestione provinciaEvento
 		$scope.eventoSelezionato.provinciaEventoInt = $scope.provinciaSelezionata.selected;
 		
@@ -105,6 +109,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.aziendaOspitanteSelezionata.selected = '';
 		$scope.provinciaSelezionata.selected = '';
 		$scope.badgeSelezionato.selected = '';
+		$scope.oldIdAzienda = '';
 	}
 	
 	$scope.caricaLista = function(){
@@ -261,6 +266,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.listaViniSelezionati = $scope.eventoSelezionato.viniEventoInt;
 		$scope.dataEvento = new Date($scope.eventoSelezionato.dataEvento);
 		
+		if (evento.aziendaOspitanteEventoInt != null && evento.aziendaOspitanteEventoInt.idAzienda != null ) 
+			$scope.oldIdAzienda =  evento.aziendaOspitanteEventoInt.idAzienda;
 		//carico l'azienda corrispondente 
 		$scope.caricaAziendaOspitante();
 		$scope.caricaProvinciaInterfaccia();
