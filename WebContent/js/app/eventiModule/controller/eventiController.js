@@ -271,7 +271,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		var arrayLength = $scope.listaBadges.length;
 		for (var i = 0; i < arrayLength; i++) {
 			var badge = $scope.listaBadges[i];
-			if(badge.idBadge == $scope.eventoSelezionato.badgeEventoInt.idBadge){
+			if($scope.eventoSelezionato.badgeEventoInt != null && badge.idBadge == $scope.eventoSelezionato.badgeEventoInt.idBadge){
 				$scope.badgeSelezionato.selected = badge;
 				return;
 			}
