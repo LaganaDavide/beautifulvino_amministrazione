@@ -21,9 +21,11 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	$scope.oldIdAzienda = '';
 	
 	$scope.salvaVino = function(){
-		
-		var aziendaInt = {
-				idAzienda: $scope.aziendaSelezionata.selected.idAzienda, nomeAzienda: $scope.aziendaSelezionata.selected.nomeAzienda
+		if ($scope.aziendaSelezionata.selected != null ){
+			if ($scope.aziendaSelezionata.selected.nomeAzienda == null)$scope.aziendaSelezionata.selected.nomeAzienda = "";
+			var aziendaInt = {
+					idAzienda: $scope.aziendaSelezionata.selected.idAzienda, nomeAzienda: $scope.aziendaSelezionata.selected.nomeAzienda
+			}
 		}
 		$scope.vinoSelezionato.aziendaVino = aziendaInt;
 		$scope.vinoSelezionato.aziendaVinoInt = aziendaInt;
@@ -45,13 +47,12 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		}).catch(function(){
 			$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nell'inserimento del vino");
 			$scope.visualizzaEditorVino = false;
-		});
-		
+		});		
 	}
 	
 	$scope.azzeraForm = function (){
 		$scope.vinoSelezionato = {};
-		$scope.aziendaSelezionata.selected = {};
+		$scope.oldIdAzienda = {};
 	}
 	
 	$scope.azzeraAziendaSelezionata = function(){
@@ -59,7 +60,8 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	}
 	
 	$scope.azzeraVinoSelezionato = function(){
-		$scope.vinoSelezionato = {};
+		$scope.azzeraForm();
+		$scope.azzeraAziendaSelezionata();
 	}
 	
 	$scope.caricaLista = function(){
@@ -103,11 +105,22 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		$scope.coloreSfondoEsito = VARIOUS.coloreSfondoEsitoKo;
 	}
 	
+	$scope.caricaAzienda = function(){
+		var arrayLength = $scope.aziende.length;
+		for (var i = 0; i < arrayLength; i++) {
+			var azienda = $scope.aziende[i];
+			if(azienda.idAzienda ==  $scope.vinoSelezionato.aziendaVinoInt.idAzienda){
+				 $scope.aziendaSelezionata.selected = azienda;
+				return;
+			}
+		}
+	}
+	
 	$scope.clickVino = function(vino){
 		$scope.azzeraEsito();
 		$scope.vinoSelezionato = vino;
 		if ($scope.vinoSelezionato.aziendaVinoInt != null){
-			$scope.aziendaSelezionata.selected = $scope.vinoSelezionato.aziendaVinoInt;
+			$scope.caricaAzienda();
 			$scope.oldIdAzienda = $scope.vinoSelezionato.aziendaVinoInt.idAzienda;
 		}
 	}
