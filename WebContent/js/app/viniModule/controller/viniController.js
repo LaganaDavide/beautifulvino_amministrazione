@@ -43,20 +43,29 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 				var messaggioDiErrore = result.data.esito.message;
 				$scope.setEsitoNegativo("ATTENZIONE, Problemi nell'inserimento del vino; codice esito: " + codiceEsito + " messaggio di errore:" + messaggioDiErrore);
 				$scope.visualizzaEditorVino = false;
+				$scope.caricaLista();
+				$scope.azzeraVinoSelezionato();
+				$scope.azzeraAziendaSelezionata();
+				$scope.visualizzaEditorVino = false;
 			}
 		}).catch(function(){
 			$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nell'inserimento del vino");
+			$scope.visualizzaEditorVino = false;
+			$scope.caricaLista();
+			$scope.azzeraVinoSelezionato();
+			$scope.azzeraAziendaSelezionata();
 			$scope.visualizzaEditorVino = false;
 		});		
 	}
 	
 	$scope.azzeraForm = function (){
 		$scope.vinoSelezionato = {};
-		$scope.oldIdAzienda = {};
+		$scope.oldIdAzienda = '';
 	}
 	
 	$scope.azzeraAziendaSelezionata = function(){
 		$scope.aziendaSelezionata = {};
+		$scope.oldIdAzienda = '';
 	}
 	
 	$scope.azzeraVinoSelezionato = function(){
@@ -129,15 +138,20 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		cancellaVino.response(vino).then(function(result){
 			var codiceEsito = result.data.esito.codice;
 			if(codiceEsito == 100){
-				$scope.azzeraForm();
+				$scope.azzeraVinoSelezionato();
+				$scope.azzeraAziendaSelezionata();
 				$scope.caricaLista();
 				$scope.setEsitoPositivo("Vino cancellato correttamente");
 			} else {
 				var messaggioDiErrore = result.data.esito.message;
 				$scope.setEsitoNegativo("ATTENZIONE, Problemi nella cancellazione del vino; codice esito: " + codiceEsito + " messaggio di errore:" + messaggioDiErrore);
+				$scope.azzeraVinoSelezionato();
+				$scope.azzeraAziendaSelezionata();
 			}
 		}).catch(function(){
 			$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nella cancellazione del vino");
+			$scope.azzeraVinoSelezionato();
+			$scope.azzeraAziendaSelezionata();
 		});
 	}
 	
