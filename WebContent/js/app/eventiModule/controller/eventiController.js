@@ -48,7 +48,9 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.eventoSelezionato.oldIdAzienda = $scope.oldIdAzienda;
 		//gestione provinciaEvento
 		$scope.eventoSelezionato.provinciaEventoInt = $scope.provinciaSelezionata.selected;
-		
+		//gestione acquistabile 
+		if ($scope.acquistabileEvento == true) $scope.eventoSelezionato.acquistabileEvento = 1;
+		else $scope.eventoSelezionato.acquistabileEvento = 0;
 		//gestione badgeEvento
 		$scope.eventoSelezionato.badgeEventoInt = $scope.badgeSelezionato.selected;
 		
@@ -265,7 +267,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.eventoSelezionato = evento;
 		$scope.listaViniSelezionati = $scope.eventoSelezionato.viniEventoInt;
 		$scope.dataEvento = new Date($scope.eventoSelezionato.dataEvento);
-		
+		if (evento.acquistabileEvento == 1) $scope.acquistabileEvento = true;
+		else  $scope.acquistabileEvento = false;
 		if (evento.aziendaOspitanteEventoInt != null && evento.aziendaOspitanteEventoInt.idAzienda != null ) 
 			$scope.oldIdAzienda =  evento.aziendaOspitanteEventoInt.idAzienda;
 		//carico l'azienda corrispondente 

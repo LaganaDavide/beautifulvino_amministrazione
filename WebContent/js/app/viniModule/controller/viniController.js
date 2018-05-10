@@ -20,6 +20,8 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	$scope.vinoSelezionato = {};
 	$scope.oldIdAzienda = '';
 	
+	$scope.acquistabileVino = false;
+	
 	$scope.salvaVino = function(){
 		if ($scope.aziendaSelezionata.selected != null ){
 			if ($scope.aziendaSelezionata.selected.nomeAzienda == null)$scope.aziendaSelezionata.selected.nomeAzienda = "";
@@ -27,6 +29,8 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 					idAzienda: $scope.aziendaSelezionata.selected.idAzienda, nomeAzienda: $scope.aziendaSelezionata.selected.nomeAzienda
 			}
 		}
+		if ($scope.acquistabileVino == true) $scope.vinoSelezionato.acquistabileVino = 1;
+		else $scope.vinoSelezionato.acquistabileVino = 0;
 		$scope.vinoSelezionato.aziendaVino = aziendaInt;
 		$scope.vinoSelezionato.aziendaVinoInt = aziendaInt;
 		$scope.vinoSelezionato.oldIdAzienda = $scope.oldIdAzienda;
@@ -128,6 +132,8 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	$scope.clickVino = function(vino){
 		$scope.azzeraEsito();
 		$scope.vinoSelezionato = vino;
+		if (vino.acquistabileVino == 1)$scope.acquistabileVino = true;
+		else $scope.acquistabileVino = false;
 		if ($scope.vinoSelezionato.aziendaVinoInt != null){
 			$scope.caricaAzienda();
 			$scope.oldIdAzienda = $scope.vinoSelezionato.aziendaVinoInt.idAzienda;
