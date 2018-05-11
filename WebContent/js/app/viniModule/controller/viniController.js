@@ -65,6 +65,7 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	$scope.azzeraForm = function (){
 		$scope.vinoSelezionato = {};
 		$scope.oldIdAzienda = '';
+		$scope.acquistabileVino = false;
 	}
 	
 	$scope.azzeraAziendaSelezionata = function(){
@@ -131,6 +132,7 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	
 	$scope.clickVino = function(vino){
 		$scope.azzeraEsito();
+		$scope.azzeraVinoSelezionato();
 		$scope.vinoSelezionato = vino;
 		if (vino.acquistabileVino == 1)$scope.acquistabileVino = true;
 		else $scope.acquistabileVino = false;

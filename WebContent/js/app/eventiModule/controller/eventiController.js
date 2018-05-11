@@ -112,6 +112,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.provinciaSelezionata.selected = '';
 		$scope.badgeSelezionato.selected = '';
 		$scope.oldIdAzienda = '';
+		$scope.acquistabileEvento = false;
 	}
 	
 	$scope.caricaLista = function(){
