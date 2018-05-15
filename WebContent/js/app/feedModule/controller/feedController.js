@@ -55,6 +55,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.sottoHeaderFeed = feed.sottoHeaderFeed;
 		$scope.testoLabelFeed = feed.testoLabelFeed;
 		$scope.urlImmagineFeed = feed.urlImmagineFeed;
+		$scope.puntiEsperienza = feed.puntiEsperienza;
 		
 		$scope.caricaTipo();
 		if (feed.vinoFeedInt != null){
@@ -129,7 +130,8 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.feedSelezionato.sottoHeaderFeed = $scope.sottoHeaderFeed;
 		$scope.feedSelezionato.testoLabelFeed = $scope.testoLabelFeed;
 		$scope.feedSelezionato.urlImmagineFeed = $scope.urlImmagineFeed;
-
+		$scope.feedSelezionato.puntiEsperienza = $scope.puntiEsperienza;
+		
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 2 || $scope.tipoFeed == 4)
 			$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 3){
@@ -213,6 +215,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	    $scope.eventoSelezionato.selected = '';
 		$scope.aziendaSelezionata.selected = '';
 		$scope.tipoSelezionato.selected = '';
+		$scope.puntiEsperienza = 0;
 	}
 	
 //	$scope.azzeraEventoSelezionato = function(){

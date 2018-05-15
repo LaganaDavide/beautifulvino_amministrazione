@@ -59,11 +59,11 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		if ($scope.aziendaOspitanteSelezionata != null){
 			aziendaOspitanteEventoInt.idAzienda = $scope.aziendaOspitanteSelezionata.selected.idAzienda;
 			$scope.eventoSelezionato.aziendaOspitanteEvento = aziendaOspitanteEventoInt;
+			$scope.eventoSelezionato.aziendaOspitanteEventoInt = aziendaOspitanteEventoInt;
 		}
 		//gestione vini evento
 		$scope.eventoSelezionato.viniEventoInt = $scope.listaViniSelezionati;
-		
-		$scope.eventoSelezionato.orarioEvento = "a"; 
+		 
 		
 		salvaEvento.response($scope.eventoSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
