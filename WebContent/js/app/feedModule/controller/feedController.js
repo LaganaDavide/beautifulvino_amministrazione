@@ -60,12 +60,18 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.caricaTipo();
 		if (feed.vinoFeedInt != null){
 			$scope.caricaVino();
+		}else {
+			$scope.vinoSelezionato.selected = {} ;
 		}
 		if (feed.eventoFeedInt != null){
 			$scope.caricaEvento();
+		}else{
+			$scope.eventoSelezionato.selected = {};
 		}
 		if (feed.aziendaFeedInt != null){
 			$scope.caricaAzienda();
+		}else{
+			$scope.aziendaSelezionata.selected = {};
 		}
 		if (feed.dataEntitaHeader != null)
 			$scope.dataEntitaHeader = feed.dataEntitaHeaderFeed;
