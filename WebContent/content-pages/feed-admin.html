@@ -1,0 +1,248 @@
+<article class="content dashboard-page">
+    <section class="section" ng-controller="feedController">
+    		<div class="row sameheight-container" ng-if="visualizzaEsito">
+    			<div class="col-md-12">
+                <div class="card sameheight-item stats" data-exclude="xs">
+                    <div class="card-block">
+                        <div class="title-block">
+                            <h4 class="title"> Esito Operazione</h4>
+                        </div>
+                         <div class="row" style="background-color: {{coloreSfondoEsito}}">
+                         	<span>{{messaggioEsito}}</span>
+                         </div>
+                    </div>
+                </div>
+            </div>
+    		</div>
+        <div class="row sameheight-container">
+            <div class="col-md-5">
+                <div class="card sameheight-item stats" data-exclude="xs">
+                    <div class="card-block">
+                        <div class="title-block">
+                            <h4 class="title"> Lista Feed</h4>
+                        </div>
+                        <div class="title-block">
+                            <button ng-click="azzeraForm()">NUOVA FEED</button>
+                	</div>					
+                        <div class="row">
+<!--                             qui ci va la lista degli utenti -->
+							<div class="table-responsive">
+                       <table class="table table-striped table-bordered table-hover">
+<!-- 	                            rendere dinamica la lista -->
+                           <thead>
+                               <tr>
+                               	   <th>Id</th>
+                                   <th>Titolo Feed</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr ng-repeat="feed in listaFeed | orderBy:'titoloFeed'" ng-click="clickFeed(feed)" >
+                               	   <td>{{feed.idFeed}}</td>
+                                   <td>{{feed.titoloFeed}}</td>
+                                   <td><button ng-click="confirmDecision(feed)">X</button></td>
+                               </tr>
+                           </tbody>
+                       </table>
+                   </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+            <div class="col-md-7">
+                <div class="card sameheight-item" data-exclude="xs" id="dashboard-history">
+                    <div class="card-header card-header-sm bordered">
+                        <div class="header-block">
+                            <h3 class="title">Aggiungi/modifica un feed</h3>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="tab-content">
+<!--                             qui ci va il form per creare/modificare il feed -->
+								<form name="salvaFeedForm" ng-submit="salvaFeedForm.$valid && submit()" novalidate>
+								<table  cellpadding="10">
+									<tr>
+										<td>
+											<span>Tipo Feed</span>
+										</td>
+										<td>
+											<input type="radio" ng-model="tipoFeed" ng-value="1" > 1
+											<input type="radio" ng-model="tipoFeed" ng-value="2" > 2
+											<input type="radio" ng-model="tipoFeed" ng-value="3" > 3
+											<input type="radio" ng-model="tipoFeed" ng-value="4" > 4
+											<input type="radio" ng-model="tipoFeed" ng-value="5" > 5
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>id</span>
+										</td>
+										<td>
+											<input type="text" ng-model="idFeed" disabled/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Header</span>
+										</td>
+										<td>
+											<input type="text" ng-model="headerFeed" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>idEntitaFeed</span>
+										</td>
+										<td>
+											<input type="text" ng-model="idEntitaFeed" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>idEntitaHeader</span>
+										</td>
+										<td>
+											<input type="text" ng-model="idEntitaHeaderFeed" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>sottoHeader</span>
+										</td>
+										<td>
+											<input type="text" ng-model="sottoHeaderFeed"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>tipo Entita Header</span>
+										</td>
+										
+										 <td>
+											<ui-select ng-model="tipoSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta vino">
+											    <ui-select-match placeholder="Scegli o cerca un vino nella lista...">{{$select.selected.name}}</ui-select-match>
+											    <ui-select-choices repeat="tipo in listaTipi | filter: $select.search">
+											      <span ng-bind-html="tipo.name | highlight: $select.search"></span>
+											    </ui-select-choices>
+											 </ui-select>
+										</td>
+									
+									</tr>
+									<tr>
+										<td>
+											<span>Titolo</span>
+										</td>
+										<td>
+											<input name="titoloFeedInput" type="text" ng-model="titoloFeed" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Testo</span>
+										</td>
+										<td>
+											<textarea cols=50 name="testoFeedInput" type="text" ng-model="testoFeed" /></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Testo Label</span>
+										</td>
+										<td>
+											<textarea cols="50" ng-model="testoLabelFeed" /></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Punti Esperienza</span>
+										</td>
+										<td>
+											<input type="number" " ng-model="puntiEsperienza" /></textarea>
+										</td>
+									</tr>
+									<tr ng-if="tipoFeed == 1 || tipoFeed == 2 || tipoFeed == 4">
+										<td>
+											<span>Data Entita header</span>
+										</td>
+										<td>
+											<input type="text"  ng-model="dataEntitaHeader"/>
+										</td>
+									</tr>
+									<tr ng-if="tipoFeed == 1 || tipoFeed == 3">
+										<td>
+											<span>Vino</span>
+										</td>
+										<td>
+											<ui-select ng-model="vinoSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta vino">
+											    <ui-select-match placeholder="Scegli o cerca un vino nella lista...">{{$select.selected.nomeVino}}</ui-select-match>
+											    <ui-select-choices repeat="vino in listaVini | filter: $select.search">
+											      <span ng-bind-html="vino.nomeVino | highlight: $select.search"></span>
+											    </ui-select-choices>
+											 </ui-select>
+										</td>
+									</tr>
+									<tr  ng-if="tipoFeed == 2">
+										<td>
+											<span>Azienda</span>
+										</td>
+										<td>
+											<ui-select ng-model="aziendaSelezionata.selected" theme="selectize" style="width: 300px;" title="Scelta azienda">
+											    <ui-select-match placeholder="Scegli o cerca un'azienda nella lista...">{{$select.selected.nomeAzienda}}</ui-select-match>
+											    <ui-select-choices repeat="azienda in listaAziende | filter: $select.search">
+											      <span ng-bind-html="azienda.nomeAzienda | highlight: $select.search"></span>
+											    </ui-select-choices>
+											 </ui-select>
+										</td>
+									</tr>
+									<tr  ng-if="tipoFeed == 4">
+										<td>
+											<span>Eventi</span>
+										</td>
+										<td>
+											<ui-select ng-model="eventoSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta evento">
+											    <ui-select-match placeholder="Scegli o cerca un evento nella lista...">{{$select.selected.titoloEvento}}</ui-select-match>
+											    <ui-select-choices repeat="eventi in listaEventi | filter: $select.search">
+											      <span ng-bind-html="eventi.titoloEvento | highlight: $select.search"></span>
+											    </ui-select-choices>
+											 </ui-select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>url foto</span>
+										</td>
+										<td>
+											<input type="text" ng-model="urlImmagineFeed"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Upload Image</span>
+										</td>
+										<td>
+											<input type="file" class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+											    ngf-accept="'image/*'" />
+											<input type="button" value="carica" ng-click="submitImage(file)">
+											<img ng-src="{{urlImmagineFeed}}" width="150px" ng-show="urlImmagineFeed">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<input type="button" value="duplica feed" ng-click="duplicaFeed()"/>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" >
+												<input type="submit" id="submit" value="Salva"/>
+										</td>
+									</tr>
+								</table>
+								
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
