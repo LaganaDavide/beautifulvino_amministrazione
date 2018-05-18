@@ -570,5 +570,24 @@
 		<script src="js/app/feedModule/service/listaFeedService.js"></script>
 		<script src="js/app/feedModule/service/salvaFeedService.js"></script>
 		<script src="js/app/feedModule/service/cancellaFeedService.js"></script>
+		<script>
+			function correggi(){
+				var allInput = document.getElementsByClassName("inputDaCambiare");
+				/* allInput.forEach(function (a){
+					a.value = encodeURI(a.value);
+					}
+				); */ 
+				for (i = 0; i < allInput.length; i++) {
+					a = allInput[i];
+					a.value = encodeURI(a.value);
+					}
+			} 
+/* 			var app = angular.module('myApp', []);
+			app.filter('correggi', function() {
+			    return function(x) {
+			        return encodeURI(x);
+			    };
+			}); */
+		</script>
     </body>
 </html>

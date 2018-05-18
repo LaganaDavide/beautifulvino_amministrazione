@@ -17,6 +17,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.dataEvento = '';
 	
 	$scope.oldIdAzienda = '';
+	$scope.listaViniCancellati = [];
+	
 	//gestione aziende
 	$scope.aziende = [];
 	$scope.aziendaOspitanteSelezionata = {};
@@ -38,7 +40,34 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.listaVini = [];
 	$scope.idVinoTemp = '';
 	
+	// encode(decode) html text into html entity
+	 $scope.decodeHtmlEntity = function(str) {
+	  return str.replace(/&#(\d+);/g, function(match, dec) {
+	    return String.fromCharCode(dec);
+	  });
+	};
+
+	 $scope.encodeHtmlEntity = function(str) {
+	  var buf = [];
+	  for (var i=str.length-1;i>=0;i--) {
+	    buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
+	  }
+	  return buf.join('');
+	};
+
+	var entity = '&agrave;&egrave;&eacute;&igrave;&ograve;&ugrave;';
+	var str = 'àèéìòù';
+	
+	$scope.corrIn = function (){
+		//$scope.eventoSelezionato.titoloEvento =  $scope.encodeHtmlEntity($scope.eventoSelezionato.titoloEvento);
+	}
+	
+	$scope.corrOut = function (){
+		//$scope.eventoSelezionato.titoloEvento =  $scope.decodeHtmlEntity($scope.eventoSelezionato.titoloEvento);
+	}
 	$scope.salvaEvento = function(){
+		$scope.corrIn();
+		
 		//verifica e parsing della data
 		//eventuale controllo di validità
 		//gestione data vecchia
@@ -63,8 +92,12 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		}
 		//gestione vini evento
 		$scope.eventoSelezionato.viniEventoInt = $scope.listaViniSelezionati;
-		 
-		
+		 //gestione vini cancellati
+		$scope.eventoSelezionato.listaViniCancellati = $scope.listaViniCancellati;
+		if ($scope.listaViniCancellati.length == null)
+			$scope.eventoSelezionato.listaViniCancellati = null;
+		else 
+			$scope.eventoSelezionato.listaViniCancellati = $scope.listaViniCancellati;
 		salvaEvento.response($scope.eventoSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
 			if(codiceEsito == 100){
@@ -108,11 +141,12 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.urlImmagineEvento = '';
 		$scope.listaViniSelezionati = [];
 		$scope.dataEvento = '';
-		$scope.aziendaOspitanteSelezionata.selected = '';
+		$scope.aziendaOspitanteSelezionata.selected = {};
 		$scope.provinciaSelezionata.selected = '';
 		$scope.badgeSelezionato.selected = '';
 		$scope.oldIdAzienda = '';
 		$scope.acquistabileEvento = false;
+		$scope.listaViniCancellati = [];
 	}
 	
 	$scope.caricaLista = function(){
@@ -233,16 +267,35 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		var vinoSelezionatoTemp = $scope.vinoSelezionato.selected;
 		vinoSelezionatoTemp.nomeAziendaVino = vinoSelezionatoTemp.aziendaVinoInt.nomeAzienda;
 		vinoSelezionatoTemp.idAziendaVino = vinoSelezionatoTemp.aziendaVinoInt.idAzienda;
-		if($scope.listaViniSelezionati.indexOf(vinoSelezionatoTemp) == -1){
-			$scope.listaViniSelezionati.push(vinoSelezionatoTemp);
+		var flag = false;
+		$scope.listaViniSelezionati.forEach (function (vino){
+			if (vino.idVino == vinoSelezionatoTemp.idVino){
+				flag = true;
+				}
+			}
+		);
+		if (flag == false) $scope.listaViniSelezionati.push(vinoSelezionatoTemp);
+		var vinoRe = null;
+		$scope.listaViniCancellati.forEach (function (vino){
+			if (vino.idVino == vinoSelezionatoTemp.idVino){
+				vinoRe = vino;
+				}
+			}
+		);
+		if (vinoRe != null){
+			var index = $scope.listaViniCancellati.indexOf(vinoRe);
+			$scope.listaViniCancellati.splice(index, 1);
 		}
 		$scope.vinoSelezionato = {};
-		$scope.vinoSelezionato.selected = {};
+		$scope.vinoSelezionato.selected = {};		
 	}
 	
 	$scope.rimuoviVinoDaLista = function(vinoSelezionato){
 		var indiceViniSelezionati = $scope.listaViniSelezionati.indexOf(vinoSelezionato);
 		$scope.listaViniSelezionati.splice(indiceViniSelezionati, 1);
+		if($scope.listaViniCancellati.indexOf(vinoSelezionato) == -1){
+			$scope.listaViniCancellati.push(vinoSelezionato);
+		}
 	}
 	
 	$scope.azzeraEsito = function(){
@@ -265,17 +318,23 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	
 	$scope.clickEvento = function(evento){
 		$scope.azzeraEsito();
+		$scope.azzeraEventoSelezionato();
 		$scope.eventoSelezionato = evento;
 		$scope.listaViniSelezionati = $scope.eventoSelezionato.viniEventoInt;
 		$scope.dataEvento = new Date($scope.eventoSelezionato.dataEvento);
 		if (evento.acquistabileEvento == 1) $scope.acquistabileEvento = true;
 		else  $scope.acquistabileEvento = false;
-		if (evento.aziendaOspitanteEventoInt != null && evento.aziendaOspitanteEventoInt.idAzienda != null ) 
+		if (evento.aziendaOspitanteEventoInt != null && evento.aziendaOspitanteEventoInt.idAzienda != null ) {
 			$scope.oldIdAzienda =  evento.aziendaOspitanteEventoInt.idAzienda;
-		//carico l'azienda corrispondente 
-		$scope.caricaAziendaOspitante();
-		$scope.caricaProvinciaInterfaccia();
+			//carico l'azienda corrispondente 
+			$scope.caricaAziendaOspitante();
+		}
+		if ($scope.eventoSelezionato.provinciaEventoInt!= null){
+			$scope.caricaProvinciaInterfaccia();
+		}
 		$scope.caricaBadgeInterfaccia();
+		$scope.listaViniCancellati = {};
+		$scope.corrOut();
 	}
 	
 	$scope.caricaBadgeInterfaccia = function(){
