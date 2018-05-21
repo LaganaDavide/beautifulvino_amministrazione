@@ -226,6 +226,14 @@
 											<img ng-src="{{urlImmagineFeed}}" width="150px" ng-show="urlImmagineFeed">
 										</td>
 									</tr>
+									<tr ng-if="tipoFeed == 2 || tipoFeed == 5">
+										<td>
+											<span>URL Video</span>
+										</td>
+										<td>
+											<textarea cols="50" ng-model="urlVideoFeed"/></textarea>
+										</td>
+									</tr>
 									<tr>
 										<td colspan="2">
 											<input type="button" value="duplica feed" ng-click="duplicaFeed()"/>

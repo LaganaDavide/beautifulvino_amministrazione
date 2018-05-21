@@ -56,7 +56,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.testoLabelFeed = feed.testoLabelFeed;
 		$scope.urlImmagineFeed = feed.urlImmagineFeed;
 		$scope.puntiEsperienza = feed.puntiEsperienza;
-		
+		$scope.urlVideoFeed = feed.urlVideoFeed;
 		$scope.caricaTipo();
 		if (feed.vinoFeedInt != null){
 			$scope.caricaVino();
@@ -137,6 +137,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.feedSelezionato.testoLabelFeed = $scope.testoLabelFeed;
 		$scope.feedSelezionato.urlImmagineFeed = $scope.urlImmagineFeed;
 		$scope.feedSelezionato.puntiEsperienza = $scope.puntiEsperienza;
+		$scope.feedSelezionato.urlVideoFeed = $scope.urlVideoFeed;
 		
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 2 || $scope.tipoFeed == 4)
 			$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
