@@ -13,6 +13,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	
 	$scope.visualizzaEsito = false;
 	$scope.messaggioEsito = '';
+	$scope.urlVideoFeed = '';
 	$scope.coloreSfondoEsito = VARIOUS.coloreSfondoEsitoNeutro;
 	
 	
@@ -223,6 +224,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.aziendaSelezionata.selected = '';
 		$scope.tipoSelezionato.selected = '';
 		$scope.puntiEsperienza = 0;
+		$scope.urlVideoFeed = '';
 	}
 	
 //	$scope.azzeraEventoSelezionato = function(){
