@@ -141,7 +141,7 @@ angular.module("utentiModule").service("getMessagesCreator", function() {
 	
 	this.getEventiMessage = function(){
 		var message = {};
-		message.idUtente = "eu-central-1:e7ae1814-8e42-49fc-a183-d5e2abaf0d7c";
+		message.idUtente = "";
 		message.functionName = "getEventiGen";
 		message.elencoCompleto = "S";
 		
