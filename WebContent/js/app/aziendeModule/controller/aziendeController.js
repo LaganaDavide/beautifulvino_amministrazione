@@ -276,6 +276,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	$scope.duplicaAzienda = function(){
 		$scope.aziendaSelezionata.idAzienda = "";
 		$scope.aziendaSelezionata.nomeAzienda = $scope.aziendaSelezionata.nomeAzienda + " copia";
+		$scope.a
 		$scope.submit();
 	}
 	

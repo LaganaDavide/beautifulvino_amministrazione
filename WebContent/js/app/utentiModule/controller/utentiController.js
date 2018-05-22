@@ -107,6 +107,8 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utenteSelezionato.idUtente = "";
 		$scope.idUtente = "";
 		$scope.utenteSelezionato.nomeUtente = $scope.utenteSelezionato.nomeUtente + " copia";
+		$scope.utenteSelezionato.utentiUtenteInt = [];
+		$scope.utenteSelezionato.utentiUtente = [];
 		$scope.nomeUtente = $scope.nomeUtente + " copia";
 		$scope.submit();
 	}
