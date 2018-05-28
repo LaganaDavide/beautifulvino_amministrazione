@@ -40,33 +40,32 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.listaVini = [];
 	$scope.idVinoTemp = '';
 	
-	// encode(decode) html text into html entity
-	 $scope.decodeHtmlEntity = function(str) {
-	  return str.replace(/&#(\d+);/g, function(match, dec) {
-	    return String.fromCharCode(dec);
-	  });
-	};
-
-	 $scope.encodeHtmlEntity = function(str) {
-	  var buf = [];
-	  for (var i=str.length-1;i>=0;i--) {
-	    buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
-	  }
-	  return buf.join('');
-	};
-
-	var entity = '&agrave;&egrave;&eacute;&igrave;&ograve;&ugrave;';
-	var str = 'àèéìòù';
+//	// encode(decode) html text into html entity
+//	 $scope.decodeHtmlEntity = function(str) {
+//	  return str.replace(/&#(\d+);/g, function(match, dec) {
+//	    return String.fromCharCode(dec);
+//	  });
+//	};
+//
+//	 $scope.encodeHtmlEntity = function(str) {
+//	  var buf = [];
+//	  for (var i=str.length-1;i>=0;i--) {
+//	    buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
+//	  }
+//	  return buf.join('');
+//	};
+//
+//	var entity = '&agrave;&egrave;&eacute;&igrave;&ograve;&ugrave;';
+//	var str = 'àèéìòù';
 	
-	$scope.corrIn = function (){
-		//$scope.eventoSelezionato.titoloEvento =  $scope.encodeHtmlEntity($scope.eventoSelezionato.titoloEvento);
-	}
-	
-	$scope.corrOut = function (){
-		//$scope.eventoSelezionato.titoloEvento =  $scope.decodeHtmlEntity($scope.eventoSelezionato.titoloEvento);
-	}
+//	$scope.corrIn = function (){
+//		//$scope.eventoSelezionato.titoloEvento =  $scope.encodeHtmlEntity($scope.eventoSelezionato.titoloEvento);
+//	}
+//	
+//	$scope.corrOut = function (){
+//		//$scope.eventoSelezionato.titoloEvento =  $scope.decodeHtmlEntity($scope.eventoSelezionato.titoloEvento);
+//	}
 	$scope.salvaEvento = function(){
-		$scope.corrIn();
 		
 		//verifica e parsing della data
 		//eventuale controllo di validità
@@ -334,7 +333,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		}
 		$scope.caricaBadgeInterfaccia();
 		$scope.listaViniCancellati = {};
-		$scope.corrOut();
+		
 	}
 	
 	$scope.caricaBadgeInterfaccia = function(){
