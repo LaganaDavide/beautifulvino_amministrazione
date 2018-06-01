@@ -275,12 +275,14 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		);
 		if (flag == false) $scope.listaViniSelezionati.push(vinoSelezionatoTemp);
 		var vinoRe = null;
-		$scope.listaViniCancellati.forEach (function (vino){
-			if (vino.idVino == vinoSelezionatoTemp.idVino){
-				vinoRe = vino;
+		if ($scope.listaViniCancellati != undefined && $scope.listaViniCancellati != null){
+			$scope.listaViniCancellati.forEach (function (vino){
+				if (vino.idVino == vinoSelezionatoTemp.idVino){
+					vinoRe = vino;
+					}
 				}
-			}
-		);
+			);
+		}
 		if (vinoRe != null){
 			var index = $scope.listaViniCancellati.indexOf(vinoRe);
 			$scope.listaViniCancellati.splice(index, 1);
@@ -332,7 +334,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 			$scope.caricaProvinciaInterfaccia();
 		}
 		$scope.caricaBadgeInterfaccia();
-		$scope.listaViniCancellati = {};
+		$scope.listaViniCancellati = [];
 		
 	}
 	
