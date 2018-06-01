@@ -369,6 +369,10 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		}
 	}
 	
+	$scope.togliAzienda = function (){
+		$scope.aziendaOspitanteSelezionata.selected = {};
+	}
+	
 	$scope.cancellaEvento = function(evento){
 		cancellaEvento.response(evento).then(function(result){
 			var codiceEsito = result.data.esito.codice;
