@@ -172,6 +172,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.caricaBadges();
 	
 	$scope.salvaBadge = function(){
+		$scope.badgeSelezionato.dataBadge = Date.parse($scope.dataEvento); 
 		salvaBadgeService.response($scope.badgeSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
 			if(codiceEsito == 100){
