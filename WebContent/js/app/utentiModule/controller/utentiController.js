@@ -18,7 +18,8 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	$scope.urlFotoUtente = '';
 	$scope.file = '';
 	$scope.usernameUtente = '';
-	
+	$scope.acquistatiEventiUtenteInt = [];
+	$scope.eventoEliminatoUtente = '';
 	$scope.utenteSelezionato = {};
 	
 	$scope.caricaLista = function(){
@@ -61,6 +62,8 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.urlFotoUtente = '';
 		$scope.usernameUtente = '';
 		$scope.utente = {};
+		$scope.acquistatiEventiUtenteInt = [];
+		$scope.eventoEliminatoUtente = '';
 	}
 	
 	$scope.caricaLista();
@@ -79,6 +82,8 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.biografiaUtente = utente.biografiaUtente;
 		$scope.urlFotoUtente = utente.urlFotoUtente;
 		$scope.usernameUtente = utente.usernameUtente;
+		$scope.acquistatiEventiUtenteInt = utente.acquistatiEventiUtenteInt;
+		$scope.eventoEliminatoUtente = '';
 	}
 	
 	$scope.cancellaUtente = function(utente){
@@ -109,6 +114,11 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utenteSelezionato.nomeUtente = $scope.utenteSelezionato.nomeUtente + " copia";
 		$scope.utenteSelezionato.utentiUtenteInt = [];
 		$scope.utenteSelezionato.utentiUtente = [];
+		$scope.utenteSelezionato.acquistatiEventiUtenteInt = [];
+		$scope.utenteSelezionato.aziendeUtenteInt = [];
+		$scope.utenteSelezionato.preferitiEventiUtenteInt =[];
+		$scope.utenteSelezionato.viniUtenteInt =[];
+		$scope.utenteSelezionato.badgeUtenteInt = [];
 		$scope.nomeUtente = $scope.nomeUtente + " copia";
 		$scope.submit();
 	}
@@ -126,6 +136,8 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utenteSelezionato.biografiaUtente = $scope.biografiaUtente;
 		$scope.utenteSelezionato.urlFotoUtente = $scope.urlFotoUtente;
 		$scope.utenteSelezionato.usernameUtente = $scope.usernameUtente;
+		$scope.utenteSelezionato.acquistatiEventiUtenteInt = $scope.acquistatiEventiUtenteInt;
+		$scope.utenteSelezionato.eventoEliminatoUtente = $scope.eventoEliminatoUtente;
 		
 		salvaUtente.response($scope.utenteSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
@@ -156,6 +168,31 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
                     btnClass: 'btn-blue',
                     action: function(scope, button){
                         $scope.cancellaUtente(utente);
+                    }
+                },
+                esci: {
+                    text: 'Esci',
+                    btnClass: 'btn-red',
+                    action: function(scope, button){
+                    }
+                }
+            }
+        });
+    }
+	
+	$scope.deleteAcquisto = function(evento){
+		$scope.azzeraEsito();
+        $ngConfirm({
+            title: 'Conferma1',
+            content: 'Si conferma di cancellare evento : ' + evento.idEvento + '?',
+            scope: $scope,
+            buttons: {
+                conferma: {
+                    text: 'Conferma',
+                    btnClass: 'btn-blue',
+                    action: function(scope, button){
+                    	$scope.eventoEliminatoUtente = evento.idEvento;
+                        $scope.submit();
                     }
                 },
                 esci: {

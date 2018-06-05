@@ -438,6 +438,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
         });
     }
 	
+	
 	$scope.upload = function (file, baseFileName) {
 		var reader = new window.FileReader();
 		reader.readAsDataURL(file); 
