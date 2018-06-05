@@ -20,6 +20,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	$scope.usernameUtente = '';
 	$scope.acquistatiEventiUtenteInt = [];
 	$scope.eventoEliminatoUtente = '';
+	$scope.dataEventoEliminatoUtente = 0;
 	$scope.utenteSelezionato = {};
 	
 	$scope.caricaLista = function(){
@@ -64,6 +65,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utente = {};
 		$scope.acquistatiEventiUtenteInt = [];
 		$scope.eventoEliminatoUtente = '';
+		$scope.dataEventoEliminatoUtente = 0;
 	}
 	
 	$scope.caricaLista();
@@ -84,6 +86,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.usernameUtente = utente.usernameUtente;
 		$scope.acquistatiEventiUtenteInt = utente.acquistatiEventiUtenteInt;
 		$scope.eventoEliminatoUtente = '';
+		$scope.dataEventoEliminatoUtente = 0;
 	}
 	
 	$scope.cancellaUtente = function(utente){
@@ -138,6 +141,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utenteSelezionato.usernameUtente = $scope.usernameUtente;
 		$scope.utenteSelezionato.acquistatiEventiUtenteInt = $scope.acquistatiEventiUtenteInt;
 		$scope.utenteSelezionato.eventoEliminatoUtente = $scope.eventoEliminatoUtente;
+		$scope.utenteSelezionato.dataEventoEliminatoUtente = $scope.dataEventoEliminatoUtente;
 		
 		salvaUtente.response($scope.utenteSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
@@ -192,6 +196,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
                     btnClass: 'btn-blue',
                     action: function(scope, button){
                     	$scope.eventoEliminatoUtente = evento.idEvento;
+                    	$scope.dataEventoEliminatoUtente = evento.dataEvento;
                         $scope.submit();
                     }
                 },
