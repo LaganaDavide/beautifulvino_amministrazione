@@ -45,8 +45,7 @@ $(document).ready(function(){
 		  var get = parseGetVars();
 		  let id = get['id'];
 		  let code = get['code'];
-		  let name = get['name'];
-		  if (get == null || id == null || code == null || name == null){
+		  if (get == null || id == null || code == null ){
 			  console.log("errore parametri");
 			  $("#footer").removeClass("correct").addClass("incorrect");
 		        $("#footerText").html("errore parametri");
