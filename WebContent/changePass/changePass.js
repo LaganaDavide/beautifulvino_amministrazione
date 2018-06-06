@@ -6,7 +6,7 @@ $(document).ready(function(){
   
   var checkAndChange = function()
   {
-    if(passOne.length < 1){
+    if(passOne.length < 6){
       if($("#footer").hasClass("correct")){
         $("#footer").removeClass("correct").addClass("incorrect");
         $("#footerText").html("They don't match");
@@ -56,6 +56,7 @@ $(document).ready(function(){
 			  ConfirmationCode: code, /* required */
 			  Password: passOne, /* required */
 			  Username: id, /* required */
+			  SecretHash: "hmb54o6d3dolbf6jdv76n22e6sl4d2p6mjfh2ck4ou2p23h0ohh"
 			};
 		var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({region: 'eu-central-1'});
 		if (cognitoidentityserviceprovider != null){
