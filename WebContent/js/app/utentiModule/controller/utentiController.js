@@ -22,6 +22,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	$scope.eventoEliminatoUtente = '';
 	$scope.dataEventoEliminatoUtente = 0;
 	$scope.utenteSelezionato = {};
+	$scope.emailUtente = '';
 	
 	$scope.caricaLista = function(){
 		getListaUtenti.response().then(function(result){
@@ -66,6 +67,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.acquistatiEventiUtenteInt = [];
 		$scope.eventoEliminatoUtente = '';
 		$scope.dataEventoEliminatoUtente = 0;
+		$scope.emailUtente = '';
 	}
 	
 	$scope.caricaLista();
@@ -87,6 +89,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.acquistatiEventiUtenteInt = utente.acquistatiEventiUtenteInt;
 		$scope.eventoEliminatoUtente = '';
 		$scope.dataEventoEliminatoUtente = 0;
+		$scope.emailUtente = utente.emailUtente;
 	}
 	
 	$scope.cancellaUtente = function(utente){
@@ -142,6 +145,7 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 		$scope.utenteSelezionato.acquistatiEventiUtenteInt = $scope.acquistatiEventiUtenteInt;
 		$scope.utenteSelezionato.eventoEliminatoUtente = $scope.eventoEliminatoUtente;
 		$scope.utenteSelezionato.dataEventoEliminatoUtente = $scope.dataEventoEliminatoUtente;
+		$scope.utenteSelezionato.emailUtente = $scope.emailUtente;
 		
 		salvaUtente.response($scope.utenteSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
