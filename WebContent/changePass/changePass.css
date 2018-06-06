@@ -19,7 +19,7 @@ body
 }
 #header
 {
-  background-color:#F26B6B;
+  background-color:#D42462;
   font-family: 'Francois One', sans-serif;
   height:75px;
   width:300px;
@@ -42,7 +42,7 @@ body
   bottom:0;
   color:white;
   margin-bottom:-2px;
-  
+  font-size: 50%;
   border-radius: 0px 0px 15px 15px;
   -webkit-border-radius: 0px 0px 15px 15px;
   -moz-border-radius: 0px 0px 15px 15px;

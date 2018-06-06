@@ -2,30 +2,30 @@ $(document).ready(function(){
   var passOne = $("#passOne").val();
   var passTwo = $("#passTwo").val();
   
-  $("#footerText").html("Fields don't match");
+  $("#footerText").html("Le due password non corrispondono");
   
   var checkAndChange = function()
   {
     if(passOne.length < 6){
       if($("#footer").hasClass("correct")){
         $("#footer").removeClass("correct").addClass("incorrect");
-        $("#footerText").html("They don't match");
+        $("#footerText").html("Le due password non corrispondono");
       }else{
-        $("#footerText").html("They don't match");
+        $("#footerText").html("Le due password non corrispondono");
       }
     }
     else if($("#footer").hasClass("incorrect"))
     {
       if(passOne == passTwo){
         $("#footer").removeClass("incorrect").addClass("correct");
-        $("#footerText").html("Continue");
+        $("#footerText").html("Continua");
       }
     }
     else
     {
       if(passOne != passTwo){
         $("#footer").removeClass("correct").addClass("incorrect");
-        $("#footerText").html("They don't match");
+        $("#footerText").html("Le due password non corrispondono");
       } 
     }   
   }
