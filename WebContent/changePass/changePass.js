@@ -57,7 +57,7 @@ $(document).ready(function(){
 			  Password: passOne, /* required */
 			  Username: id, /* required */
 			};
-		var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({region: 'EU_CENTRAL_1'});
+		var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({region: 'eu-central-1'});
 		if (cognitoidentityserviceprovider != null){
 			cognitoidentityserviceprovider.confirmForgotPassword(params, function(err, data) {
 			  if (err) {
