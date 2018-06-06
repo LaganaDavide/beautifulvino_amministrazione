@@ -67,7 +67,7 @@ $(document).ready(function(){
 				  } // an error occurred
 			  else  {   
 				  console.log(data);    
-			        $("#footerText").html("Success");
+			        $("#footerText").html("Succeso");
 				  }       // successful response
 			});
 		}else{

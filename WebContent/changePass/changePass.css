@@ -13,6 +13,10 @@ body
   margin-left:-150px;
   margin-top:-175px;
   
+  box-shadow: 0px 30px 150px;
+  -webkit-box-shadow: 0px 30px 150px;
+  -moz-box-shadow: 0px 30px 150px;
+  
   border-radius:15px;
   -webkit-border-radius:15px;
   -moz-border-radius:15px;
