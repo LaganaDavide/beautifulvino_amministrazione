@@ -52,11 +52,10 @@ $(document).ready(function(){
 			  return;
 		  }
 		  var params = {
-			  ClientId: "6vn5bioh2pj0nr999k8j79hhgu", /* required */
+			  ClientId: "4hp45lsau0qti393bucnc4d7r8", /* required */
 			  ConfirmationCode: code, /* required */
 			  Password: passOne, /* required */
 			  Username: id, /* required */
-			  SecretHash: "hmb54o6d3dolbf6jdv76n22e6sl4d2p6mjfh2ck4ou2p23h0ohh"
 			};
 		var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({region: 'eu-central-1'});
 		if (cognitoidentityserviceprovider != null){
