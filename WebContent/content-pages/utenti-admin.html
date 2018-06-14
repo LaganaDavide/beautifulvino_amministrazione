@@ -131,8 +131,9 @@
 												<span>biografia</span>
 											</td>
 											<td>
-												<textarea ui-tinymce="tinymceOptions" ng-model="biografiaUtente"></textarea>
-												<!-- <textarea cols="50" ng-model="biografiaUtente" rows="3"></textarea>-->
+												<input type="checkbox" ng-model="editor"/>
+												<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="biografiaUtente"></textarea>
+												<textarea ng-if="!editor"  cols="50" ng-model="biografiaUtente" rows="3"></textarea>
 											</td>
 										</tr>
 										<tr>

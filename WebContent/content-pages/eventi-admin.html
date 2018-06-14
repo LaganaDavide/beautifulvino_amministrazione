@@ -98,11 +98,20 @@
 										</tr>
 										<tr>
 											<td>
+												<span>Città Evento</span>
+											</td>
+											<td>
+												<input type="text" ng-model="eventoSelezionato.cittaEvento" />
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<span>Tema Evento</span>
 											</td>
 											<td>
-												<textarea ui-tinymce="tinymceOptions" ng-model="eventoSelezionato.temaEvento"></textarea>
-												<!-- <textarea cols="50"  ng-model="eventoSelezionato.temaEvento" /></textarea> -->
+												<input type="checkbox" ng-model="editor"/>
+												<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="eventoSelezionato.temaEvento"></textarea>
+												<textarea ng-if="!editor" cols="50"  ng-model="eventoSelezionato.temaEvento" /></textarea> 
 											</td>
 										</tr>
 										<tr>
@@ -110,18 +119,12 @@
 												<span>Testo Evento</span>
 											</td>
 											<td>
-												<textarea ui-tinymce="tinymceOptions" ng-model="eventoSelezionato.testoEvento"></textarea>									
-												<!-- <textarea cols="50" ng-model="eventoSelezionato.testoEvento" /></textarea> -->
+												<input type="checkbox" ng-model="editor1"/> 
+												<textarea ng-if="editor1" ui-tinymce="tinymceOptions" ng-model="eventoSelezionato.testoEvento"></textarea>									
+												<textarea ng-if="!editor1" cols="50" ng-model="eventoSelezionato.testoEvento" /></textarea> 
 											</td>
 										</tr>
-										<tr>
-											<td>
-												<span>Città Evento</span>
-											</td>
-											<td>
-												<input type="text" ng-model="eventoSelezionato.cittaEvento" />
-											</td>
-										</tr>
+										
 										<tr>
 											<td>
 												<span>Provincia Evento</span>

@@ -149,8 +149,9 @@
 											<span>Testo</span>
 										</td>
 										<td>
-											<textarea ui-tinymce="tinymceOptions" ng-model="testoFeedInput"></textarea>	
-											<!-- <textarea cols=50 name="testoFeedInput" type="text" ng-model="testoFeed" /></textarea> -->
+											<input type="checkbox" ng-model="editor"/>
+											<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="testoFeedInput"></textarea>	
+											<textarea ng-if="!editor" cols=50 name="testoFeedInput" type="text" ng-model="testoFeed" /></textarea> 
 										</td>
 									</tr>
 									<tr>
@@ -158,8 +159,9 @@
 											<span>Testo Label</span>
 										</td>
 										<td>
-											<textarea ui-tinymce="tinymceOptions" ng-model="testoLabelFeed"></textarea>	
-											<!-- <textarea cols="50" ng-model="testoLabelFeed" /></textarea> -->
+											<input type="checkbox" ng-model="editor1"/>
+											<textarea ng-if="editor1" ui-tinymce="tinymceOptions" ng-model="testoLabelFeed"></textarea>	
+											<textarea ng-if="!editor1" cols="50" ng-model="testoLabelFeed" /></textarea>
 										</td>
 									</tr>
 									<tr>

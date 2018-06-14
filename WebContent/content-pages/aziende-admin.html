@@ -104,8 +104,9 @@
 												<span>Info Azienda</span>
 											</td>
 											<td>
-												<textarea ui-tinymce="tinymceOptions" ng-model="aziendaSelezionata.infoAzienda"></textarea>
-												<!-- <textarea cols="50" ng-model="aziendaSelezionata.infoAzienda" /></textarea> -->
+												<input type="checkbox" ng-model="editor"/>
+												<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="aziendaSelezionata.infoAzienda"></textarea>
+												<textarea ng-if="!editor" cols="50" ng-model="aziendaSelezionata.infoAzienda" /></textarea>
 											</td>
 										</tr>
 										<tr>
