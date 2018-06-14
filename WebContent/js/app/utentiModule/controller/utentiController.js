@@ -24,6 +24,11 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	$scope.utenteSelezionato = {};
 	$scope.emailUtente = '';
 	
+	$scope.tinymceOptions = {
+		    plugins: 'link image code',
+		    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+		  };
+	
 	$scope.caricaLista = function(){
 		getListaUtenti.response().then(function(result){
 			$scope.listaUtenti = result.data.utenti;
