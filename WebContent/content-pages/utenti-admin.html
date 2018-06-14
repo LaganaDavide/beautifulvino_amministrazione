@@ -1,5 +1,3 @@
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textarea' });</script>
 <article class="content dashboard-page">
     <section class="section" ng-controller="utentiController">
     		<div class="row sameheight-container" ng-if="visualizzaEsito">
@@ -133,7 +131,8 @@
 												<span>biografia</span>
 											</td>
 											<td>
-												<textarea cols="50" ng-model="biografiaUtente" rows="3"></textarea>
+												<textarea ui-tinymce="tinymceOptions" ng-model="biografiaUtente"></textarea>
+												<!-- <textarea cols="50" ng-model="biografiaUtente" rows="3"></textarea>-->
 											</td>
 										</tr>
 										<tr>

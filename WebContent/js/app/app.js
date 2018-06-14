@@ -1,4 +1,4 @@
-var app = angular.module('applicationModule', ['utentiModule', 'cp.ngConfirm', 'ngFileUpload', 'ngSanitize', 'ui.select']).directive('testContent', function(){
+var app = angular.module('applicationModule', ['utentiModule', 'cp.ngConfirm', 'ngFileUpload', 'ngSanitize', 'ui.select','ui.tinymce']).directive('testContent', function(){
 	 return {
 		 restrict: 'E',
 		 templateUrl: 'content-pages/test-page.html'
