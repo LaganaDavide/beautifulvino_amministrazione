@@ -397,6 +397,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.eventoSelezionato.titoloEvento = $scope.eventoSelezionato.titoloEvento + " copia";
 		$scope.eventoSelezionato.iscrittiEvento = [];
 		$scope.eventoSelezionato.iscrittiEventoInt = [];
+		$scope.eventoSelezionato.preferitiEventoInt = [];
 		$scope.salvaEvento();
 	}
 	
