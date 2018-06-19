@@ -80,7 +80,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		if ($scope.acquistabileEvento == true) $scope.eventoSelezionato.acquistabileEvento = 1;
 		else $scope.eventoSelezionato.acquistabileEvento = 0;
 		//gestione badgeEvento
-		$scope.eventoSelezionato.badgeEventoInt = $scope.badgeSelezionato.selected;
+		$scope.eventoSelezionato.badgeEventoInt = $scope.badgeSelezionato;
 		
 		//gestione aziende evento
 		var aziendaOspitanteEventoInt = {};
@@ -142,7 +142,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.dataEvento = '';
 		$scope.aziendaOspitanteSelezionata.selected = {};
 		$scope.provinciaSelezionata.selected = '';
-		$scope.badgeSelezionato.selected = '';
+		$scope.badgeSelezionato = {};
 		$scope.oldIdAzienda = '';
 		$scope.acquistabileEvento = false;
 		$scope.listaViniCancellati = [];
@@ -173,6 +173,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	
 	$scope.salvaBadge = function(){
 		$scope.badgeSelezionato.dataBadge = Date.parse($scope.dataEvento); 
+		$scope.badgeSelezionato.badgeEvento.dataEvento = Date.parse($scope.dataEvento);
+		$scope.badgeSelezionato.badgeEvento.idEvento = $scope.idEvento;
 		salvaBadgeService.response($scope.badgeSelezionato).then(function(result){
 			var codiceEsito = result.data.esito.codice;
 			if(codiceEsito == 100){
@@ -334,7 +336,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		if ($scope.eventoSelezionato.provinciaEventoInt!= null){
 			$scope.caricaProvinciaInterfaccia();
 		}
-		$scope.caricaBadgeInterfaccia();
+		//$scope.caricaBadgeInterfaccia();
+		$scope.badgeSelezionato = evento.badgeEventoInt;
 		$scope.listaViniCancellati = [];
 		
 	}
@@ -398,6 +401,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.eventoSelezionato.iscrittiEvento = [];
 		$scope.eventoSelezionato.iscrittiEventoInt = [];
 		$scope.eventoSelezionato.preferitiEventoInt = [];
+		$scope.aziendaOspitanteSelezionata.selected = {};
 		$scope.salvaEvento();
 	}
 	

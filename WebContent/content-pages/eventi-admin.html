@@ -300,23 +300,24 @@
 											</td>
 											<td>
 												<!-- caricare le aziende selezionabili con menu' a tendina  -->
-												<ui-select ng-model="badgeSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta Badge">
+												<!-- <ui-select ng-model="badgeSelezionato.selected" theme="selectize" style="width: 300px;" title="Scelta Badge">
 												    <ui-select-match placeholder="Scegli o cerca un'azienda nella lista...">{{$select.selected.nomeAzienda}}</ui-select-match>
 												    <ui-select-choices repeat="badge in listaBadges | filter: $select.search">
 												      <span ng-bind-html="badge.nomeBadge | highlight: $select.search"></span>
 												    </ui-select-choices>
 												 </ui-select>
-												 <input type="text" ng-model="badgeSelezionato.selected.nomeBadge" disabled="disabled" />
-												 <input type="text" ng-model="badgeSelezionato.selected.idBadge" disabled="disabled" />
-												 <img alt="" ng-src="{{badgeSelezionato.selected.urlLogoBadge}}" width="150px" ng-show="badgeSelezionato.selected.urlLogoBadge">
+												 <input type="text" ng-model="badgeSelezionato.nomeBadge" disabled="disabled" />
+												 <input type="text" ng-model="badgeSelezionato.idBadge" disabled="disabled" />
+												 <img alt="" ng-src="{{badgeSelezionato.urlLogoBadge}}" width="150px" ng-show="badgeSelezionato.selected.urlLogoBadge">-->
 											</td>
 										</tr>
-										<tr>
+										<!-- <tr>
 											<td colspan="2">
 												<input type="button" ng-click="apriEditorBadge()" value="AGGIUNGI BADGE"/>
 											</td>
-										</tr>
-										<tr ng-if="visualizzaEditorBadge">
+										</tr>-->
+										<!-- <tr ng-if="visualizzaEditorBadge">-->
+										<tr>
 											<td colspan="2">
 												<table>
 													<tr>
@@ -337,6 +338,22 @@
 													</tr>
 													<tr>
 														<td>
+															<span>ID badge</span>
+														</td>
+														<td>
+															<input type="text" disabled ng-model="badgeSelezionato.idBadge"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<span>url logo badge</span>
+														</td>
+														<td>
+															<input type="text" disabled ng-model="badgeSelezionato.urlLogoBadge"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
 															<span>Upload Logo Badge</span>
 														</td>
 														<td>
@@ -347,12 +364,11 @@
 															<img ng-src="{{badgeSelezionato.urlLogoBadge}}" width="150px" ng-show="badgeSelezionato.urlLogoBadge"/>
 														</td>
 													</tr>
-													<tr>
+													<!-- <tr>
 														<td>
-															<!-- SALVO IL VNO APPENA INSERITO -->
 															<input type="button" value="SALVA BADGE"  ng-click="salvaBadge()">
 														</td>
-													</tr>
+													</tr>-->
 												</table>
 											</td>
 										</tr>
