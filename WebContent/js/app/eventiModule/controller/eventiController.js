@@ -132,7 +132,6 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	}
 	
 	$scope.azzeraEventoSelezionato = function(){
-		$scope.eventoSelezionato.urlFotoEvento = '';
 		$scope.eventoSelezionato = {};
 		$scope.annoEvento = '';
 		$scope.meseEvento = '';
