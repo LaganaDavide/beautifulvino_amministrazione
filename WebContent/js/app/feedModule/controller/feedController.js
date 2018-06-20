@@ -131,7 +131,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 //		$scope.feedSelezionato.pubblicato = $scope.pubblicato;
 //		$scope.feedSelezionato.titoloFeed = $scope.titoloFeed;
 //		$scope.feedSelezionato.testoFeed = $scope.testoFeed;
-//		$scope.feedSelezionato.tipoFeed = $scope.tipoFeed;
+		$scope.feedSelezionato.tipoFeed = $scope.tipoFeed;
 //		$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
 //		$scope.feedSelezionato.dataFeed = $scope.dataFeed;
 //		$scope.feedSelezionato.headerFeed = $scope.headerFeed;
