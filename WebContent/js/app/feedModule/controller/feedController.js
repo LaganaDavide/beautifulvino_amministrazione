@@ -189,7 +189,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 			$scope.upload(file, VARIOUS.feedImageBaseFileName);
 		}
 		$scope.file = '';
-		$scope.urlImmagineFeed = $scope.urlImmagine;
+		$scope.feedSelezionato.urlImmagineFeed = $scope.urlImmagine;
 	}
 	
 	$scope.convertDateFromMilliseconds = function(millis){
@@ -404,7 +404,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 			
 			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
 				var codiceEsito = result.data.esito.codice;
-				$scope.urlImmagineFeed = result.data.imageUrl;
+				$scope.feedSelezionato.urlImmagineFeed = result.data.imageUrl;
 				if(codiceEsito == 100){
 					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
 					
