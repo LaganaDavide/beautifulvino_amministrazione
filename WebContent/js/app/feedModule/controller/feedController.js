@@ -46,20 +46,20 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 		$scope.azzeraEsito();
 		
 		$scope.feedSelezionato = feed;
-		$scope.idFeed = feed.idFeed;
-		$scope.titoloFeed = feed.titoloFeed;
-		$scope.testoFeed = feed.testoFeed;
-		$scope.tipoFeed = feed.tipoFeed;
-		$scope.dataFeed = feed.dataFeed;
-		$scope.headerFeed = feed.headerFeed;
-		$scope.idEntitaFeed = feed.idEntitaFeed;
-		$scope.idEntitaHeaderFeed = feed.idEntitaHeaderFeed;
-		$scope.sottoHeaderFeed = feed.sottoHeaderFeed;
-		$scope.testoLabelFeed = feed.testoLabelFeed;
-		$scope.urlImmagineFeed = feed.urlImmagineFeed;
-		$scope.puntiEsperienza = feed.puntiEsperienza;
-		$scope.urlVideoFeed = feed.urlVideoFeed;
-		$scope.pubblicato = feed.pubblicato;
+//		$scope.idFeed = feed.idFeed;
+//		$scope.titoloFeed = feed.titoloFeed;
+//		$scope.testoFeed = feed.testoFeed;
+//		$scope.tipoFeed = feed.tipoFeed;
+//		$scope.dataFeed = feed.dataFeed;
+//		$scope.headerFeed = feed.headerFeed;
+//		$scope.idEntitaFeed = feed.idEntitaFeed;
+//		$scope.idEntitaHeaderFeed = feed.idEntitaHeaderFeed;
+//		$scope.sottoHeaderFeed = feed.sottoHeaderFeed;
+//		$scope.testoLabelFeed = feed.testoLabelFeed;
+//		$scope.urlImmagineFeed = feed.urlImmagineFeed;
+//		$scope.puntiEsperienza = feed.puntiEsperienza;
+//		$scope.urlVideoFeed = feed.urlVideoFeed;
+//		$scope.pubblicato = feed.pubblicato;
 		$scope.caricaTipo();
 		if (feed.vinoFeedInt != null){
 			$scope.caricaVino();
@@ -127,21 +127,21 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	$scope.submit = function (){
 		$scope.azzeraEsito();
 		
-		$scope.feedSelezionato.idFeed = $scope.idFeed;
-		$scope.feedSelezionato.pubblicato = $scope.pubblicato;
-		$scope.feedSelezionato.titoloFeed = $scope.titoloFeed;
-		$scope.feedSelezionato.testoFeed = $scope.testoFeed;
-		$scope.feedSelezionato.tipoFeed = $scope.tipoFeed;
-		$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
-		$scope.feedSelezionato.dataFeed = $scope.dataFeed;
-		$scope.feedSelezionato.headerFeed = $scope.headerFeed;
-		$scope.feedSelezionato.idEntitaFeed = $scope.idEntitaFeed;
-		$scope.feedSelezionato.idEntitaHeaderFeed = $scope.idEntitaHeaderFeed;
-		$scope.feedSelezionato.sottoHeaderFeed = $scope.sottoHeaderFeed;
-		$scope.feedSelezionato.testoLabelFeed = $scope.testoLabelFeed;
-		$scope.feedSelezionato.urlImmagineFeed = $scope.urlImmagineFeed;
-		$scope.feedSelezionato.puntiEsperienza = $scope.puntiEsperienza;
-		$scope.feedSelezionato.urlVideoFeed = $scope.urlVideoFeed;
+//		$scope.feedSelezionato.idFeed = $scope.idFeed;
+//		$scope.feedSelezionato.pubblicato = $scope.pubblicato;
+//		$scope.feedSelezionato.titoloFeed = $scope.titoloFeed;
+//		$scope.feedSelezionato.testoFeed = $scope.testoFeed;
+//		$scope.feedSelezionato.tipoFeed = $scope.tipoFeed;
+//		$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
+//		$scope.feedSelezionato.dataFeed = $scope.dataFeed;
+//		$scope.feedSelezionato.headerFeed = $scope.headerFeed;
+//		$scope.feedSelezionato.idEntitaFeed = $scope.idEntitaFeed;
+//		$scope.feedSelezionato.idEntitaHeaderFeed = $scope.idEntitaHeaderFeed;
+//		$scope.feedSelezionato.sottoHeaderFeed = $scope.sottoHeaderFeed;
+//		$scope.feedSelezionato.testoLabelFeed = $scope.testoLabelFeed;
+//		$scope.feedSelezionato.urlImmagineFeed = $scope.urlImmagineFeed;
+//		$scope.feedSelezionato.puntiEsperienza = $scope.puntiEsperienza;
+//		$scope.feedSelezionato.urlVideoFeed = $scope.urlVideoFeed;
 		
 		if ($scope.tipoFeed == 1 || $scope.tipoFeed == 2 || $scope.tipoFeed == 4)
 			$scope.feedSelezionato.dataEntitaHeader = $scope.dataEntitaHeaderFeed;
@@ -209,26 +209,26 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	$scope.azzeraForm = function(){
 		$scope.azzeraEsito();	
 		$scope.feedSelezionato = {};
-		$scope.idFeed = '';
-		$scope.titoloFeed = '';
-		$scope.testoFeed = '';
-		$scope.tipoFeed = 1;
-		$scope.dataEntitaHeader = '';
-		$scope.dataFeed = 0;
-		$scope.headerFeed = '';
-		$scope.idEntitaFeed = '';
-		$scope.idEntitaHeaderFeed = '';
-		$scope.sottoHeaderFeed = '';
-		$scope.testoLabelFeed = '';
-		$scope.tipoEntitaHeaderFeed = '';
-		$scope.urlImmagineFeed = '';
+//		$scope.idFeed = '';
+//		$scope.titoloFeed = '';
+//		$scope.testoFeed = '';
+//		$scope.tipoFeed = 1;
+//		$scope.dataEntitaHeader = '';
+//		$scope.dataFeed = 0;
+//		$scope.headerFeed = '';
+//		$scope.idEntitaFeed = '';
+//		$scope.idEntitaHeaderFeed = '';
+//		$scope.sottoHeaderFeed = '';
+//		$scope.testoLabelFeed = '';
+//		$scope.tipoEntitaHeaderFeed = '';
+//		$scope.urlImmagineFeed = '';
 		$scope.vinoSelezionato.selected = '';
 	    $scope.eventoSelezionato.selected = '';
 		$scope.aziendaSelezionata.selected = '';
 		$scope.tipoSelezionato.selected = '';
 		$scope.puntiEsperienza = 0;
 		$scope.urlVideoFeed = '';
-		$scope.feedSelezionato;
+		
 	}
 	
 //	$scope.azzeraEventoSelezionato = function(){

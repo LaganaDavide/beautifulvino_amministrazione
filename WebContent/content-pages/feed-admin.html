@@ -78,7 +78,7 @@
 											<span>id</span>
 										</td>
 										<td>
-											<input type="text" ng-model="idFeed" disabled/>
+											<input type="text" ng-model="feedSelezionato.idFeed" disabled/>
 										</td>
 									</tr>
 									<tr>
@@ -86,7 +86,7 @@
 											<span>Pubblicato</span>
 										</td>
 										<td>
-											<input type="checkbox" ng-model="pubblicato" />
+											<input type="checkbox" ng-model="feedSelezionato.pubblicato" />
 										</td>
 									</tr>
 									<tr>
@@ -94,7 +94,7 @@
 											<span>Header</span>
 										</td>
 										<td>
-											<input type="text" ng-model="headerFeed" />
+											<input type="text" ng-model="feedSelezionato.headerFeed" />
 										</td>
 									</tr>
 									<tr>
@@ -102,7 +102,7 @@
 											<span>idEntitaFeed</span>
 										</td>
 										<td>
-											<input type="text" ng-model="idEntitaFeed" />
+											<input type="text" ng-model="feedSelezionato.idEntitaFeed" />
 										</td>
 									</tr>
 									<tr>
@@ -110,7 +110,7 @@
 											<span>idEntitaHeader</span>
 										</td>
 										<td>
-											<input type="text" ng-model="idEntitaHeaderFeed" />
+											<input type="text" ng-model="feedSelezionato.idEntitaHeaderFeed" />
 										</td>
 									</tr>
 									<tr>
@@ -118,7 +118,7 @@
 											<span>sottoHeader</span>
 										</td>
 										<td>
-											<input type="text" ng-model="sottoHeaderFeed"/>
+											<input type="text" ng-model="feedSelezionato.sottoHeaderFeed"/>
 										</td>
 									</tr>
 									<tr>
@@ -141,7 +141,7 @@
 											<span>Titolo</span>
 										</td>
 										<td>
-											<input name="titoloFeedInput" type="text" ng-model="titoloFeed" />
+											<input name="titoloFeedInput" type="text" ng-model="feedSelezionato.titoloFeed" />
 										</td>
 									</tr>
 									<tr>
@@ -150,8 +150,8 @@
 										</td>
 										<td>
 											<input type="checkbox" ng-model="editor"/>
-											<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="testoFeed"></textarea>	
-											<textarea ng-if="!editor" cols=50 name="testoFeedInput" type="text" ng-model="testoFeed" /></textarea> 
+											<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="feedSelezionato.testoFeed"></textarea>	
+											<textarea ng-if="!editor" cols=50 ng-model="feedSelezionato.testoFeed" /></textarea> 
 										</td>
 									</tr>
 									<tr>
@@ -160,8 +160,8 @@
 										</td>
 										<td>
 											<input type="checkbox" ng-model="editor1"/>
-											<textarea ng-if="editor1" ui-tinymce="tinymceOptions" ng-model="testoLabelFeed"></textarea>	
-											<textarea ng-if="!editor1" cols="50" ng-model="testoLabelFeed" /></textarea>
+											<textarea ng-if="editor1" ui-tinymce="tinymceOptions" ng-model="feedSelezionato.testoLabelFeed"></textarea>	
+											<textarea ng-if="!editor1" cols="50" ng-model="feedSelezionato.testoLabelFeed" /></textarea>
 										</td>
 									</tr>
 									<tr>
@@ -169,7 +169,7 @@
 											<span>Punti Esperienza</span>
 										</td>
 										<td>
-											<input type="number" " ng-model="puntiEsperienza" />
+											<input type="number" " ng-model="feedSelezionato.puntiEsperienza" />
 										</td>
 									</tr>
 									<tr ng-show="tipoFeed == 1 || tipoFeed == 2 || tipoFeed == 4">
@@ -177,7 +177,7 @@
 											<span>Data Entita header</span>
 										</td>
 										<td>
-											<input type="text"  ng-model="dataEntitaHeader"/>
+											<input type="text"  ng-model="feedSelezionato.dataEntitaHeader"/>
 										</td>
 									</tr>
 									<tr ng-show="tipoFeed == 1 || tipoFeed == 3">
@@ -224,7 +224,7 @@
 											<span>url foto</span>
 										</td>
 										<td>
-											<input type="text" ng-model="urlImmagineFeed"/>
+											<input type="text" ng-model="feedSelezionato.urlImmagineFeed"/>
 										</td>
 									</tr>
 									<tr>
@@ -235,7 +235,7 @@
 											<input type="file" class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
 											    ngf-accept="'image/*'" />
 											<input type="button" value="carica" ng-click="submitImage(file)">
-											<img ng-src="{{urlImmagineFeed}}" width="150px" ng-show="urlImmagineFeed">
+											<img ng-src="{{feedSelezionato.urlImmagineFeed}}" width="150px" ng-show="feedSelezionato.urlImmagineFeed">
 										</td>
 									</tr>
 									<tr ng-show="tipoFeed == 2 || tipoFeed == 5">
@@ -243,7 +243,7 @@
 											<span>URL Video</span>
 										</td>
 										<td>
-											<textarea cols="50" ng-model="urlVideoFeed"/></textarea>
+											<textarea cols="50" ng-model="feedSelezionato.urlVideoFeed"/></textarea>
 										</td>
 									</tr>
 									<tr>
