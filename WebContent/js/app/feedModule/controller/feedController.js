@@ -49,7 +49,7 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 //		$scope.idFeed = feed.idFeed;
 //		$scope.titoloFeed = feed.titoloFeed;
 //		$scope.testoFeed = feed.testoFeed;
-//		$scope.tipoFeed = feed.tipoFeed;
+		$scope.tipoFeed = feed.tipoFeed;
 //		$scope.dataFeed = feed.dataFeed;
 //		$scope.headerFeed = feed.headerFeed;
 //		$scope.idEntitaFeed = feed.idEntitaFeed;
