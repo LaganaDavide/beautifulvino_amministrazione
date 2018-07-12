@@ -108,7 +108,6 @@ angular.module("utentiModule").service("getMessagesCreator", function() {
 		
 		message.elencoCompleto = "S";
 		message.functionName = "getFeedGen";
-		message.elencoCompleto = "S";
 		
 		return message;
 	}
