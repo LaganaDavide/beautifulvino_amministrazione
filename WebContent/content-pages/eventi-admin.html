@@ -23,7 +23,8 @@
                         </div>
                         <div class="title-block">
                             <button ng-click="azzeraEventoSelezionato()">NUOVO EVENTO</button>
-                        </div>					
+                        </div>		
+                        <div>SEARCH <input type= text ng-model="searchBox">	</div>				
                         <div class="row">
 <!--                             qui ci va la lista degli eventi -->
 							<div class="table-responsive">
@@ -39,7 +40,7 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="evento in listaEventi | orderBy:'nomeEvento'" ng-click="clickEvento(evento)">
+	                                    <tr ng-repeat="evento in listaEventi | filter:searchBox | orderBy:'nomeEvento'" ng-click="clickEvento(evento)">
 	                                        <td>{{evento.titoloEvento}}</td>
 	                                        <td>{{evento.cittaEvento}}</td>
 	                                        <td><button ng-click="confirmDecision(evento)">X</button></td>

@@ -23,7 +23,8 @@
                         </div>
                         <div class="title-block">
                             <button ng-click="azzeraVinoSelezionato()">NUOVO VINO</button>
-                        </div>					
+                        </div>		
+                        <div>SEARCH <input type= text ng-model="searchBox">	</div>				
                         <div class="row">
 <!--                             qui ci va la lista degli utenti -->
 							<div class="table-responsive">
@@ -38,7 +39,7 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="vino in listaVini | orderBy:'nomeVino'" ng-click="clickVino(vino)">
+	                                    <tr ng-repeat="vino in listaVini | filter:searchBox | orderBy:'nomeVino'" ng-click="clickVino(vino)">
 	                                        <td>{{vino.nomeVino}}</td>
 	                                        <td>{{vino.aziendaVinoInt.nomeAzienda}}</td>
 	                                        <td>{{vino.annoVino}}</td>

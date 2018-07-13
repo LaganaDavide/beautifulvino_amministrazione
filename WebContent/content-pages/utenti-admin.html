@@ -23,7 +23,8 @@
                         </div>
                         <div class="title-block">
                             <button ng-click="azzeraForm()">NUOVO UTENTE</button>
-                        </div>					
+                        </div>			
+                        <div>SEARCH <input type= text ng-model="searchBox">	</div>	
                         <div class="row">
 <!--                             qui ci va la lista degli utenti -->
 							<div class="table-responsive">
@@ -36,7 +37,7 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="utente in listaUtenti | orderBy:'cognomeUtente'" ng-click="clickUtente(utente)">
+	                                    <tr ng-repeat="utente in listaUtenti | filter:searchBox | orderBy:'usernameUtente'" ng-click="clickUtente(utente)">
 
 	                                        <td >{{utente.usernameUtente}}</td>
 											<td>{{utente.emailUtente}}</td>

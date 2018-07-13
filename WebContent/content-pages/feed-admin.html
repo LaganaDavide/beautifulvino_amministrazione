@@ -23,7 +23,8 @@
                         </div>
                         <div class="title-block">
                             <button ng-click="azzeraForm()">NUOVA FEED</button>
-                	</div>					
+                	</div>			
+                	<div>SEARCH <input type= text ng-model="searchBox">	</div>			
                         <div class="row">
 <!--                             qui ci va la lista degli utenti -->
 							<div class="table-responsive">
@@ -36,7 +37,7 @@
                                </tr>
                            </thead>
                            <tbody>
-                               <tr ng-repeat="feed in listaFeed | orderBy:'titoloFeed'" ng-click="clickFeed(feed)" >
+                               <tr ng-repeat="feed in listaFeed | filter:searchBox | orderBy:'titoloFeed'" ng-click="clickFeed(feed)" >
                                	   <td>{{feed.idFeed}}</td>
                                    <td>{{feed.titoloFeed}}</td>
                                    <td><button ng-click="confirmDecision(feed)">X</button></td>

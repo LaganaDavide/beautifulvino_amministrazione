@@ -23,7 +23,8 @@
                         </div>
                         <div class="title-block">
                             <button ng-click="azzeraForm()">NUOVA AZIENDA</button>
-                        </div>					
+                        </div>		
+                        <div>SEARCH <input type= text ng-model="searchBox">	</div>				
                         <div class="row">
 <!--                             qui ci va la lista degli utenti -->
 							<div class="table-responsive">
@@ -37,7 +38,7 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="azienda in listaAziende | orderBy:'nomeAzienda'" ng-click="clickAzienda(azienda)">
+	                                    <tr ng-repeat="azienda in listaAziende | filter:searchBox | orderBy:'nomeAzienda'" ng-click="clickAzienda(azienda)">
 	                                        <td ng-if="azienda.active || showDis">{{azienda.nomeAzienda}}</td>
 	                                        <td ng-if="azienda.active || showDis">{{azienda.cittaAzienda}}</td>
 	                                        <td ng-if="azienda.active"><button ng-click="disableAzienda(azienda)">Disable</button>
