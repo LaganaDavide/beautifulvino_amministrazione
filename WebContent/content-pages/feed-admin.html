@@ -32,13 +32,13 @@
 <!-- 	                            rendere dinamica la lista -->
                            <thead>
                                <tr>
-                               	   <th>Id</th>
+                               	   <th>Data</th>
                                    <th>Titolo Feed</th>
                                </tr>
                            </thead>
                            <tbody>
                                <tr ng-repeat="feed in listaFeed | filter:searchBox | orderBy:'titoloFeed'" ng-click="clickFeed(feed)" >
-                               	   <td>{{feed.idFeed}}</td>
+                               	   <td>{{feed.dataFeed}}</td>
                                    <td>{{feed.titoloFeed}}</td>
                                    <td><button ng-click="confirmDecision(feed)">X</button></td>
                                </tr>
