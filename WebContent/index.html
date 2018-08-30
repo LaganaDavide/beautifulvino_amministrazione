@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">    
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 		<script src="js/common/aws-sdk.min.js"></script>
+	    
         <style>
 			input.ng-invalid {
 			    background-color: pink;
@@ -162,6 +165,10 @@
                                 <li>
                                     <a href="" ng-click="setFeedView()">
                                         <i class="fa fa-home"></i> Gestione Feed </a>
+                                </li>
+                                 <li>
+                                    <a href="" ng-click="setNotificheView()">
+                                        <i class="fa fa-home"></i> Notifiche </a>
                                 </li>
 <!--                                 <li> -->
 <!--                                     <a href=""> -->
@@ -424,6 +431,7 @@
                 <vini-admin ng-if="isVini"></vini-admin>
                 <eventi-admin ng-if="isEventi"></eventi-admin>
                 <feed-admin ng-if="isFeed"></feed-admin>
+                <notifiche-admin ng-if="isNotifiche"> </notifiche-admin>
                 <footer class="footer">
                     <div class="footer-block buttons">
                         <iframe class="footer-github-btn" src="https://ghbtns.com/github-btn.html?user=modularcode&repo=modular-admin-html&type=star&count=true" frameborder="0" scrolling="0" width="140px" height="20px"></iframe>
@@ -573,6 +581,8 @@
 		<script src="js/app/feedModule/service/listaFeedService.js"></script>
 		<script src="js/app/feedModule/service/salvaFeedService.js"></script>
 		<script src="js/app/feedModule/service/cancellaFeedService.js"></script>
+		
+		<script src="js/app/notificheModule/controller/notificheController.js"></script>
 		
 		
     </body>

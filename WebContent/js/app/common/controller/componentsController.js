@@ -5,6 +5,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isVini = false;
 	$scope.isEventi = false;
 	$scope.isFeed = false;
+	$scope.isNotifiche = false;
 	
 	$scope.resetView = function(){
 		$scope.isUtenti = false;
@@ -12,6 +13,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isVini = false;
 		$scope.isEventi = false;
 		$scope.isFeed = false;
+		$scope.isNotifiche = false;
 	}
 	
 	$scope.setUtentiView = function(){
@@ -37,5 +39,10 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.setFeedView = function(){
 		$scope.resetView();
 		$scope.isFeed = true;
+	};
+	
+	$scope.setNotificheView = function(){
+		$scope.resetView();
+		$scope.isNotifiche = true;
 	};
 }]);

@@ -1,0 +1,23 @@
+<article class="content dashboard-page">
+ <section class="section" ng-controller="notificheController">
+   		<div class="row sameheight-container" ng-if="visualizzaEsito">
+   			<div class="col-md-12">
+               <div class="card sameheight-item stats" data-exclude="xs">
+                   <div class="card-block">
+                       <div class="title-block">
+                           <h4 class="title"> Esito Operazione</h4>
+                       </div>
+                        <div class="row" style="background-color: {{coloreSfondoEsito}}">
+                        	<span>{{messaggioEsito}}</span>
+                        </div>
+                   </div>
+               </div>
+           </div>
+   		</div> 
+	 	<!-- <textarea  ui-tinymce="tinymceOptions" ng-model="testo"></textarea>	-->
+	 	<textarea  style="width:500px;" ng-model="testo"></textarea>	
+	 	</br>
+	 	<button style="width: 80px;height: 45px" ng-click="invia()">Invia</button>
+	</section> 
+	
+</article>

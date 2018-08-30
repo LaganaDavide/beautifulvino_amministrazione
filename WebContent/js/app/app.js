@@ -28,4 +28,9 @@ var app = angular.module('applicationModule', ['utentiModule', 'cp.ngConfirm', '
 		 restrict: 'E',
 		 templateUrl: 'content-pages/feed-admin.html'
 	 };
+}).directive('notificheAdmin', function(){
+	 return {
+		 restrict: 'E',
+		 templateUrl: 'content-pages/notifiche-admin.html'
+	 };
 });
