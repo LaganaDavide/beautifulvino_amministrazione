@@ -146,4 +146,11 @@ angular.module("utentiModule").service("getMessagesCreator", function() {
 		
 		return message;
 	}
+	
+	this.getNotificationMessage = function(txt){
+		var mess = {};
+		mess.messaggio = txt;
+		return mess;
+	}
+	
 });

@@ -13,7 +13,8 @@ angular.module('utentiModule').constant('URLS',{
 		getVini: 'https://msbr19n8sg.execute-api.eu-central-1.amazonaws.com/BeautifulVinoGetVini',
 		putImage: 'https://ltf72bsjgl.execute-api.eu-central-1.amazonaws.com/BeautifulVinoPutImage',
 		putEvento: 'https://ksjcidu1zh.execute-api.eu-central-1.amazonaws.com/BeautifulVinoPutEvento',
-		cancellaEvento: 'https://q0kuva8ii0.execute-api.eu-central-1.amazonaws.com/BeautifulVinoDeleteEvento'
+		cancellaEvento: 'https://q0kuva8ii0.execute-api.eu-central-1.amazonaws.com/BeautifulVinoDeleteEvento',
+		sendNotification: 'https://cxdkdnci9i.execute-api.eu-central-1.amazonaws.com/BeautifulVinoNotification'
 	}
 ).constant('RESPONSE_CODES',{
 	okResponse: 100

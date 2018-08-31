@@ -1,5 +1,6 @@
 angular.module("utentiModule").controller("utentiController", ["getListaUtenti", "salvaUtente", "cancellaUtente", "salvaImmagine", "VARIOUS", "$ngConfirm", "Upload", "$scope",function(getListaUtenti, salvaUtente, cancellaUtente, salvaImmagine, VARIOUS, $ngConfirm, Upload, $scope){
 	
+	
 	var utentiController = this;
 	$scope.listaUtenti = [];
 	$scope.codiceEsito = 'attesa';
