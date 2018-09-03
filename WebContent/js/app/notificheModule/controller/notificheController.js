@@ -4,13 +4,21 @@ angular.module("utentiModule").controller("notificheController", ["sendNotificat
     $scope.invia = function (){
     	var domanda = confirm("conferma invio notifica con testo " + $scope.testo);
     	if (domanda === true) {
-    		$scope.testo = $scope.testo.replace ('\"', `\"`);
-    		let mess = "{" +
-	    		'"default": "'+ $scope.testo +'",' +
-	    		`"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
-	    		`"APNS":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
-	    		`"GCM": "{ \\"notification\\": { \\"text\\": \'` + $scope.testo +`\',\\"sound\\":\\"default\\" } }"` +
-	    	"}";
+    		//$scope.testo = $scope.testo.replace (/\"/g, `\\"`);
+//    		let mess = "{" +
+//	    		'\"default\": \"'+ $scope.testo +'\",' +
+//	    		`\"APNS_SANDBOX\":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
+//	    		`\"APNS\":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
+//	    		`\"GCM\": "{ \\"notification\\": { \\"text\\": \'` + $scope.testo +`\',\\"sound\\":\\"default\\" } }"` +
+//	    	"}";
+    		
+    		let mess = 
+    		`{
+				"default": "`+$scope.testo+`", 
+				"GCM": "{ \\"data\\": { \\"message\\": \\"`+$scope.testo + `\\",\\"sound\\":\\"default\\" } }",
+				"APNS": "{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }", 
+				"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\":\\"` + $scope.testo+ `\\"}}"
+			}`
     		
     		sendNotification.response(mess).then(function(result){
     		    console.log(result);
