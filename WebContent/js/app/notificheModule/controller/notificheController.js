@@ -4,11 +4,12 @@ angular.module("utentiModule").controller("notificheController", ["sendNotificat
     $scope.invia = function (){
     	var domanda = confirm("conferma invio notifica con testo " + $scope.testo);
     	if (domanda === true) {
+    		$scope.testo = $scope.testo.replace ('\"', `\"`);
     		let mess = "{" +
 	    		'"default": "'+ $scope.testo +'",' +
-	    		'"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\":\\"' + $scope.testo +'\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",' +
-	    		'"APNS":"{\\"aps\\":{\\"alert\\":\\"' + $scope.testo +'\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",' +
-	    		'"GCM": "{ \\"notification\\": { \\"text\\": \\"' + $scope.testo +'\\",\\"sound\\":\\"default\\" } }"' +
+	    		`"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
+	    		`"APNS":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
+	    		`"GCM": "{ \\"notification\\": { \\"text\\": \'` + $scope.testo +`\',\\"sound\\":\\"default\\" } }"` +
 	    	"}";
     		
     		sendNotification.response(mess).then(function(result){

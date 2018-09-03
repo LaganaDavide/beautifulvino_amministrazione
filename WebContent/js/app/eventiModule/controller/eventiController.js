@@ -170,6 +170,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	}
 	$scope.caricaBadges();
 	
+	
 	$scope.salvaBadge = function(){
 		$scope.badgeSelezionato.dataBadge = Date.parse($scope.dataEvento); 
 		$scope.badgeSelezionato.badgeEvento.dataEvento = Date.parse($scope.dataEvento);
@@ -339,6 +340,13 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.badgeSelezionato = evento.badgeEventoInt;
 		$scope.listaViniCancellati = [];
 		
+		for (let j = 0; j < $scope.listaBadges.length ; j++){
+			if ($scope.badgeSelezionato.idBadge == $scope.listaBadges[j].idBadge){
+				$scope.badgeSelezionato.nomeBadge = $scope.listaBadges[j].nomeBadge;
+				$scope.badgeSelezionato.infoBadge = $scope.listaBadges[j].infoBadge;
+				$scope.badgeSelezionato.urlLogoBadge = $scope.listaBadges[j].urlLogoBadge;
+			}
+		}
 	}
 	
 	$scope.caricaBadgeInterfaccia = function(){
