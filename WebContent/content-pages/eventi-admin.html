@@ -41,9 +41,13 @@
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="evento in listaEventi | filter:searchBox | orderBy:'nomeEvento'" ng-click="clickEvento(evento)">
-	                                        <td>{{evento.titoloEvento}}</td>
-	                                        <td>{{evento.cittaEvento}}</td>
-	                                        <td><button ng-click="confirmDecision(evento)">X</button></td>
+	                                        <td ng-if="eventoSelezionato.idEvento!=evento.idEvento">{{evento.titoloEvento}}</td>
+	                                        <td ng-if="eventoSelezionato.idEvento!=evento.idEvento">{{evento.cittaEvento}}</td>
+	                                        <td ng-if="eventoSelezionato.idEvento!=evento.idEvento"><button ng-click="confirmDecision(evento)">X</button></td>
+	                                        
+	                                        <td ng-if="eventoSelezionato.idEvento==evento.idEvento" style="border-width: 5px;border-style: solid;border-color: green;">{{evento.titoloEvento}}</td>
+	                                        <td ng-if="eventoSelezionato.idEvento==evento.idEvento" style="border-width: 5px;border-style: solid;border-color: green;">{{evento.cittaEvento}}</td>
+	                                        <td ng-if="eventoSelezionato.idEvento==evento.idEvento" style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(evento)">X</button></td>
 	                                    </tr>
 	                                </tbody>
 	                            </table>

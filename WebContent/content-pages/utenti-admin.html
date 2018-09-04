@@ -37,11 +37,14 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="utente in listaUtenti | filter:searchBox | orderBy:'usernameUtente'" ng-click="clickUtente(utente)">
-
-	                                        <td >{{utente.usernameUtente}}</td>
-											<td>{{utente.emailUtente}}</td>
-	                                        <td><button ng-click="confirmDecision(utente)">X</button></td>
+	                                    <tr  ng-repeat="utente in listaUtenti | filter:searchBox | orderBy:'usernameUtente'" ng-click="clickUtente(utente)">
+	                                        <td ng-if="utenteSelezionato.idUtente!=utente.idUtente" >{{utente.usernameUtente}}</td>
+											<td ng-if="utenteSelezionato.idUtente!=utente.idUtente" >{{utente.emailUtente}}</td>
+	                                        <td ng-if="utenteSelezionato.idUtente!=utente.idUtente" ><button ng-click="confirmDecision(utente)">X</button></td>
+	                                        
+	                                        <td ng-if="utenteSelezionato.idUtente==utente.idUtente" style="border-width: 5px;border-style: solid;border-color: green;">{{utente.usernameUtente}}</td>
+											<td ng-if="utenteSelezionato.idUtente==utente.idUtente" style="border-width: 5px;border-style: solid;border-color: green;">{{utente.emailUtente}}</td>
+	                                        <td ng-if="utenteSelezionato.idUtente==utente.idUtente" style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(utente)">X</button></td>
 	                                    </tr>
 	                                </tbody>
 	                            </table>

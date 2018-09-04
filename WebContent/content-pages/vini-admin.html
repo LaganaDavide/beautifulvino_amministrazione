@@ -40,10 +40,15 @@
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="vino in listaVini | filter:searchBox | orderBy:'nomeVino'" ng-click="clickVino(vino)">
-	                                        <td>{{vino.nomeVino}}</td>
-	                                        <td>{{vino.aziendaVinoInt.nomeAzienda}}</td>
-	                                        <td>{{vino.annoVino}}</td>
-	                                        <td><button ng-click="confirmDecision(vino)">X</button></td>
+	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino" >{{vino.nomeVino}}</td>
+	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino" >{{vino.aziendaVinoInt.nomeAzienda}}</td>
+	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino" >{{vino.annoVino}}</td>
+	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino"><button ng-click="confirmDecision(vino)">X</button></td>
+	                                        
+	                                        <td ng-if="vinoSelezionato.idVino==vino.idVino" style="border-width: 5px;border-style: solid;border-color: green;">{{vino.nomeVino}}</td>
+	                                        <td ng-if="vinoSelezionato.idVino==vino.idVino" style="border-width: 5px;border-style: solid;border-color: green;">{{vino.aziendaVinoInt.nomeAzienda}}</td>
+	                                        <td ng-if="vinoSelezionato.idVino==vino.idVino" style="border-width: 5px;border-style: solid;border-color: green;">{{vino.annoVino}}</td>
+	                                        <td ng-if="vinoSelezionato.idVino==vino.idVino" style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(vino)">X</button></td>
 	                                    </tr>
 	                                </tbody>
 	                            </table>

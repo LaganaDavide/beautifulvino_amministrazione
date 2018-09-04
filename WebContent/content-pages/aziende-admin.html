@@ -39,11 +39,17 @@
 	                                </thead>
 	                                <tbody>
 	                                    <tr ng-repeat="azienda in listaAziende | filter:searchBox | orderBy:'nomeAzienda'" ng-click="clickAzienda(azienda)">
-	                                        <td ng-if="azienda.active || showDis">{{azienda.nomeAzienda}}</td>
-	                                        <td ng-if="azienda.active || showDis">{{azienda.cittaAzienda}}</td>
-	                                        <td ng-if="azienda.active"><button ng-click="disableAzienda(azienda)">Disable</button>
-	                                        <td ng-if="!azienda.active && showDis"><button ng-click="disableAzienda(azienda)">Enable</button>
-	                                        <td ng-if="azienda.active || showDis"><button ng-click="confirmDecision(azienda)">X</button></td>
+	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda" style="border-width: 5px;border-style: solid;border-color: green;">{{azienda.nomeAzienda}}</td>
+	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda" style="border-width: 5px;border-style: solid;border-color: green;">{{azienda.cittaAzienda}}</td>
+	                                        <td ng-if="azienda.active &&  aziendaSelezionata.idAzienda==azienda.idAzienda"style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="disableAzienda(azienda)">Disable</button>
+	                                        <td ng-if="(!azienda.active && showDis) && aziendaSelezionata.idAzienda==azienda.idAzienda"style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="disableAzienda(azienda)">Enable</button>
+	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda"style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(azienda)">X</button></td>
+	                                   
+	                                    	<td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda!=azienda.idAzienda">{{azienda.nomeAzienda}}</td>
+	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda!=azienda.idAzienda">{{azienda.cittaAzienda}}</td>
+	                                        <td ng-if="(azienda.active)&& aziendaSelezionata.idAzienda!=azienda.idAzienda"><button ng-click="disableAzienda(azienda)">Disable</button>
+	                                        <td ng-if="(!azienda.active && showDis)&& aziendaSelezionata.idAzienda!=azienda.idAzienda"><button ng-click="disableAzienda(azienda)">Enable</button>
+	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda!=azienda.idAzienda"><button ng-click="confirmDecision(azienda)">X</button></td>
 	                                    </tr>
 	                                </tbody>
 	                            </table>

@@ -38,9 +38,13 @@
                            </thead>
                            <tbody>
                                <tr ng-repeat="feed in listaFeed | filter:searchBox | orderBy:'titoloFeed'" ng-click="clickFeed(feed)" >
-                               	   <td>{{feed.dataFeed}}</td>
-                                   <td>{{feed.titoloFeed}}</td>
-                                   <td><button ng-click="confirmDecision(feed)">X</button></td>
+                               	   <td ng-if="feedSelezionato.idFeed!=feed.idFeed">{{feed.dataFeed}}</td>
+                                   <td ng-if="feedSelezionato.idFeed!=feed.idFeed">{{feed.titoloFeed}}</td>
+                                   <td ng-if="feedSelezionato.idFeed!=feed.idFeed"><button ng-click="confirmDecision(feed)">X</button></td>
+                                   
+                                   <td ng-if="feedSelezionato.idFeed==feed.idFeed" style="border-width: 5px;border-style: solid;border-color: green;">{{feed.dataFeed}}</td>
+                                   <td ng-if="feedSelezionato.idFeed==feed.idFeed" style="border-width: 5px;border-style: solid;border-color: green;">{{feed.titoloFeed}}</td>
+                                   <td ng-if="feedSelezionato.idFeed==feed.idFeed" style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(feed)">X</button></td>
                                </tr>
                            </tbody>
                        </table>
