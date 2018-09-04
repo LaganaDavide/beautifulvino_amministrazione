@@ -23,6 +23,7 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 	$scope.acquistabileVino = false;
 	
 	$scope.salvaVino = function(){
+		$scope.vinoSelezionato.urlLogoVino  = $scope.vinoSelezionato.urlImmagineVino;
 		if ($scope.aziendaSelezionata.selected != null ){
 			if ($scope.aziendaSelezionata.selected.nomeAzienda == null)$scope.aziendaSelezionata.selected.nomeAzienda = "";
 			var aziendaInt = {

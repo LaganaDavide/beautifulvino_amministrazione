@@ -18,7 +18,6 @@
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">    
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- 		<script src="js/common/aws-sdk.min.js"></script>
 	    
         <style>
 			input.ng-invalid {
@@ -165,6 +164,10 @@
                                 <li>
                                     <a href="" ng-click="setFeedView()">
                                         <i class="fa fa-home"></i> Gestione Feed </a>
+                                </li>
+                                <li>
+                                    <a href="" ng-click="setBadgeView()">
+                                        <i class="fa fa-home"></i> Gestione Badge </a>
                                 </li>
                                  <li>
                                     <a href="" ng-click="setNotificheView()">
@@ -431,6 +434,7 @@
                 <vini-admin ng-if="isVini"></vini-admin>
                 <eventi-admin ng-if="isEventi"></eventi-admin>
                 <feed-admin ng-if="isFeed"></feed-admin>
+                <badge-admin ng-if="isBadge"><badge-admin>
                 <notifiche-admin ng-if="isNotifiche"> </notifiche-admin>
                 <footer class="footer">
                     <div class="footer-block buttons">
@@ -585,6 +589,7 @@
 		<script src="js/app/notificheModule/controller/notificheController.js"></script>
 		<script src="js/app/notificheModule/service/notificheService.js"></script>
 		
+		<script src="js/app/badgeModule/controller/badgeController.js"></script>
 		
     </body>
 </html>

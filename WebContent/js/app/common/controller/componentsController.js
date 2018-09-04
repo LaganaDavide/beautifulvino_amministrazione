@@ -5,6 +5,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isVini = false;
 	$scope.isEventi = false;
 	$scope.isFeed = false;
+	$scope.isBadge = false;
 	$scope.isNotifiche = false;
 	
 	$scope.resetView = function(){
@@ -13,6 +14,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isVini = false;
 		$scope.isEventi = false;
 		$scope.isFeed = false;
+		$scope.isBadge = false;
 		$scope.isNotifiche = false;
 	}
 	
@@ -39,6 +41,11 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.setFeedView = function(){
 		$scope.resetView();
 		$scope.isFeed = true;
+	};
+	
+	$scope.setBadgeView = function(){
+		$scope.resetView();
+		$scope.isBadge = true;
 	};
 	
 	$scope.setNotificheView = function(){

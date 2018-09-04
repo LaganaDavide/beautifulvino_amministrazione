@@ -31,6 +31,8 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	$scope.caricaFeed = function (){
 		getListaFeed.response().then(function(result){
 			$scope.listaFeed = result.data.feed;
+			//$scope.listaFeed.sort(function(a, b){return a.dataFeed - b.dataFeed}); 
+			
 			$scope.codiceEsito = result.data.esito.codice;
 			
 		    console.log($scope.listaFeed);

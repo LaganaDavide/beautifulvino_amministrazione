@@ -184,7 +184,7 @@
 												<img ng-src="{{vinoSelezionato.urlImmagineVino}}" width="150px" ng-show="vinoSelezionato.urlImmagineVino">	
 											</td>
 										</tr>
-										<tr>
+										<!-- <tr>
 											<td>
 												<span>urlLogoVino</span>
 											</td>
@@ -199,11 +199,11 @@
 											<td>
 												<input type="file" class="button" ngf-select ng-model="fileLogoVino" name="fileLogoVino" ngf-pattern="'image/*'"
 												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
-<!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
+												    ngf-resize="{width: 200, height: 200}"/>
 												<input type="button" value="carica" ng-click="submitImageLogoVino(fileLogoVino)">
 												<img ng-src="{{vinoSelezionato.urlLogoVino}}" width="150px" ng-show="vinoSelezionato.urlLogoVino">			
 											</td>
-										</tr>
+										</tr> -->
 										<tr>
 											<td style="padding-top:1em" colspan=2>
 												<input style="float:right" type="button" value="DUPLICA VINO" ng-click="duplicaVino()"/>
