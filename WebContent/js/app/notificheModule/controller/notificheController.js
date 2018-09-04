@@ -22,9 +22,11 @@ angular.module("utentiModule").controller("notificheController", ["sendNotificat
     		
     		sendNotification.response(mess).then(function(result){
     		    console.log(result);
+    		    alert("notifica inviata con successo");
     		}).catch(function(e){
     		   $scope.codiceEsito = 'ERRORE' + e;
     		   console.log('Error');
+    		   alert("errore invio notifica");
     		});
 	    	console.log(mess);
     	}else{
