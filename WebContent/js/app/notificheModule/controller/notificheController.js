@@ -15,7 +15,7 @@ angular.module("utentiModule").controller("notificheController", ["sendNotificat
     		let mess = 
     		`{
 				"default": "`+$scope.testo+`", 
-				"GCM": "{ \\"data\\": { \\"message\\": \\"`+$scope.testo + `\\",\\"sound\\":\\"default\\" } }",
+				"GCM": "{ \\"notification\\": { \\"text\\": \\"`+$scope.testo + `\\",\\"sound\\":\\"default\\" } }",
 				"APNS": "{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }", 
 				"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }"
 			}`
