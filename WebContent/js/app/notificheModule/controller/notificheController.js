@@ -11,13 +11,15 @@ angular.module("utentiModule").controller("notificheController", ["sendNotificat
 //	    		`\"APNS\":"{\\"aps\\":{\\"alert\\":\'` + $scope.testo +`\', \\"badge\\" :1,\\"sound\\" : \\"default\\"}}",` +
 //	    		`\"GCM\": "{ \\"notification\\": { \\"text\\": \'` + $scope.testo +`\',\\"sound\\":\\"default\\" } }"` +
 //	    	"}";
+    		$scope.testo1 = $scope.testo.replace(/\"/g, '\\\\\\\"' );
     		
+    		console.log($scope.testo1);
     		let mess = 
     		`{
-				"default": "`+$scope.testo+`", 
-				"GCM": "{ \\"notification\\": { \\"text\\": \\"`+$scope.testo + `\\",\\"sound\\":\\"default\\" } }",
-				"APNS": "{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }", 
-				"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }"
+				"default": "`+$scope.testo1+`", 
+				"GCM": "{ \\"notification\\": { \\"text\\": \\"`+$scope.testo1 + `\\",\\"sound\\":\\"default\\" } }",
+				"APNS": "{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo1 +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }", 
+				"APNS_SANDBOX":"{\\"aps\\":{\\"alert\\": \\"`+ $scope.testo1 +`\\", \\"badge\\" :1,\\"sound\\" : \\"default\\"} }"
 			}`
     		
     		sendNotification.response(mess).then(function(result){
