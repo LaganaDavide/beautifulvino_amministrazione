@@ -10,6 +10,10 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	
 	$scope.badgeSelezionato = {};
 	
+	$scope.goToEventi = function (){
+		$scope.setIdEventoBadgePass($scope.badgeSelezionato.idBadge);
+		$scope.setEventiView();
+	}
 	
 	$scope.azzeraBadgeSelezionato = function(){
 		$scope.badgeSelezionato = {};
@@ -100,21 +104,23 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	
 
 	$scope.submit = function(){
-		salvaBadgeService.response($scope.badgeSelezionato).then(function(result){
-			var codiceEsito = result.data.esito.codice;
-			if(codiceEsito == 100){
-				$scope.setEsitoPositivo("Badge inserito correttamente");
-				//il vino selezionato lo devo mettere nella lista con una push
-				$scope.caricaLista();
-				
-			} else {
-				var messaggioDiErrore = result.data.esito.message;
-				$scope.setEsitoNegativo("ATTENZIONE, Problemi nell'inserimento del badge; codice esito: " + codiceEsito + " messaggio di errore:" + messaggioDiErrore);
-			}
-		}).catch(function(error){
-			$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nell'inserimento del badge: " + error);
-
-		});
+		if ($scope.badgeSelezionato.idBadge.length > 1){
+			salvaBadgeService.response($scope.badgeSelezionato).then(function(result){
+				var codiceEsito = result.data.esito.codice;
+				if(codiceEsito == 100){
+					$scope.setEsitoPositivo("Badge inserito correttamente");
+					//il vino selezionato lo devo mettere nella lista con una push
+					$scope.caricaLista();
+					
+				} else {
+					var messaggioDiErrore = result.data.esito.message;
+					$scope.setEsitoNegativo("ATTENZIONE, Problemi nell'inserimento del badge; codice esito: " + codiceEsito + " messaggio di errore:" + messaggioDiErrore);
+				}
+			}).catch(function(error){
+				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nell'inserimento del badge: " + error);
+	
+			});
+		}
 	}
 
 	$scope.confirmDecision = function(azienda){

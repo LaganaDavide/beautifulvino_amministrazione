@@ -8,6 +8,17 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isBadge = false;
 	$scope.isNotifiche = false;
 	
+	//variabile per passare l'id evento dalla pagina dei badge alla pagina degli eventi
+	$scope.idEventoBadgePass = "";
+	
+	$scope.getIdEventoBadgePass = function (){
+		return $scope.idEventoBadgePass = "";
+	}
+	
+	$scope.setIdEventoBadgePass = function (id){
+		$scope.idEventoBadgePass = id;
+	}
+	
 	$scope.resetView = function(){
 		$scope.isUtenti = false;
 		$scope.isAziende = false;

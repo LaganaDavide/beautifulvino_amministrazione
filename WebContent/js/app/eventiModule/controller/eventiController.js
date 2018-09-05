@@ -19,6 +19,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	$scope.oldIdAzienda = '';
 	$scope.listaViniCancellati = [];
 	
+	
 	//gestione aziende
 	$scope.aziende = [];
 	$scope.aziendaOspitanteSelezionata = {};
@@ -147,18 +148,7 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.listaViniCancellati = [];
 	}
 	
-	$scope.caricaLista = function(){
-		getListaEventi.response().then(function(result){
-			$scope.listaEventi = result.data.eventi;
-			$scope.codiceEsito = result.data.esito.codice;
-			
-		    console.log($scope.listaVini);
-		}).catch(function(){
-		   $scope.codiceEsito = 'ERRORE';
-		   console.log('Error');
-		});
-	}
-	$scope.caricaLista();
+	
 	
 	$scope.caricaBadges = function(){
 		getListaBadge.response().then(function(result){
@@ -260,6 +250,28 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		});
 	}
 	$scope.caricaVini();
+	
+	$scope.caricaLista = function(){
+		getListaEventi.response().then(function(result){
+			$scope.listaEventi = result.data.eventi;
+			$scope.codiceEsito = result.data.esito.codice;
+			console.log($scope.idEventoBadgePass);
+			
+			if ($scope.idEventoBadgePass != ""){
+				for (let i = 0 ; i< $scope.listaEventi.length; i++){
+					if ($scope.listaEventi[i].idEvento == $scope.idEventoBadgePass){
+						$scope.clickEvento($scope.listaEventi[i]);
+					}
+				}
+				$scope.setIdEventoBadgePass("");
+			}
+		    console.log($scope.listaEventi);
+		}).catch(function(){
+		   $scope.codiceEsito = 'ERRORE';
+		   console.log('Error');
+		});
+	}
+	$scope.caricaLista();
 	
 	$scope.clickVino = function(vino){
 		$scope.vinoSelezionato = vino;
