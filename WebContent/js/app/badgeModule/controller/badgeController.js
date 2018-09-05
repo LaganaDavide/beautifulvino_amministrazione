@@ -1,4 +1,4 @@
-angular.module("utentiModule").controller("badgeController", ["getListaBadge", "VARIOUS", "$ngConfirm", "$scope",function(getListaBadge, VARIOUS, $ngConfirm, $scope){
+angular.module("utentiModule").controller("badgeController", ["getListaBadge", "salvaBadgeService", "salvaImmagine","VARIOUS", "$ngConfirm", "$scope",function(getListaBadge, salvaBadgeService, salvaImmagine, VARIOUS, $ngConfirm, $scope){
 	
 	var badgeController = this;
 	$scope.listaBadges = [];
@@ -11,21 +11,27 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	$scope.badgeSelezionato = {};
 	
 	
-	$scope.azzeraVinoSelezionato = function(){
-		$scope.vinoSelezionato = {
-				idVino : '',
-				nomeVino : '',
-				annoVino : '',
-				aziendaVino : {},
-				aziendaVinoInt : '',
-				uvaggioVino : '',
-				regioneVino : '',
-				inBreveVino : '',
-				descrizioneVino : '',
-				infoVino : '',
-				urlImmagineVino : '',
-				urlLogoVino : ''
-		};
+	$scope.azzeraBadgeSelezionato = function(){
+		$scope.badgeSelezionato = {};
+	}
+	
+	$scope.getDayOrMonthNumberString = function(num){
+		var prefix = '';
+		if(num < 10){
+			prefix = '0';
+		}
+		return prefix + num;
+	}
+	
+	$scope.getNormalDate = function (){
+		console.log($scope.listaBadges);
+		$scope.listaBadges.forEach(
+				function (e){
+					let date = new Date(e.dataBadge);
+					let formattedDate = $scope.getDayOrMonthNumberString(date.getDate()) + '/' + $scope.getDayOrMonthNumberString((date.getMonth()+1)) + '/' + date.getFullYear();
+					e.normalDate = formattedDate;
+				}
+		)
 	}
 	
 	$scope.caricaLista = function(){
@@ -33,6 +39,7 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 			$scope.listaBadges = result.data.badges;
 			$scope.codiceEsito = result.data.esito.codice;
 			
+			$scope.getNormalDate();
 		    console.log($scope.listaBadges);
 		}).catch(function(){
 		   $scope.codiceEsito = 'ERRORE';
@@ -41,6 +48,7 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	}
 	
 	$scope.caricaLista();
+	
 	
 	$scope.azzeraEsito = function(){
 		$scope.visualizzaEsito = false;
@@ -61,13 +69,11 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	}
 	
 	$scope.azzeraForm = function(){
-		$scope.aziendaSelezionata = {};
-		$scope.viniAzienda = [];
+		
 	}
 	
 	$scope.clickBadge= function(badge){
 		$scope.azzeraEsito();
-		
 		$scope.badgeSelezionato = badge;
 
 	}
@@ -93,7 +99,23 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	}
 	
 
-	
+	$scope.submit = function(){
+		salvaBadgeService.response($scope.badgeSelezionato).then(function(result){
+			var codiceEsito = result.data.esito.codice;
+			if(codiceEsito == 100){
+				$scope.setEsitoPositivo("Badge inserito correttamente");
+				//il vino selezionato lo devo mettere nella lista con una push
+				$scope.caricaLista();
+				
+			} else {
+				var messaggioDiErrore = result.data.esito.message;
+				$scope.setEsitoNegativo("ATTENZIONE, Problemi nell'inserimento del badge; codice esito: " + codiceEsito + " messaggio di errore:" + messaggioDiErrore);
+			}
+		}).catch(function(error){
+			$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nell'inserimento del badge: " + error);
+
+		});
+	}
 
 	$scope.confirmDecision = function(azienda){
 		$scope.azzeraEsito();
@@ -118,5 +140,35 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
             }
         });
     }
+	
+	$scope.submitImage = function(file){
+		if(file){
+			$scope.upload(file, VARIOUS.eventoImageBaseFileName);
+		}
+		$scope.fileEvento = '';
+	}
+	
+	$scope.upload = function (file, baseFileName) {
+		var reader = new window.FileReader();
+		reader.readAsDataURL(file); 
+		reader.onloadend = function() {
+			base64data = reader.result;                
+			console.log(base64data);
+			
+			 salvaImmagine.response(base64data, baseFileName, "").then(function(result){
+				var codiceEsito = result.data.esito.codice;
+				if(codiceEsito == 100){
+					$scope.setEsitoPositivo("Immagine correttamente salvata; \ncodice esito: " + codiceEsito);
+					$scope.badgeSelezionato.urlLogoBadge = result.data.imageUrl;
+				} else {
+					var messaggioDiErrore = result.data.esito.message;
+					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'evento; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
+				}
+				
+			}).catch(function(){
+				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nel salvataggio dell'immagine dell'evento");
+			});					
+		 }
+    };
     
 }]);

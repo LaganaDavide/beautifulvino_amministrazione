@@ -20,10 +20,7 @@
                     <div class="card-block">
                         <div class="title-block">
                             <h4 class="title"> Lista Badge</h4>
-                        </div>
-                        <div class="title-block">
-                            <button ng-click="azzeraEventoSelezionato()">NUOVO EVENTO</button>
-                        </div>		
+                        </div>	
                         <div> SEARCH <input type= text ng-model="searchBox">	</div>				
                         <div class="row">
 <!--                             qui ci va la lista degli eventi -->
@@ -42,12 +39,12 @@
 	                               <tbody>
 	                                    <tr ng-repeat="badge in listaBadges | filter:searchBox | orderBy:'dataBadge'" ng-click="clickBadge(badge)">
 	                                        <td ng-if="badgeSelezionato.idBadge!=badge.idBadge">{{badge.nomeBadge}}</td>
-	                                        <td ng-if="badgeSelezionato.idBadge!=badge.idBadge">{{badge.dataBadge}}</td>
-	                                        <td ng-if="badgeSelezionato.idBadge!=badge.idBadge"><button ng-click="confirmDecision(badge)">X</button></td>
+	                                        <td ng-if="badgeSelezionato.idBadge!=badge.idBadge">{{badge.normalDate}}</td>
+	                                        <!-- <td ng-if="badgeSelezionato.idBadge!=badge.idBadge"><button ng-click="confirmDecision(badge)">X</button></td>-->
 	                                        
 	                                        <td ng-if="badgeSelezionato.idBadge==badge.idBadge" style="border-width: 5px;border-style: solid;border-color: green;">{{badge.nomeBadge}}</td>
-	                                        <td ng-if="badgeSelezionato.idBadge==badge.idBadge" style="border-width: 5px;border-style: solid;border-color: green;">{{badge.nomeBadge}}</td>
-	                                        <td ng-if="badgeSelezionato.idBadge==badge.idBadge" style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(badge)">X</button></td>
+	                                        <td ng-if="badgeSelezionato.idBadge==badge.idBadge" style="border-width: 5px;border-style: solid;border-color: green;">{{badge.normalDate}}</td>
+	                                        <!-- <td ng-if="badgeSelezionato.idBadge==badge.idBadge" style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="confirmDecision(badge)">X</button></td>-->
 	                                    </tr>
 	                                </tbody>
 	                            </table>
@@ -111,15 +108,21 @@
 											<img ng-src="{{badgeSelezionato.urlLogoBadge}}" width="150px" ng-show="badgeSelezionato.urlLogoBadge">
 										</td>
 									</tr>
+									<tr>
+										<td>
+											<span>ID Evento</span>
+										</td>
+										<td>
+											<input type="text" ng-model="badgeSelezionato.eventoBadge.idEvento" disabled/>
+										</td>
+									</tr>	
+										<tr>
+											<td style="padding-top:1em" colspan="2" >
+												<input type="submit" style="float:left" id="submit" value="Salva" ng-click="salva()"/>
+											</td>
+										</tr>
 								</table>
-								<tr>
-									<td>
-										<span>ID Evento</span>
-									</td>
-									<td>
-										<input type="text" ng-model="badgeSelezionato.eventoBadge.idEvento" />
-									</td>
-								</tr>	
+								
 							</form>
                         </div>
                     </div>
