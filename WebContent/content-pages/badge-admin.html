@@ -113,7 +113,7 @@
 											<span>ID Evento</span>
 										</td>
 										<td>
-											<input type="text" ng-model="badgeSelezionato.eventoBadge.idEvento" disabled/>
+											<input type="text" ng-model="badgeSelezionato.eventoBadge.idEvento" disabled/><button ng-click="setEventiView1()">Vai all'evento</button>
 										</td>
 									</tr>	
 										<tr>
@@ -121,6 +121,7 @@
 												<input type="submit" style="float:left" id="submit" value="Salva" ng-click="salva()"/>
 											</td>
 										</tr>
+										
 								</table>
 								
 							</form>
@@ -129,5 +130,6 @@
                 </div>
             </div>
         </div>
+        
     </section>
 </article>

@@ -10,6 +10,10 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	
 	$scope.badgeSelezionato = {};
 	
+	$scope.setEventiView1 = function(){
+		$scope.resetView();
+		$scope.isEventi = true;
+	};
 	
 	$scope.azzeraBadgeSelezionato = function(){
 		$scope.badgeSelezionato = {};
