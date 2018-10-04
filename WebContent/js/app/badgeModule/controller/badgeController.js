@@ -53,6 +53,16 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 	
 	$scope.caricaLista();
 	
+	 $scope.page = 1;
+
+		$scope.displayItems = $scope.listaBadges.slice(0, 20);
+		
+		$scope.pageChanged = function() {
+		  var startPos = ($scope.page - 1) * 20;
+		  //$scope.displayItems = $scope.totalItems.slice(startPos, startPos + 3);
+		  console.log($scope.page);
+		};
+	
 	
 	$scope.azzeraEsito = function(){
 		$scope.visualizzaEsito = false;

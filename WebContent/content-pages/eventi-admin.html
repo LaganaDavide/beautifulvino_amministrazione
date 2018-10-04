@@ -24,7 +24,9 @@
                         <div class="title-block">
                             <button ng-click="azzeraEventoSelezionato()">NUOVO EVENTO</button>
                         </div>		
-                        <div> SEARCH <input type= text ng-model="searchBox">	</div>				
+                        <div> SEARCH <input type= text ng-model="searchBox">	</div>	
+                        <div uib-pagination class="pagination" total-items="filterLista.length" ng-model="page"
+										ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page=20></div>			
                         <div class="row">
 <!--                             qui ci va la lista degli eventi -->
 							<div class="table-responsive">
@@ -40,7 +42,7 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="evento in listaEventi | filter:searchBox | orderBy:'-dataEvento'" ng-click="clickEvento(evento)">
+	                                    <tr ng-repeat="evento in filterList = (listaEventi | filter:searchBox | orderBy:'-dataEvento') | limitTo:20:20*(page-1)" ng-click="clickEvento(evento)">
 	                                        <td ng-if="eventoSelezionato.idEvento!=evento.idEvento">{{evento.titoloEvento}}</td>
 	                                        <td ng-if="eventoSelezionato.idEvento!=evento.idEvento">{{evento.cittaEvento}}</td>
 	                                        <td ng-if="eventoSelezionato.idEvento!=evento.idEvento"><button ng-click="confirmDecision(evento)">X</button></td>

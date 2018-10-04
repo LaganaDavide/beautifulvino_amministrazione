@@ -1,7 +1,7 @@
 angular.module("utentiModule").controller("viniController", ["getListaVini", "salvaVino", "getListaAziende", "salvaImmagine", "cancellaVino", "VARIOUS", "$ngConfirm", "$scope",function(getListaVini, salvaVino, getListaAziende, salvaImmagine, cancellaVino, VARIOUS, $ngConfirm, $scope){
 	
 	var viniController = this;
-	$scope.listaAziende = [];
+	$scope.listaVini = [];
 	$scope.codiceEsito = 'attesa';
 	
 	$scope.visualizzaEsito = false;
@@ -91,6 +91,16 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		});
 	}
 	$scope.caricaLista();
+	
+	 $scope.page = 1;
+
+	$scope.displayItems = $scope.listaVini.slice(0, 20);
+	
+	$scope.pageChanged = function() {
+	  var startPos = ($scope.page - 1) * 20;
+	  //$scope.displayItems = $scope.totalItems.slice(startPos, startPos + 3);
+	  console.log($scope.page);
+	};
 	
 	$scope.caricaAziende = function(){
 		getListaAziende.response().then(function(result){

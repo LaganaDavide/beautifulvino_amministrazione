@@ -24,7 +24,9 @@
                         <div class="title-block">
                             <button ng-click="azzeraForm()">NUOVA AZIENDA</button>
                         </div>		
-                        <div> SEARCH <input type= text ng-model="searchBox">	</div>				
+                        <div> SEARCH <input type= text ng-model="searchBox">	</div>	
+                        <div uib-pagination class="pagination" total-items="filterLista.length" ng-model="page"
+										ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page=20></div>			
                         <div class="row">
 <!--                             qui ci va la lista degli utenti -->
 							<div class="table-responsive">
@@ -38,7 +40,8 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="azienda in listaAziende | filter:searchBox | orderBy:'nomeAzienda'" ng-click="clickAzienda(azienda)">
+	                       
+	                                    <tr ng-repeat="azienda in filterLista = (listaAziende | filter:searchBox | orderBy:'nomeAzienda') | limitTo:20:20*(page-1)" ng-click="clickAzienda(azienda)">
 	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda" style="border-width: 5px;border-style: solid;border-color: green;">{{azienda.nomeAzienda}}</td>
 	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda" style="border-width: 5px;border-style: solid;border-color: green;">{{azienda.cittaAzienda}}</td>
 	                                        <td ng-if="azienda.active &&  aziendaSelezionata.idAzienda==azienda.idAzienda"style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="disableAzienda(azienda)">Disable</button>

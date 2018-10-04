@@ -1,7 +1,7 @@
 angular.module("utentiModule").controller("feedController", ["getListaFeed", "salvaFeed", "getListaVini", "getListaAziende", "getListaEventi", "salvaImmagine", "cancellaFeed", "VARIOUS", "$ngConfirm", "$scope", function(getListaFeed, salvaFeed, getListaVini, getListaAziende, getListaEventi,salvaImmagine, cancellaFeed, VARIOUS, $ngConfirm, $scope){
 //angular.module("utentiModule").controller("feedController", ["getListaFeed", "salvaFeed", "cancellaFeed", "getListaAziende", "getListaProvince", "getListaVini", "salvaImmagine", "VARIOUS", "$ngConfirm", "$scope", function(getListaFeed, salvaFeed, cancellaFeed, getListaAziende, getListaProvince, getListaVini, salvaImmagine, VARIOUS, $ngConfirm, $scope){
 	var feedController = this;
-	$scope.listafeed = [];
+	$scope.listaFeed = [];
 	$scope.listaVini = [];
 	$scope.listaEventi = [];
 	$scope.codiceEsito = 'attesa';
@@ -43,6 +43,16 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	}
 	
 	$scope.caricaFeed();
+	
+	 $scope.page = 1;
+
+	$scope.displayItems = $scope.listaFeed.slice(0, 20);
+	
+	$scope.pageChanged = function() {
+	  var startPos = ($scope.page - 1) * 20;
+	  //$scope.displayItems = $scope.totalItems.slice(startPos, startPos + 3);
+	  console.log($scope.page);
+	};
 	
 	$scope.clickFeed = function(feed){
 		$scope.azzeraEsito();

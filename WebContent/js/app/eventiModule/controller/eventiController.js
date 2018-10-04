@@ -273,6 +273,16 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 	}
 	$scope.caricaLista();
 	
+	 $scope.page = 1;
+
+	$scope.displayItems = $scope.listaEventi.slice(0, 20);
+	
+	$scope.pageChanged = function() {
+	  var startPos = ($scope.page - 1) * 20;
+	  //$scope.displayItems = $scope.totalItems.slice(startPos, startPos + 3);
+	  console.log($scope.page);
+	};
+
 	$scope.clickVino = function(vino){
 		$scope.vinoSelezionato = vino;
 	}

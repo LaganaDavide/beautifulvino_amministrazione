@@ -24,7 +24,9 @@
                         <div class="title-block">
                             <button ng-click="azzeraVinoSelezionato()">NUOVO VINO</button>
                         </div>		
-                        <div>SEARCH <input type= text ng-model="searchBox">	</div>				
+                        <div>SEARCH <input type= text ng-model="searchBox">	</div>		
+                        <div uib-pagination class="pagination" total-items="filterLista.length" ng-model="page"
+										ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page=20></div>		
                         <div class="row">
 <!--                             qui ci va la lista degli utenti -->
 							<div class="table-responsive">
@@ -39,7 +41,8 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <tr ng-repeat="vino in listaVini | filter:searchBox | orderBy:'nomeVino'" ng-click="clickVino(vino)">
+	                              
+	                                    <tr ng-repeat="vino in filterLista =( listaVini | filter:searchBox | orderBy:'nomeVino' ) | limitTo:20:20*(page-1)" ng-click="clickVino(vino)">
 	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino" >{{vino.nomeVino}}</td>
 	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino" >{{vino.aziendaVinoInt.nomeAzienda}}</td>
 	                                        <td ng-if="vinoSelezionato.idVino!=vino.idVino" >{{vino.annoVino}}</td>
