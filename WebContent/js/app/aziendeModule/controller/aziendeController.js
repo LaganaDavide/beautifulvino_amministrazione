@@ -307,7 +307,7 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 					$scope.setEsitoNegativo("ATTENZIONE, Problemi nel salvataggio dell'immagine dell'azienda; \ncodice esito: " + codiceEsito + " \nmessaggio di errore:" + messaggioDiErrore);
 				}
 				
-			}).catch(function(){
+			}).catch(function(e){
 				$scope.setEsitoNegativo("ATTENZIONE, Si è verificata un'eccezione nel salvataggio dell'immagine dell'azienda");
 			});					
 		 }
