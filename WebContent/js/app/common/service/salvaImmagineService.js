@@ -3,9 +3,10 @@ angular.module("utentiModule").service("salvaImmagine", ["$http", "URLS", "getMe
 	this.response = function(file, filename, tipoEntita){
 		var config = {
 			      headers : {
-			          'Content-Type': 'application/json'
+			          'Content-Type': 'application/json',
+			          'Connection' : 'keep-alive'
 			      },
-			      timeout: 12500000
+			      timeout: 250000
 			  };
 		
 		var message = getMessagesCreator.salvaImmagineMessage(file, filename, tipoEntita);
