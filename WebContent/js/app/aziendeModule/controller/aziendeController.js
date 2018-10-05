@@ -139,6 +139,13 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	
 	$scope.caricaLista();
 	
+	$scope.clickVuoto = function (){
+		$scope.azzeraEsito();	
+		$scope.azzeraForm();
+		if ($scope.aziendaSelezionata != null) $scope.aziendaSelezionata = null
+		console.log ("ciao");
+	}
+	
 	$scope.clickAzienda = function(azienda){
 		$scope.azzeraEsito();
 		
@@ -241,7 +248,6 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 			var codiceEsito = result.data.esito.codice;
 			var c = result.data.idAzienda;
 			if(codiceEsito == 100){
-				$scope.azzeraForm();
 				$scope.caricaLista();
 				$scope.setEsitoPositivo("Azienda correttamente salvata; codice esito: " + codiceEsito + " idAzienda: " + $scope);
 			} else {

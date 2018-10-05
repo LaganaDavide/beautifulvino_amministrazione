@@ -88,6 +88,13 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 	
 	$scope.caricaLista();
 	
+	$scope.clickVuoto = function (){
+		$scope.azzeraEsito();	
+		$scope.azzeraForm();
+		if ($scope.utenteSelezionato != null) $scope.utenteSelezionato = null
+		console.log ("ciao");
+	}
+	
 	$scope.clickUtente = function(utente){
 		$scope.azzeraEsito();
 		
@@ -167,7 +174,6 @@ angular.module("utentiModule").controller("utentiController", ["getListaUtenti",
 			var codiceEsito = result.data.esito.codice;
 			var idUtenteSalvato = result.data.idUtente;
 			if(codiceEsito == 100){
-				$scope.azzeraForm();
 				$scope.caricaLista();
 				$scope.setEsitoPositivo("Utente correttamente salvato;/ncodice esito: " + codiceEsito + "/nidUtente: " + idUtenteSalvato);
 			} else {

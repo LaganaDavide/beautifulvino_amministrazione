@@ -14,8 +14,8 @@
                 </div>
             </div>
     		</div>
-        <div class="row sameheight-container">
-            <div class="col-md-5">
+        <div class="row sameheight-container" >
+            <div class="col-md-5" ng-click="clickVuoto()">
                 <div class="card sameheight-item stats" data-exclude="xs">
                     <div class="card-block">
                         <div class="title-block">
@@ -41,7 +41,7 @@
 	                                </thead>
 	                                <tbody>
 	                       
-	                                    <tr ng-repeat="azienda in filterLista = (listaAziende | filter:searchBox | orderBy:'nomeAzienda') | limitTo:20:20*(page-1)" ng-click="clickAzienda(azienda)">
+	                                    <tr ng-repeat="azienda in filterLista = (listaAziende | filter:searchBox | orderBy:'nomeAzienda') | limitTo:20:20*(page-1)" ng-click="clickAzienda(azienda);$event.stopPropagation()">
 	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda" style="border-width: 5px;border-style: solid;border-color: green;">{{azienda.nomeAzienda}}</td>
 	                                        <td ng-if="(azienda.active || showDis)&& aziendaSelezionata.idAzienda==azienda.idAzienda" style="border-width: 5px;border-style: solid;border-color: green;">{{azienda.cittaAzienda}}</td>
 	                                        <td ng-if="azienda.active &&  aziendaSelezionata.idAzienda==azienda.idAzienda"style="border-width: 5px;border-style: solid;border-color: green;"><button ng-click="disableAzienda(azienda)">Disable</button>

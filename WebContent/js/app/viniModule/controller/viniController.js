@@ -41,8 +41,6 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 				$scope.setEsitoPositivo("Vino inserito correttamente");
 				//il vino selezionato lo devo mettere nella lista con una push
 				$scope.caricaLista();
-				$scope.azzeraVinoSelezionato();
-				$scope.azzeraAziendaSelezionata();
 				$scope.visualizzaEditorVino = false;
 			} else {
 				var messaggioDiErrore = result.data.esito.message;
@@ -139,6 +137,13 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 				return;
 			}
 		}
+	}
+	
+	$scope.clickVuoto = function (){
+		$scope.azzeraEsito();	
+		$scope.azzeraVinoSelezionato();
+		if ($scope.vinoSelezionato != null) $scope.vinoSelezionato = null
+		console.log ("ciao");
 	}
 	
 	$scope.clickVino = function(vino){

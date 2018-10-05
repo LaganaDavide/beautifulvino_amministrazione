@@ -104,7 +104,6 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 				$scope.setEsitoPositivo("Evento inserito correttamente");
 				//il vino selezionato lo devo mettere nella lista con una push
 				$scope.caricaLista();
-				$scope.azzeraEventoSelezionato();
 				$scope.visualizzaEditorBadge = false;
 			} else {
 				var messaggioDiErrore = result.data.esito.message;
@@ -340,6 +339,13 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.visualizzaEsito = true;
 		$scope.messaggioEsito = message;
 		$scope.coloreSfondoEsito = VARIOUS.coloreSfondoEsitoKo;
+	}
+	
+	$scope.clickVuoto = function (){
+		$scope.azzeraEsito();	
+		$scope.azzeraEventoSelezionato();
+		if ($scope.eventoSelezionato != null) $scope.eventoSelezionato = null
+		console.log ("ciao");
 	}
 	
 	$scope.clickEvento = function(evento){

@@ -15,7 +15,7 @@
             </div>
     		</div>
         <div class="row sameheight-container">
-            <div class="col-md-5">
+            <div class="col-md-5" ng-click="clickVuoto()">
                 <div class="card sameheight-item stats" data-exclude="xs">
                     <div class="card-block">
                         <div class="title-block">
@@ -40,7 +40,7 @@
 	                                </thead>
 	                               <tbody>
 
-	                                    <tr ng-repeat="badge in filterLista =(listaBadges | filter:searchBox | orderBy:'dataBadge') | limitTo:20:20*(page-1)" ng-click="clickBadge(badge)">
+	                                    <tr ng-repeat="badge in filterLista =(listaBadges | filter:searchBox | orderBy:'dataBadge') | limitTo:20:20*(page-1)" ng-click="clickBadge(badge);$event.stopPropagation()">
 	                                        <td ng-if="badgeSelezionato.idBadge!=badge.idBadge">{{badge.nomeBadge}}</td>
 	                                        <td ng-if="badgeSelezionato.idBadge!=badge.idBadge">{{badge.normalDate}}</td>
 	                                        <!-- <td ng-if="badgeSelezionato.idBadge!=badge.idBadge"><button ng-click="confirmDecision(badge)">X</button></td>-->

@@ -54,6 +54,13 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 	  console.log($scope.page);
 	};
 	
+	$scope.clickVuoto = function (){
+		$scope.azzeraEsito();	
+		$scope.azzeraForm();
+		if ($scope.feedSelezionato != null) $scope.feedSelezionato = null
+		console.log ("ciao");
+	}
+	
 	$scope.clickFeed = function(feed){
 		$scope.azzeraEsito();
 		
@@ -183,7 +190,6 @@ angular.module("utentiModule").controller("feedController", ["getListaFeed", "sa
 			var codiceEsito = result.data.esito.codice;
 			var c = result.data.idAzienda;
 			if(codiceEsito == 100){
-				$scope.azzeraForm();
 				$scope.caricaFeed();
 				$scope.setEsitoPositivo("Azienda correttamente salvata; codice esito: " + codiceEsito + " idAzienda: " + $scope);
 			} else {

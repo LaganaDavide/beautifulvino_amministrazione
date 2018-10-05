@@ -15,7 +15,7 @@
             </div>
     		</div>
         <div class="row sameheight-container">
-            <div class="col-md-5">
+            <div class="col-md-5" ng-click="clickVuoto()">
                 <div class="card sameheight-item stats" data-exclude="xs">
                     <div class="card-block">
                         <div class="title-block">
@@ -40,7 +40,7 @@
                            </thead>
                            <tbody>
                        
-                               <tr ng-repeat="feed in filterLista = (listaFeed | filter:searchBox ) | limitTo:20:20*(page-1)" ng-click="clickFeed(feed)" >
+                               <tr ng-repeat="feed in filterLista = (listaFeed | filter:searchBox ) | limitTo:20:20*(page-1)" ng-click="clickFeed(feed);$event.stopPropagation()" >
                                	   <td ng-if="feedSelezionato.idFeed!=feed.idFeed">{{feed.dataFeed}}</td>
                                    <td ng-if="feedSelezionato.idFeed!=feed.idFeed">{{feed.titoloFeed}}</td>
                                    <td ng-if="feedSelezionato.idFeed!=feed.idFeed"><button ng-click="confirmDecision(feed)">X</button></td>

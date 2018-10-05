@@ -86,15 +86,18 @@ angular.module("utentiModule").controller("badgeController", ["getListaBadge", "
 		
 	}
 	
+	$scope.clickVuoto = function (){
+		$scope.azzeraEsito();	
+		$scope.azzeraForm();
+		if ($scope.badgeSelezionato != null) $scope.badgeSelezionato = null
+		console.log ("ciao");
+	}
+	
 	$scope.clickBadge= function(badge){
 		$scope.azzeraEsito();
 		$scope.badgeSelezionato = badge;
 
 	}
-	
-
-	
-
 	
 	$scope.cancellaAzienda = function(azienda){
 		cancellaAzienda.response(azienda).then(function(result){
