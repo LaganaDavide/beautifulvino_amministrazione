@@ -70,7 +70,7 @@
 <!--                             qui ci va il form per creare/modificare un utente -->
 <!-- 								<form name="salvaUtenteForm" ng-submit="submitTest()" novalidate> -->
 								<form name="salvaUtenteForm" ng-submit="salvaUtenteForm.$valid && submit()" novalidate>
-									<table>
+									<table >
 										<tr>
 											<td>
 												<span>id</span>
@@ -81,7 +81,7 @@
 										</tr>
 										<tr>
 											<td>
-												<span>UserName</span>
+												<span>Name</span>
 											</td>
 											<td>
 												<input name="usernameUtente" type="text" ng-model="usernameUtente" />
@@ -140,7 +140,7 @@
 												<span>biografia</span>
 											</td>
 											<td>
-												<input type="checkbox" ng-model="editor"/>
+												<input type="checkbox" ng-model="editor"/> HTML
 												<textarea ng-if="editor" ui-tinymce="tinymceOptions" ng-model="biografiaUtente"></textarea>
 												<textarea ng-if="!editor"  cols="50" ng-model="biografiaUtente" rows="3"></textarea>
 											</td>
@@ -155,15 +155,15 @@
 										</tr>
 										<tr>
 											<td>
-												<span>Upload Image</span>
+												<span>Immagine profilo</span>
 											</td>
-											<td>
+											<td style="padding-top:1em" colspan="2">
 												<input type="file" class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-												    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
+											    	ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"/>
 <!-- 												    ngf-resize="{width: 200, height: 200}"/> -->
 												<input type="button" value="carica" ng-click="submitTest(file)">
-												<img ng-src="{{urlFotoUtente}}" width="150px" ng-show="urlFotoUtente">
-											</td>
+<!-- 												<img ng-src="{{urlFotoUtente}}" width="150px" ng-show="urlFotoUtente">
+ -->											</td>
 										</tr>		
 										<tr>
 											<td style="padding-top:1em" colspan="2">
