@@ -293,7 +293,9 @@ angular.module("utentiModule").controller("aziendeController", ["getListaAziende
 	$scope.duplicaAzienda = function(){
 		$scope.aziendaSelezionata.idAzienda = "";
 		$scope.aziendaSelezionata.nomeAzienda = $scope.aziendaSelezionata.nomeAzienda + " copia";
-		$scope.a
+		$scope.aziendaSelezionata.viniAziendaInt = [];
+		$scope.aziendaSelezionata.viniAzienda = [];
+		$scope.viniAzienda = [];
 		$scope.submit();
 	}
 	

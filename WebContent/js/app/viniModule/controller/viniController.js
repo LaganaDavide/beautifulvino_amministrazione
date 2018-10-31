@@ -200,6 +200,9 @@ angular.module("utentiModule").controller("viniController", ["getListaVini", "sa
 		$scope.vinoSelezionato.utentiVinoInt = [];
 		$scope.vinoSelezionato.utentiVino = [];
 		$scope.oldIdAzienda = '';
+		$scope.vinoSelezionato.aziendaVino = null;
+		$scope.vinoSelezionato.aziendaVinoInt = null;
+		$scope.vinoSelezionato.oldIdAzienda = '';
 		$scope.vinoSelezionato.nomeVino = $scope.vinoSelezionato.nomeVino + " copia";
 		$scope.nomeVino = $scope.nomeVino + " copia";
 		$scope.salvaVino();

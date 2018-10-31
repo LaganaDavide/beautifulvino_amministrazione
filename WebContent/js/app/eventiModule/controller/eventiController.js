@@ -436,6 +436,8 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
 		$scope.eventoSelezionato.iscrittiEvento = [];
 		$scope.eventoSelezionato.iscrittiEventoInt = [];
 		$scope.eventoSelezionato.preferitiEventoInt = [];
+		$scope.eventoSelezionato.viniEventoInt = [];
+		$scope.listaViniCancellati = [];
 		$scope.aziendaOspitanteSelezionata.selected = {};
 		$scope.salvaEvento();
 	}
@@ -527,12 +529,6 @@ angular.module("utentiModule").controller("eventiController", ["getListaEventi",
     };
     $scope.azzeraEventoSelezionato();
     
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
+    
 
 }]);
